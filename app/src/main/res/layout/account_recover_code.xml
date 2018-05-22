@@ -10,9 +10,7 @@
     android:layout_centerVertical="false"
     android:background="#ffffff"
     android:gravity="center"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".LoginActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"

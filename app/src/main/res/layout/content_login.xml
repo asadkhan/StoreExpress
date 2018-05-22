@@ -9,10 +9,7 @@
     android:paddingBottom="0dp"
     android:paddingLeft="50dp"
     android:paddingRight="50dp"
-    android:paddingTop="40dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".LoginActivity"
-    tools:showIn="@layout/activity_login">
+    android:paddingTop="40dp">
 
 
     <ImageView
@@ -54,10 +51,6 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@android:color/darker_gray"
-        app:passwordToggleContentDescription="@string/pass"
-        app:passwordToggleDrawable="@android:drawable/ic_dialog_info"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorAccent"
         tools:ignore="MissingPrefix" />
 
     <TextView
