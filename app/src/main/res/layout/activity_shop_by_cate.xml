@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE6E6E6"
+    android:background="#F7F5F5"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -43,6 +43,8 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F7F5F5"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout">
@@ -51,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingBottom="5dip"
             android:paddingStart="10dip">
 
             <LinearLayout
@@ -258,142 +261,672 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dip"
-        android:padding="10dip">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/first"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="5dip"
-                android:layout_weight="5"
-                android:background="#ffffff"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/imageView3"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@mipmap/launcher" />
-
-                    <TextView
-                        android:id="@+id/textView18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dip"
-                        android:text="Rs. 1,418/="
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
                         android:gravity="center"
-                        android:paddingTop="5dip"
-                        android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
-                        android:textSize="10sp" />
+                        android:orientation="vertical">
 
-                    <View
-                        android:id="@+id/divider3"
+                        <ImageView
+                            android:id="@+id/imageView312"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
+
+                        <TextView
+                            android:id="@+id/textView189"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView205"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider356"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView221"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView193"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="5dip"
-                        android:layout_marginTop="5dip"
-                        android:background="?android:attr/listDivider" />
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/button6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:drawableStart="@android:drawable/btn_star_big_on"
-                        android:paddingEnd="10dip"
-                        android:paddingStart="10dip"
-                        android:text="Add to Cart"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/imageView32"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
 
+                        <TextView
+                            android:id="@+id/textView181"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView201"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider35"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView190"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/second"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dip"
-                android:layout_weight="5"
-                android:background="#ffffff"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/imageView3"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@mipmap/launcher" />
-
-                    <TextView
-                        android:id="@+id/textView18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dip"
-                        android:text="Rs. 1,418/="
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
                         android:gravity="center"
-                        android:paddingTop="5dip"
-                        android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
-                        android:textSize="10sp" />
+                        android:orientation="vertical">
 
-                    <View
-                        android:id="@+id/divider3"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="5dip"
-                        android:layout_marginTop="5dip"
-                        android:background="?android:attr/listDivider" />
+                        <ImageView
+                            android:id="@+id/imageView30"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
 
-                    <Button
-                        android:id="@+id/button6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:drawableStart="@android:drawable/btn_star_big_on"
-                        android:paddingEnd="10dip"
-                        android:paddingStart="10dip"
-                        android:text="Add to Cart"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView180"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/textView2000"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider33"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView222"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView200"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView312"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
+
+                        <TextView
+                            android:id="@+id/textView189"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView205"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider356"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView221"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView193"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView32"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
+
+                        <TextView
+                            android:id="@+id/textView181"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView201"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider35"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView190"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fourth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView30"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
+
+                        <TextView
+                            android:id="@+id/textView180"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView2000"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider33"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView222"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView200"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@drawable/pro_shad"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_radius_product"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="90dip"
+                            android:layout_height="90dip"
+                            android:layout_marginTop="10dip"
+                            app:srcCompat="@drawable/product_shoe" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dip"
+                            android:paddingTop="5dip"
+                            android:text="Rs. 1,418/="
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dip"
+                            android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                            android:textSize="10sp" />
+
+                        <View
+                            android:id="@+id/divider3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dip"
+                            android:background="#F7F5F5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dip"
+                            android:paddingTop="10dip">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dip"
+                                android:adjustViewBounds="false"
+                                app:srcCompat="@mipmap/cart_mini" />
+
+                            <TextView
+                                android:id="@+id/textView19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add to cart"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>
