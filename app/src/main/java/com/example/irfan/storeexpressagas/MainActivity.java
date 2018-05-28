@@ -8,6 +8,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop_by_cate);
+        setContentView(R.layout.activity_pro_detail);
     }
 }
