@@ -22,7 +22,8 @@
                 android:background="#f7f5f5"
                 android:orientation="vertical"
                 android:paddingBottom="25dp"
-                android:paddingTop="25dp">
+                android:paddingTop="25dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView60"
@@ -298,10 +299,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:button="@null"
-                        android:drawableTop="@mipmap/ic_launcher"
                         android:drawableBottom="@android:drawable/radiobutton_off_background"
-                        android:tag="2"
+                        android:drawableTop="@mipmap/ic_launcher"
                         android:gravity="center"
+                        android:tag="2"
                         android:text="Pickup"
                         android:textSize="14sp" />
                 </RadioGroup>
