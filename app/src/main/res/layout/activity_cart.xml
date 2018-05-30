@@ -92,7 +92,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imageView40"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
@@ -122,13 +122,15 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textView32"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <Button
+                            android:id="@+id/button81"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:background="@mipmap/featured"
-                            android:clickable="true"
-                            android:text="@null" />
+                            android:fadeScrollbars="false"
+                            android:includeFontPadding="false"
+                            android:text="@null"
+                            android:textIsSelectable="false" />
 
                         <TextView
                             android:id="@+id/textView31"
@@ -139,13 +141,16 @@
                             android:text="1"
                             android:textColor="#555455" />
 
-                        <TextView
-                            android:id="@+id/textView33"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <Button
+                            android:id="@+id/button80"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:background="@mipmap/featured"
-                            android:clickable="true"
-                            android:text="@null" />
+                            android:fadeScrollbars="false"
+                            android:includeFontPadding="false"
+                            android:text="@null"
+                            android:textIsSelectable="false" />
+
                     </LinearLayout>
                 </LinearLayout>
 
@@ -213,7 +218,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView28"
+                        android:id="@+id/textView2800"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -229,16 +234,18 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textView32"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <Button
+                            android:id="@+id/button82"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:background="@mipmap/featured"
-                            android:clickable="true"
-                            android:text="@null" />
+                            android:fadeScrollbars="false"
+                            android:includeFontPadding="false"
+                            android:text="@null"
+                            android:textIsSelectable="false" />
 
                         <TextView
-                            android:id="@+id/textView31"
+                            android:id="@+id/textView310"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingEnd="15dp"
@@ -246,13 +253,16 @@
                             android:text="1"
                             android:textColor="#555455" />
 
-                        <TextView
-                            android:id="@+id/textView33"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <Button
+                            android:id="@+id/button83"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:background="@mipmap/featured"
-                            android:clickable="true"
-                            android:text="@null" />
+                            android:fadeScrollbars="false"
+                            android:includeFontPadding="false"
+                            android:text="@null"
+                            android:textIsSelectable="false" />
+
                     </LinearLayout>
                 </LinearLayout>
 
@@ -263,7 +273,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView29"
+                        android:id="@+id/textView290"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -273,7 +283,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView30"
+                        android:id="@+id/textView300"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
