@@ -111,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight=".25"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@mipmap/my_order_active_check" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -133,7 +133,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight=".25"
-                        app:srcCompat="@android:drawable/btn_star_big_off" />
+                        app:srcCompat="@mipmap/my_order_inactive_check" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -155,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight=".25"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@mipmap/my_order_active_check" />
                 </LinearLayout>
             </LinearLayout>
 

@@ -45,6 +45,7 @@
                     android:layout_marginTop="15dip"
                     android:background="@drawable/shadow"
                     android:cursorVisible="true"
+                    android:drawableRight="@mipmap/list_add"
                     android:hint="Email Address or Phone"
                     android:inputType="text"
                     android:paddingBottom="10dp"
@@ -65,13 +66,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="20dip">
 
                     <TextView
                         android:id="@+id/textView49"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Milk"
@@ -84,7 +86,7 @@
                         android:layout_weight="0.5"
                         android:adjustViewBounds="false"
                         android:background="@null"
-                        app:srcCompat="@android:drawable/ic_delete" />
+                        app:srcCompat="@mipmap/list_delete" />
 
                 </LinearLayout>
 
@@ -104,15 +106,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="20dip">
 
                     <TextView
                         android:id="@+id/textView49"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:gravity="center_vertical"
                         android:text="Butter"
                         android:textSize="18sp" />
 
@@ -123,7 +125,7 @@
                         android:layout_weight="0.5"
                         android:adjustViewBounds="false"
                         android:background="@null"
-                        app:srcCompat="@android:drawable/ic_delete" />
+                        app:srcCompat="@mipmap/list_delete" />
 
                 </LinearLayout>
 
@@ -143,13 +145,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="20dip">
 
                     <TextView
                         android:id="@+id/textView49"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Bread"
@@ -162,7 +165,7 @@
                         android:layout_weight="0.5"
                         android:adjustViewBounds="false"
                         android:background="@null"
-                        app:srcCompat="@android:drawable/ic_delete" />
+                        app:srcCompat="@mipmap/list_delete" />
 
                 </LinearLayout>
 
@@ -182,13 +185,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="20dip">
 
                     <TextView
                         android:id="@+id/textView49"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Shampoo"
@@ -201,7 +205,7 @@
                         android:layout_weight="0.5"
                         android:adjustViewBounds="false"
                         android:background="@null"
-                        app:srcCompat="@android:drawable/ic_delete" />
+                        app:srcCompat="@mipmap/list_delete" />
 
                 </LinearLayout>
 
@@ -221,13 +225,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="20dip">
 
                     <TextView
                         android:id="@+id/textView49"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Coffee"
@@ -240,7 +245,7 @@
                         android:layout_weight="0.5"
                         android:adjustViewBounds="false"
                         android:background="@null"
-                        app:srcCompat="@android:drawable/ic_delete" />
+                        app:srcCompat="@mipmap/list_delete" />
 
                 </LinearLayout>
 

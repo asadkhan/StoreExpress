@@ -35,7 +35,7 @@
                         android:id="@+id/textView60"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="10"
                         android:text="SEARCH"
                         android:textColor="@color/darkGrey"
                         android:textSize="18sp" />
@@ -45,9 +45,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:adjustViewBounds="true"
+                        android:adjustViewBounds="false"
                         android:background="@null"
-                        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                        app:srcCompat="@mipmap/searc_opt" />
                 </LinearLayout>
 
                 <EditText
@@ -59,7 +59,7 @@
                     android:layout_marginStart="20dip"
                     android:background="@drawable/shadow"
                     android:cursorVisible="true"
-                    android:drawableRight="@android:drawable/ic_menu_search"
+                    android:drawableRight="@mipmap/list_add"
                     android:hint="Type Item Name"
                     android:inputType="text"
                     android:paddingBottom="10dp"
@@ -131,7 +131,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="15dip"
                                     android:background="@null"
-                                    app:srcCompat="@mipmap/featured" />
+                                    app:srcCompat="@mipmap/plus_s" />
 
                                 <TextView
                                     android:id="@+id/textView52"
@@ -148,7 +148,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="15dip"
                                     android:background="@null"
-                                    app:srcCompat="@mipmap/featured" />
+                                    app:srcCompat="@mipmap/minus_s" />
                             </LinearLayout>
 
                             <Button
@@ -233,7 +233,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="15dip"
                                     android:background="@null"
-                                    app:srcCompat="@mipmap/featured" />
+                                    app:srcCompat="@mipmap/plus_s" />
 
                                 <TextView
                                     android:id="@+id/textView52"
@@ -250,7 +250,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="15dip"
                                     android:background="@null"
-                                    app:srcCompat="@mipmap/featured" />
+                                    app:srcCompat="@mipmap/minus_s" />
                             </LinearLayout>
 
                             <Button
