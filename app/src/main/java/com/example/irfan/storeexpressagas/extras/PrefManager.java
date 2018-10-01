@@ -4,10 +4,10 @@ import android.content.Context;
 
 public class PrefManager {
 
-    private static final String USER = "USER";
+    private static final String USERNAME = "USERNAME";
     private static final String LOGIN = "LOGIN";
-    private static final String CUSTOMER_CELL = "CELL";
-    private static final String CUSTOMER_ADDRESS = "ADDRESS";
+    private static final String TOKEN = "TOKEN";
+    private static final String USERID = "USERID";
 
     private final android.content.SharedPreferences mPrefs;
 
@@ -23,20 +23,57 @@ public class PrefManager {
         return prefsEditor.commit();
     }
 
-    public boolean saveAddress(String address) {
+    public boolean saveToken(String token) {
         android.content.SharedPreferences.Editor prefsEditor = mPrefs.edit();
 
-        prefsEditor.putString(CUSTOMER_ADDRESS, address);
+        prefsEditor.putString(TOKEN, token);
         return prefsEditor.commit();
 
     }
 
 
-    public String getAddress() {
+    public String getToken() {
 
-        String address = mPrefs.getString(CUSTOMER_ADDRESS, "");
+        String token = mPrefs.getString(TOKEN, "");
 
-        return address;
+        return token;
     }
+
+
+    public boolean saveUsername(String name) {
+        android.content.SharedPreferences.Editor prefsEditor = mPrefs.edit();
+
+        prefsEditor.putString(USERNAME, name);
+        return prefsEditor.commit();
+
+    }
+
+
+    public String getUsername() {
+
+        String name = mPrefs.getString(USERNAME, "");
+
+        return name;
+    }
+
+
+
+
+    public boolean saveUserID(String ID) {
+        android.content.SharedPreferences.Editor prefsEditor = mPrefs.edit();
+
+        prefsEditor.putString(USERID, ID);
+        return prefsEditor.commit();
+
+    }
+
+
+    public String getUserID() {
+
+        String userid = mPrefs.getString(USERID, "");
+
+        return userid;
+    }
+
 
 }

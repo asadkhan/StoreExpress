@@ -20,14 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-            </intent-filter>
-        </activity>
 
         <activity android:name="com.example.irfan.storeexpressagas.baseclasses.BaseActivity" />
+
+        <activity android:name="com.example.irfan.storeexpressagas.activities.MainActivity" />
+
+        <activity android:name="com.example.irfan.storeexpressagas.activities.Login" />
+
+        <activity android:name="com.example.irfan.storeexpressagas.activities.Registration" />
+
+
     </application>
 
 </manifest>
