@@ -6,4 +6,18 @@
     <string name="action_settings">Settings</string>
     <string name="pro_price_before">Rs. 473</string>
     <string name="pro_price_after"><strike>Rs.512</strike></string>
+
+
+    <string name="msg_registration_successfull"><strike>Registration successfull kindly check you inbox for account activation </strike></string>
+    <string name="msg_registration_failed"><strike>Registration Failed! </strike></string>
+    <string name="Open"><strike>Open </strike></string>
+    <string name="Close"><strike>Close </strike></string>
+
+    <string name="title_activity_test">test</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
 </resources>

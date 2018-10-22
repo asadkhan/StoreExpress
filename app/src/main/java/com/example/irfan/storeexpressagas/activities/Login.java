@@ -6,10 +6,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.ValidationUtility;
+import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.LoginResponse;
+import com.example.irfan.storeexpressagas.network.RestClient;
 
 public class Login  extends BaseActivity implements View.OnClickListener {
 
@@ -48,9 +53,10 @@ public class Login  extends BaseActivity implements View.OnClickListener {
                 break;
 
             case R.id.btn_login:
-
-                if(!isValidate()){
+                Log.d("test","clog");
+                if(isValidate()){
                     signIN();
+                    Log.d("test","clogv");
                 }
                                 break;
 
@@ -69,10 +75,54 @@ public class Login  extends BaseActivity implements View.OnClickListener {
     }
 public void signIN(){
 
+    showProgress();
+       Log.d("test", "intest");
+       RestClient.getAuthAdapter().loginUser(Txt_email.getText().toString(), Txt_password.getText().toString(), "password").enqueue(new GeneralCallBack<LoginResponse>(this) {
+           @Override
+           public void onSuccess(LoginResponse response) {
+
+               hideProgress();
+
+               if (response.getAccessToken() != null && !response.getAccessToken().equals("")) {
+
+                   sharedperference.saveToken(response.getAccessToken().toString());
+                    openActivity(MainActivity.class);
+
+               } else {
+
+                   Toast.makeText(getApplicationContext(), "incorrect",
+                           Toast.LENGTH_LONG).show();
+
+
+               }
+
+           }
+
+           @Override
+           public void onFailure(Throwable throwable) {
+               //onFailure implementation would be in GeneralCallBack class
+
+               Toast.makeText(getApplicationContext(), "Failed",
+                       Toast.LENGTH_LONG).show();
+
+               hideProgress();
+               Log.d("test", "failed");
+
+           }
+
+
+
+
+
+
+       });
+
+   }
+
 
 
 }
 
 
 
-}
+
