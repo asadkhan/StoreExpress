@@ -12,6 +12,7 @@
     <string name="msg_registration_failed"><strike>Registration Failed! </strike></string>
     <string name="Open"><strike>Open </strike></string>
     <string name="Close"><strike>Close </strike></string>
+    <string name="pro_desc"><strike>Lindt Lindor 60%\nDark Choclate - 200grm</strike></string>
 
     <string name="title_activity_test">test</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
