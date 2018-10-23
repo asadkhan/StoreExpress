@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".baseclasses.BaseActivity" />
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"  >
+        </activity>
         <activity android:name=".activities.Login" />
         <activity android:name=".activities.Registration" />
     </application>

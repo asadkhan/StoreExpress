@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //loadViews();
         Log.d("test","calling test...");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         MenuHandler.Activitycontextold=this;
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
