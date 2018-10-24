@@ -6,10 +6,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.example.irfan.storeexpressagas.Adapters.CategoryListAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
@@ -18,9 +23,14 @@ import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.network.RestClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
-
+    public RecyclerView recyclerViewCat;
+    public CategoryListAdapter mAdapterCat;
+    public   List<CategoryResponse.catValue> catList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +52,28 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-       // test();
+
+        recyclerViewCat = (RecyclerView) findViewById(R.id.recycler_view_cat);
+
+        mAdapterCat = new CategoryListAdapter(this.catList);
+
+        LinearLayoutManager horizontalLayoutManagaer
+                = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+       // RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        RecyclerView.ItemDecoration itemDecoration =
+                new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        //recyclerViewCat.addItemDecoration(itemDecoration);
+
+        recyclerViewCat.setHasFixedSize(false);
+        recyclerViewCat.setLayoutManager(horizontalLayoutManagaer);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewCat.setAdapter(this.mAdapterCat);
+
+
+        // test();
+
+        getCategories();
 
     }
 
@@ -58,7 +89,23 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 hideProgress();
 
                 if (!response.getIserror()) {
-                    Log.d("test",response.getIserror().toString());
+
+
+
+                    catList.clear();
+                    List<CategoryResponse.catValue> list = response.getValue();
+                        for(CategoryResponse.catValue obj : list){
+
+                            Log.d("test",obj.getName());
+                            Log.d("test",obj.getImage());
+                            catList.add(obj);
+                        }
+
+
+
+
+                    mAdapterCat.notifyDataSetChanged();
+
 
                 }
                 else{
