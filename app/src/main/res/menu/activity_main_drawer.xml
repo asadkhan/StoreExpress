@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single" android:id="@+id/a-1">
-        <item android:id="@+id/menu_ride_book" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_ride_book" android:icon="@mipmap/store"
             android:title="Store" />
-        <item android:id="@+id/menu_tracking" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_tracking" android:icon="@mipmap/profile"
             android:title="Profile" />
-        <item android:id="@+id/menu_order" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_order" android:icon="@mipmap/all_cate"
             android:title="All Categories" />
-        <item android:id="@+id/menu_history" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_history" android:icon="@mipmap/shop_list"
             android:title="Shopping List" />
     </group>
     <group android:checkableBehavior="single" android:id="@+id/a-2">
-        <item android:id="@+id/menu_call_us" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_call_us" android:icon="@mipmap/pro_req"
             android:title="Product Request" />
-        <item android:id="@+id/menu_sms_tracking" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_sms_tracking" android:icon="@mipmap/my_order"
             android:title="My Orders" />
-        <item android:id="@+id/menu_cart" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_cart" android:icon="@mipmap/agha_cart"
             android:title="Shopping Cart" />
-        <item android:id="@+id/menu_settings" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_settings" android:icon="@mipmap/about_agha"
             android:title="About Aghas" /> -->
     </group>
     <group android:checkableBehavior="single" android:id="@+id/a-3">
-        <item android:id="@+id/menu_logout" android:icon="@mipmap/cart_mini"
+        <item android:id="@+id/menu_logout" android:icon="@mipmap/logout"
             android:title="Logout" />
     </group>
 </menu>
