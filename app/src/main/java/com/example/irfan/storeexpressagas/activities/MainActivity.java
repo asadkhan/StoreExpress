@@ -48,10 +48,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 
 
-    public void test(){
+    public void getCategories(){
         showProgress();
         Log.d("test","intest");
-        RestClient.getAuthAdapter().test().enqueue(new GeneralCallBack<CategoryResponse>(this) {
+        RestClient.getAuthAdapter().getCategories().enqueue(new GeneralCallBack<CategoryResponse>(this) {
             @Override
             public void onSuccess(CategoryResponse response) {
 
