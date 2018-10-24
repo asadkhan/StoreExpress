@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/a-1">
         <item android:id="@+id/menu_ride_book" android:icon="@mipmap/cart_mini"
             android:title="Store" />
         <item android:id="@+id/menu_tracking" android:icon="@mipmap/cart_mini"
@@ -9,6 +9,8 @@
             android:title="All Categories" />
         <item android:id="@+id/menu_history" android:icon="@mipmap/cart_mini"
             android:title="Shopping List" />
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/a-2">
         <item android:id="@+id/menu_call_us" android:icon="@mipmap/cart_mini"
             android:title="Product Request" />
         <item android:id="@+id/menu_sms_tracking" android:icon="@mipmap/cart_mini"
@@ -17,9 +19,9 @@
             android:title="Shopping Cart" />
         <item android:id="@+id/menu_settings" android:icon="@mipmap/cart_mini"
             android:title="About Aghas" /> -->
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/a-3">
         <item android:id="@+id/menu_logout" android:icon="@mipmap/cart_mini"
             android:title="Logout" />
-        <!--<item android:id="@+id/menu_settings" android:icon="@drawable/menu_setting"
-            android:title="Settings" />-->
     </group>
 </menu>

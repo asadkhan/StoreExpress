@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/underline"
+    android:orientation="vertical"
+    android:paddingEnd="20dp"
+    android:paddingStart="20dp">
 
     <ImageView
         android:id="@+id/imageView222"
-        android:layout_width="180dp"
-        android:layout_height="130dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@mipmap/ic_launcher_round" />
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/logo_login"
+        android:contentDescription="Logo" />
 </LinearLayout>
