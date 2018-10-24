@@ -19,8 +19,8 @@ import retrofit2.http.POST;
 public interface WebCalls {
 
 
-    @GET(EndPoints.TEST)
-    Call<CategoryResponse> test();
+    @GET(EndPoints.CATEGORIES)
+    Call<CategoryResponse> getCategories();
 
     @FormUrlEncoded
     @POST(EndPoints.LOGIN)

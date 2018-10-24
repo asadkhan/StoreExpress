@@ -21,7 +21,7 @@ public class CategoryResponse {
     private String date;
     @SerializedName("value")
     @Expose
-    private List<Value> value = null;
+    private List<catValue> value = null;
 
     public Integer getCode() {
         return code;
@@ -55,15 +55,22 @@ public class CategoryResponse {
         this.date = date;
     }
 
-    public List<Value> getValue() {
+    public List<catValue> getValue() {
         return value;
     }
 
-    public void setValue(List<Value> value) {
+    public void setValue(List<catValue> value) {
         this.value = value;
     }
 
-    public class Value {
+
+
+
+
+
+
+
+    public class catValue {
 
         @SerializedName("id")
         @Expose
@@ -83,6 +90,9 @@ public class CategoryResponse {
         @SerializedName("isActive")
         @Expose
         private Boolean isActive;
+        @SerializedName("parentId")
+        @Expose
+        private Object parentId;
 
         public Integer getId() {
             return id;
@@ -132,7 +142,25 @@ public class CategoryResponse {
             this.isActive = isActive;
         }
 
+        public Object getParentId() {
+            return parentId;
+        }
+
+        public void setParentId(Object parentId) {
+            this.parentId = parentId;
+        }
+
     }
 
-}
+
+
+
+
+
+
+
+
+
+
+    }
 
