@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -70,9 +71,10 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     public void onBindViewHolder(ListViewHolder holder, int position) {
         CategoryResponse.catValue catObj = categories.get(position);
 
-
+        String imgURL=catObj.getImage();
         holder.txtCatName.setText(catObj.getName());
 
+        Picasso.with(holder.catImg.getContext()).load(imgURL).resize(60, 60).centerCrop().into(holder.catImg);
 
         // formatting the date appropriately.
 
