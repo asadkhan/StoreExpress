@@ -15,13 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.irfan.storeexpressagas.Adapters.CategoryListAdapter;
+import com.example.irfan.storeexpressagas.Adapters.FproductListAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.databinding.*;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.FproductResponse;
+import com.example.irfan.storeexpressagas.models.FproductTwoCol;
 import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +33,13 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
     public RecyclerView recyclerViewCat;
+    public RecyclerView recyclerViewFProduct;
     public CategoryListAdapter mAdapterCat;
+    public FproductListAdapter mAdapterFproduct;
+
     public   List<CategoryResponse.catValue> catList = new ArrayList<>();
+
+    public   List<FproductTwoCol> producListTwoCol = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +80,31 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         recyclerViewCat.setAdapter(this.mAdapterCat);
 
 
+
+        recyclerViewFProduct = (RecyclerView) findViewById(R.id.recycler_view_fProducts);
+
+        mAdapterFproduct = new FproductListAdapter(this.producListTwoCol);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+       // RecyclerView.ItemDecoration itemDecoration =
+         //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        recyclerViewFProduct.addItemDecoration(itemDecoration);
+
+        recyclerViewFProduct.setHasFixedSize(true);
+        recyclerViewFProduct.setLayoutManager(mLayoutManager);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewFProduct.setAdapter(this.mAdapterFproduct);
+
+
+
+
+
+
         // test();
 
         getCategories();
+
+
 
     }
 
@@ -106,6 +137,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
                     mAdapterCat.notifyDataSetChanged();
 
+                    getFproducts();
 
                 }
                 else{
@@ -128,14 +160,82 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         });
 
+    }
+
+
+    public void getFproducts(){
+
+        showProgress();
+        Log.d("test","intestFproduct");
+        RestClient.getAuthAdapter().getFeaturepProducts().enqueue(new GeneralCallBack<FproductResponse>(this) {
+            @Override
+            public void onSuccess(FproductResponse response) {
+
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("test", Reslog);
+                producListTwoCol.clear();
+
+                if (!response.getIserror()) {
+
+                   List<FproductResponse.Value> iList = response.getValue();
+
+                   for(int i=0; i< iList.size();i+=2){
+
+                       if(i<iList.size()){
+                           FproductTwoCol obj = new FproductTwoCol();
+
+                            obj.ProductoneName=iList.get(i).getName();
+                            obj.ProductonePrice="Rs "+iList.get(i).getPrice();
+                            obj.ProductoneImg=iList.get(i).getImage();
+
+                            if((i+1)<iList.size()){
+
+                             obj.ProducttwoName=iList.get((i+1)).getName();
+                                obj.ProducttwoPrice="Rs" +iList.get((i+1)).getPrice();
+                                obj.ProducttwoImg=iList.get((i+1)).getImage();
+
+
+                            }
+
+                          producListTwoCol.add(obj);
+
+                       }
 
 
 
 
 
+                   }
+                    mAdapterFproduct.notifyDataSetChanged();
 
+
+                }
+
+
+
+                hideProgress();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
 
     }
+
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -143,14 +243,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         DrawerLayout   mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (id == R.id.menu_ride_book) {
+        if (id == R.id.menu_about) {
             // Handle the camera action
             mDrawerLayout.closeDrawers();
          //   MenuHandler.orderRide(this);
+            openActivityWithFinish(AboutActivity.class);
 
-        } else if (id == R.id.menu_tracking) {
+
+        } else if (id == R.id.menu_home) {
             mDrawerLayout.closeDrawers();
-           // MenuHandler.tracking(this);
+            openActivityWithFinish(MainActivity.class);
 
         } else if (id == R.id.menu_order) {
             mDrawerLayout.closeDrawers();

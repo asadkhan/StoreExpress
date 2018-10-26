@@ -8,4 +8,11 @@ public class MenuHandler {
     public static void logOut(Context Activitycontext){
       //  ActivityManager.startOrder(Activitycontext);
     }
+
+
+    public static void about(Context Activitycontext){
+        //  ActivityManager.startOrder(Activitycontext);
+
+
+    }
 }

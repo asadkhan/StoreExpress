@@ -7,5 +7,6 @@ public class EndPoints {
     static final String REGISTRATION=API_PREFIX+"accounts/createappuser";
     static final String TEST=API_PREFIX+"category/getcategories";
     static final String LOGIN="/oauth/token";
+    static final String FPRODUCT=API_PREFIX+"item/featureproducts";
 
 }

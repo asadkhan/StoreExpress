@@ -82,15 +82,17 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <include
-                layout="@layout/cate_pro_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
-            <include
-                layout="@layout/cate_pro_list_single"
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_fProducts"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:background="@color/grey_bg"/>
+
+
+
 
         </LinearLayout>
 

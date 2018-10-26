@@ -1,5 +1,6 @@
 package com.example.irfan.storeexpressagas.network;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.GeneralResponse;
 import com.example.irfan.storeexpressagas.models.LoginResponse;
@@ -21,6 +22,11 @@ public interface WebCalls {
 
     @GET(EndPoints.CATEGORIES)
     Call<CategoryResponse> getCategories();
+
+
+    @GET(EndPoints.FPRODUCT)
+    Call<FproductResponse> getFeaturepProducts();
+
 
     @FormUrlEncoded
     @POST(EndPoints.LOGIN)
