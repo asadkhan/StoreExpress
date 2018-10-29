@@ -26,6 +26,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
     private static final String CART_ITEM_NAME = "item_name";
     private static final String CART_ITEM_QTY = "item_qty";
     private static final String CART_ITEM_PRICE = "item_price";
+    private static final String CART_ITEM_IMG = "item_img";
     private static DeviceDatabaseHandler sInstance;
 
     public static synchronized DeviceDatabaseHandler getInstance(Context context) {
@@ -53,7 +54,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CART_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CART_ITEM_ID + " INTEGER,"
-                + CART_ITEM_NAME + " TEXT," + CART_ITEM_QTY + " INTEGER," + CART_ITEM_PRICE + " INTEGER" + ")";
+                + CART_ITEM_NAME + " TEXT," + CART_ITEM_QTY + " INTEGER," + CART_ITEM_PRICE + " INTEGER,"+CART_ITEM_IMG  + "TEXT"+ ")";
         db.execSQL(CART_TABLE);
 
 
@@ -77,6 +78,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
         values.put(CART_ITEM_NAME, data.ItemName);
         values.put(CART_ITEM_QTY, data.ItemQty);
         values.put(CART_ITEM_PRICE, data.ItemPrice);
+        values.put(CART_ITEM_IMG, data.ItemImg);
         // Inserting Row
         db.insert(TABLE_NAME, null, values);
         db.close(); // Closing database connection
@@ -86,7 +88,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
         if (limit == 0) limit = 5;
         List<Cart> cartItemList = new ArrayList<Cart>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " limit " + limit;
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME ;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
@@ -98,6 +100,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
                 cartItem.ItemName = cursor.getString(2);
                 cartItem.ItemQty = cursor.getInt(3);
                 cartItem.ItemPrice = cursor.getInt(4);
+                cartItem.ItemImg = cursor.getString(5);
                 // Adding contact to list
                 cartItemList.add(cartItem);
             } while (cursor.moveToNext());
@@ -128,6 +131,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
                 cartItem.ItemName = cursor.getString(2);
                 cartItem.ItemQty = cursor.getInt(3);
                 cartItem.ItemPrice = cursor.getInt(4);
+                cartItem.ItemImg = cursor.getString(5);
                 // Adding contact to list
 
             } while (cursor.moveToNext());

@@ -58,6 +58,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
                 obj.img=mobj.ProductoneImg;
                 obj.name=mobj.ProductoneName;
                 obj.price=mobj.ProductonePrice;
+                obj.itemID=mobj.ProductoneID;
                 ProductActivity.obj=null;
                 ProductActivity.obj=obj;
                 ActivityManager.startActivity(view.getContext(),ProductActivity.class);
@@ -69,7 +70,9 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
                 //   obj = trackableOrderList.get(getPosition());
                 FproductTwoCol   mobj = productsList.get(getPosition());
                 Product obj =new Product();
+                obj.itemID=mobj.ProducttwoID;
                 obj.img=mobj.ProducttwoImg;
+
                 obj.name=mobj.ProducttwoName;
                 obj.price=mobj.ProducttwoPrice;
                 ProductActivity.obj=null;

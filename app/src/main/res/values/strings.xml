@@ -20,5 +20,6 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="msg_add_to_car">Item Added To Cart</string>
 
 </resources>

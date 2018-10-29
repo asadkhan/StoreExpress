@@ -20,7 +20,9 @@ import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.databinding.*;
+import com.example.irfan.storeexpressagas.extras.DeviceDatabaseHandler;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.FproductTwoCol;
@@ -184,16 +186,18 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
                        if(i<iList.size()){
                            FproductTwoCol obj = new FproductTwoCol();
-
+                           obj.ProductoneID=Integer.valueOf(iList.get(i).getId().toString());
                             obj.ProductoneName=iList.get(i).getName();
-                            obj.ProductonePrice="Rs "+iList.get(i).getPrice();
-                            obj.ProductoneImg=iList.get(i).getImage();
+                            obj.ProductonePrice=iList.get(i).getPrice();
+                            obj.ProductoneImg= iList.get(i).getImage();
 
                             if((i+1)<iList.size()){
 
                              obj.ProducttwoName=iList.get((i+1)).getName();
-                                obj.ProducttwoPrice="Rs" +iList.get((i+1)).getPrice();
+                                obj.ProducttwoPrice=iList.get((i+1)).getPrice();
                                 obj.ProducttwoImg=iList.get((i+1)).getImage();
+                                obj.ProducttwoImg=iList.get((i+1)).getImage();
+                                obj.ProducttwoID=Integer.valueOf(iList.get(i+1).getId().toString());
 
 
                             }
@@ -281,4 +285,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //        drawer.closeDrawer(GravityCompat.END);
         return true;
     }
+
+
+
 }
