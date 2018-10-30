@@ -26,4 +26,10 @@
         <item name="android:textColor">@color/colordailog</item>
     </style>
 
+    <style name="MyRaidoButton" parent="AppTheme.NoActionBar">
+        <item name="colorAccent">#0091ea</item>
+        <item name="android:textColorPrimaryDisableOnly">#f44336</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
+    </style>
+
 </resources>

@@ -22,5 +22,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="msg_add_to_car">Item Added To Cart</string>
     <string name="checkout_opt">2. American Garden Jalapeno\nPaper 454g x 1</string>
+    <string name="my_order_reorder_opt">1. Loreum Ipsum Dolor\nRs. 645</string>
 
 </resources>

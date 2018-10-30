@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-5dip"
+        android:background="@drawable/shadow"
+        android:drawableLeft="@mipmap/featured"
+        android:drawablePadding="15dip"
+        android:drawableRight="@mipmap/next"
+        android:freezesText="false"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip"
+        android:text="Featured" />
+</LinearLayout>
