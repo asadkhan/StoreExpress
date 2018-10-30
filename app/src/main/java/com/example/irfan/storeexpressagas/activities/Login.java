@@ -86,7 +86,30 @@ public void signIN(){
                if (response.getAccessToken() != null && !response.getAccessToken().equals("")) {
 
                    sharedperference.saveToken(response.getAccessToken().toString());
-                    openActivity(MainActivity.class);
+                        String loginDetails=sharedperference.getLogin();
+                   switch (loginDetails) {
+                       case "":
+
+                           openActivity(MainActivity.class);
+                           break;
+                       case "checkout":
+                           sharedperference.saveLogin("");
+                           openActivity(CheckOutFirstActivity.class);
+                           break;
+
+                       case "productrequest":
+                           sharedperference.saveLogin("");
+                           openActivity(ProductRequestActivity.class);
+                           break;
+                       case "profile":
+                           sharedperference.saveLogin("");
+                           openActivity(ProfileActivity.class);
+                           break;
+
+
+                   }
+
+
 
                } else {
 

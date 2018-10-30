@@ -8,6 +8,7 @@ public class PrefManager {
     private static final String LOGIN = "LOGIN";
     private static final String TOKEN = "TOKEN";
     private static final String USERID = "USERID";
+    private static final String LOGINDETAILS = "LOGINDETAILS";
 
     private final android.content.SharedPreferences mPrefs;
 
@@ -71,6 +72,23 @@ public class PrefManager {
     public String getUserID() {
 
         String userid = mPrefs.getString(USERID, "");
+
+        return userid;
+    }
+
+
+    public boolean saveLogin(String ID) {
+        android.content.SharedPreferences.Editor prefsEditor = mPrefs.edit();
+
+        prefsEditor.putString(LOGINDETAILS, ID);
+        return prefsEditor.commit();
+
+    }
+
+
+    public String getLogin() {
+
+        String userid = mPrefs.getString(LOGINDETAILS, "");
 
         return userid;
     }
