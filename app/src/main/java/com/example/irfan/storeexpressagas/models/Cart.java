@@ -1,6 +1,7 @@
 package com.example.irfan.storeexpressagas.models;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.irfan.storeexpressagas.extras.DeviceDatabaseHandler;
 
@@ -24,17 +25,19 @@ public class Cart {
         DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
 
         Cart item=databaseHelper.getCartItem(itemID);
+
+
         boolean newItem=true;
         if(item ==null){
 
             newItem=false;
         }
-        if(item.ItemID==0){
+        if(item.ItemID != 0){
             newItem=false;
 
         }
 
-
+        Log.d("test","newitem"+newItem);
         if(newItem){
 
             Cart cartItem = new Cart();

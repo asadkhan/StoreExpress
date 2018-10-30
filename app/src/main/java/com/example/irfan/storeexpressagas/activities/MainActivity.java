@@ -186,8 +186,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
                        if(i<iList.size()){
                            FproductTwoCol obj = new FproductTwoCol();
-                           obj.ProductoneID=Integer.valueOf(iList.get(i).getId().toString());
-                            obj.ProductoneName=iList.get(i).getName();
+                           obj.ProductoneID=iList.get(i).getId();
+
+                           Log.d("test",String.valueOf(iList.get(i).getId()));
+                           obj.ProductoneName=iList.get(i).getName();
                             obj.ProductonePrice=iList.get(i).getPrice();
                             obj.ProductoneImg= iList.get(i).getImage();
 
@@ -197,7 +199,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                                 obj.ProducttwoPrice=iList.get((i+1)).getPrice();
                                 obj.ProducttwoImg=iList.get((i+1)).getImage();
                                 obj.ProducttwoImg=iList.get((i+1)).getImage();
-                                obj.ProducttwoID=Integer.valueOf(iList.get(i+1).getId().toString());
+                              obj.ProducttwoID=iList.get(i+1).getId();
 
 
                             }
@@ -250,36 +252,68 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         if (id == R.id.menu_about) {
             // Handle the camera action
             mDrawerLayout.closeDrawers();
-         //   MenuHandler.orderRide(this);
             openActivityWithFinish(AboutActivity.class);
-
 
         } else if (id == R.id.menu_home) {
             mDrawerLayout.closeDrawers();
-            openActivityWithFinish(MainActivity.class);
+            openActivity(MainActivity.class);
+            // MenuHandler.tracking(this);
 
-        } else if (id == R.id.menu_order) {
+        } else if (id == R.id.menu_cart) {
             mDrawerLayout.closeDrawers();
             //MenuHandler.currentOrders(this);
-
-        } else if (id == R.id.menu_history) {
+            openActivity(CartActivity.class);
+        } else if (id == R.id.menu_pro_req) {
             mDrawerLayout.closeDrawers();
+            openActivityProductRequest();
             //MenuHandler.orderHistory(this);
 
-        } else if (id == R.id.menu_call_us) {
+        } else if (id == R.id.menu_profile) {
             mDrawerLayout.closeDrawers();
-            //MenuHandler.callUs(this);
-            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+            openActivityProfile();
 
-        } else if (id == R.id.menu_sms_tracking) {
-            mDrawerLayout.closeDrawers();
             //MenuHandler.smsTracking(this);
             //MenuHandler.callUs(this);
             //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
 
-        } else if (id == R.id.menu_logout) {
+        }
+
+        else if (id == R.id.menu_shopping) {
+            mDrawerLayout.closeDrawers();
+            openActivity(ShoppingListActivity.class);
+
+            //MenuHandler.smsTracking(this);
+            //MenuHandler.callUs(this);
+            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+
+        }
+
+        else if (id == R.id.menu_orders) {
+            mDrawerLayout.closeDrawers();
+            openActivityOrders();
+
+            //MenuHandler.smsTracking(this);
+            //MenuHandler.callUs(this);
+            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+
+        }
+
+        else if (id == R.id.menu_all_cat) {
+            mDrawerLayout.closeDrawers();
+            openActivity(AllCatActivity.class);
+
+            //MenuHandler.smsTracking(this);
+            //MenuHandler.callUs(this);
+            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+
+        }
+
+
+
+        else if (id == R.id.menu_logout) {
             MenuHandler.logOut(this);
         }
+
 
 //         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 //        drawer.closeDrawer(GravityCompat.END);

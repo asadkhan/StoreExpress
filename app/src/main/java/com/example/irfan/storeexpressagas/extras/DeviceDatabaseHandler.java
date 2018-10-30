@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +56,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CART_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CART_ITEM_ID + " INTEGER,"
-                + CART_ITEM_NAME + " TEXT," + CART_ITEM_QTY + " INTEGER," + CART_ITEM_PRICE + " INTEGER,"+CART_ITEM_IMG  + "TEXT"+ ")";
+                + CART_ITEM_NAME + " TEXT," + CART_ITEM_QTY + " INTEGER," + CART_ITEM_PRICE + " INTEGER,"+CART_ITEM_IMG  + " TEXT "+ ")";
         db.execSQL(CART_TABLE);
 
 
@@ -112,6 +114,9 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
             db.close();
         }
         // return contact list
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(cartItemList);
+        Log.d("test", Reslog);
         return cartItemList;
     }
 

@@ -18,6 +18,12 @@ import android.widget.Toast;
 
 
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.activities.CartActivity;
+import com.example.irfan.storeexpressagas.activities.CheckOutFirstActivity;
+import com.example.irfan.storeexpressagas.activities.Login;
+import com.example.irfan.storeexpressagas.activities.OrdersActivity;
+import com.example.irfan.storeexpressagas.activities.ProductRequestActivity;
+import com.example.irfan.storeexpressagas.activities.ProfileActivity;
 import com.example.irfan.storeexpressagas.extras.PrefManager;
 import com.example.irfan.storeexpressagas.extras.ProgressLoader;
 
@@ -55,6 +61,61 @@ public class BaseActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, activity));
     }
+
+
+    public void openActivityProductRequest() {
+
+
+        if(sharedperference.getToken()==null || sharedperference.getToken()=="") {
+
+            startActivity(new Intent(this, Login.class));
+            sharedperference.saveLogin("productrequest");
+        }
+        else{
+            startActivity(new Intent(this, ProductRequestActivity.class));
+
+
+        }
+
+    }
+
+    public void openActivityOrders() {
+
+
+        if(sharedperference.getToken()==null || sharedperference.getToken()=="") {
+
+            startActivity(new Intent(this, Login.class));
+            sharedperference.saveLogin("orders");
+        }
+        else{
+            startActivity(new Intent(this, OrdersActivity.class));
+
+
+        }
+
+    }
+
+
+    public void openActivityProfile() {
+
+
+        if(sharedperference.getToken()==null || sharedperference.getToken()=="") {
+
+            startActivity(new Intent(this, Login.class));
+            sharedperference.saveLogin("profile");
+        }
+        else{
+            startActivity(new Intent(this, ProfileActivity.class));
+
+
+        }
+
+        //i = new Intent(SplashScreen.this, LanuageSelection.class);
+
+
+
+    }
+
 
     /**
      * @param activity

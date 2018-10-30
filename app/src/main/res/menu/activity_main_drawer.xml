@@ -3,17 +3,17 @@
     <group android:checkableBehavior="single" android:id="@+id/a-1">
         <item android:id="@+id/menu_home" android:icon="@mipmap/store"
             android:title="Store" />
-        <item android:id="@+id/menu_tracking" android:icon="@mipmap/profile"
+        <item android:id="@+id/menu_profile" android:icon="@mipmap/profile"
             android:title="Profile" />
-        <item android:id="@+id/menu_order" android:icon="@mipmap/all_cate"
+        <item android:id="@+id/menu_all_cat" android:icon="@mipmap/all_cate"
             android:title="All Categories" />
-        <item android:id="@+id/menu_history" android:icon="@mipmap/shop_list"
+        <item android:id="@+id/menu_shopping" android:icon="@mipmap/shop_list"
             android:title="Shopping List" />
     </group>
     <group android:checkableBehavior="single" android:id="@+id/a-2">
-        <item android:id="@+id/menu_call_us" android:icon="@mipmap/pro_req"
+        <item android:id="@+id/menu_pro_req" android:icon="@mipmap/pro_req"
             android:title="Product Request" />
-        <item android:id="@+id/menu_sms_tracking" android:icon="@mipmap/my_order"
+        <item android:id="@+id/menu_orders" android:icon="@mipmap/my_order"
             android:title="My Orders" />
         <item android:id="@+id/menu_cart" android:icon="@mipmap/agha_cart"
             android:title="Shopping Cart" />

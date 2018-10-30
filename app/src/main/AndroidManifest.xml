@@ -42,6 +42,26 @@
         <activity android:name=".activities.CheckOutFirstActivity"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
+
+        <activity android:name=".activities.ProductRequestActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
+        <activity android:name=".activities.ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
+        <activity android:name=".activities.ShoppingListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
+        <activity android:name=".activities.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
+        <activity android:name=".activities.AllCatActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

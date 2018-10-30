@@ -68,7 +68,7 @@ public class FproductResponse {
 
         @SerializedName("id")
         @Expose
-        private Object id;
+        private int id;
         @SerializedName("quantity")
         @Expose
         private Object quantity;
@@ -109,11 +109,11 @@ public class FproductResponse {
         @Expose
         private String addedBy;
 
-        public Object getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(Object id) {
+        public void setId(int id) {
             this.id = id;
         }
 
