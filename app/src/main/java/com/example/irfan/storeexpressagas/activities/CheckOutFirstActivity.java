@@ -4,14 +4,34 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
 
+import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
+import com.example.irfan.storeexpressagas.Adapters.CheckOutCartItemAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.extras.PrefManager;
+import com.example.irfan.storeexpressagas.models.Cart;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CheckOutFirstActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public RecyclerView recyclerViewCheckoutItem;
+
+    public CheckOutCartItemAdapter mAdapterCheckoutitem;
+
+
+
+    public List<Cart> cartItemList = new ArrayList<>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +49,42 @@ public class CheckOutFirstActivity extends BaseActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_checkoutf);
         navigationView.setNavigationItemSelectedListener(this);
 
+        recyclerViewCheckoutItem = (RecyclerView) findViewById(R.id.recycler_view_checkoutItem);
+
+        mAdapterCheckoutitem = new CheckOutCartItemAdapter(this.cartItemList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        // RecyclerView.ItemDecoration itemDecoration =
+        //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        //recyclerViewCart.addItemDecoration(itemDecoration);
+
+        recyclerViewCheckoutItem.setHasFixedSize(true);
+        recyclerViewCheckoutItem.setLayoutManager(mLayoutManager);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewCheckoutItem.setAdapter(this.mAdapterCheckoutitem);
+        getCart();
+
+    }
+
+    public void getCart(){
+        cartItemList.clear();
+        List<Cart> cartlst=Cart.getCart(this);
+
+
+        for(Cart obj : cartlst){
+            Log.d("test","OBJ"+obj.ItemName);
+            Cart t = new Cart();
+            t.ItemQty=obj.ItemQty;
+            t.ItemID=obj.ItemID;
+            t.ItemImg=obj.ItemImg;
+            t.ItemPrice=obj.ItemPrice;
+            t.ItemName=obj.ItemName;
+
+            cartItemList.add(t);
+
+        }
+
+        mAdapterCheckoutitem.notifyDataSetChanged();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

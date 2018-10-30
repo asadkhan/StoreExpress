@@ -61,17 +61,17 @@
 
 
                 <include
-                    layout="@layout/checkout_opt_pro"
+                    layout="@layout/checkout_cart_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    layout="@layout/checkout_opt_pro"
+                    layout="@layout/checkout_cart_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    layout="@layout/checkout_opt_pro"
+                    layout="@layout/checkout_cart_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
