@@ -7,81 +7,6 @@
     android:id="@+id/drawer_layout_shopping"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    android:background="#ffffff"
-    android:orientation="vertical">
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#f7f5f5"
-                android:orientation="vertical"
-                android:paddingBottom="15dip"
-                android:paddingTop="15dip">
-
-                <TextView
-                    android:id="@+id/textView60"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:paddingLeft="20dip"
-                    android:text="SHOPPING LIST"
-                    android:textColor="@color/darkGrey"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="20dip"
-                    android:layout_marginStart="20dip"
-                    android:layout_marginTop="15dip"
-                    android:background="@drawable/shadow"
-                    android:cursorVisible="true"
-                    android:drawableRight="@mipmap/list_add"
-                    android:hint="Email Address or Phone"
-                    android:inputType="text"
-                    android:paddingBottom="10dp"
-                    android:paddingEnd="15dp"
-                    android:paddingStart="15dp"
-                    android:paddingTop="10dp"
-                    android:textColor="@android:color/darker_gray"
-                    android:textCursorDrawable="@null"
-                    tools:background="@drawable/border_radius_product" />
-
-            </LinearLayout>
-
-            <include
-                layout="@layout/shopping_list_pro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shopping_list_pro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/shopping_list_pro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
-=======
     tools:context=".activities.AboutActivity">
 
     <include layout="@layout/app_bar_shopping" android:layout_width="match_parent"
@@ -105,8 +30,8 @@
 
 
     <!--app:itemIconTint="#ec262a"-->
-    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android">-->
+    <!--xmlns:tools="http://schemas.android.com/tools">-->
     <!--xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"-->
     <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
@@ -119,4 +44,3 @@
     <!--app:headerLayout="@layout/nav_header_main"-->
     <!--android:fitsSystemWindows="true"-->
     <!--tools:openDrawer="start"-->
->>>>>>> 44ba69908f23dd326f266ca9c93bd909307727f7
