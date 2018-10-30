@@ -19,6 +19,7 @@
         android:layout_gravity="left"
         android:background="#fff"
         android:fitsSystemWindows="true"
+        android:visibility="visible"
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/black"
         app:itemTextAppearance="@style/NavDrawerTextStyle"
