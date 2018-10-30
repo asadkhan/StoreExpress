@@ -1,9 +1,11 @@
 package com.example.irfan.storeexpressagas.network;
+import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.GeneralResponse;
 import com.example.irfan.storeexpressagas.models.LoginResponse;
+import com.example.irfan.storeexpressagas.models.ProfileResponse;
 import com.example.irfan.storeexpressagas.models.RegistrationRequest;
 
 import retrofit2.Call;
@@ -22,6 +24,10 @@ public interface WebCalls {
 
     @GET(EndPoints.CATEGORIES)
     Call<CategoryResponse> getCategories();
+
+
+    @POST(EndPoints.TEST)
+    Call<GResponse> test(@Body CartRequest cart);
 
 
     @GET(EndPoints.FPRODUCT)

@@ -5,13 +5,28 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.extras.PrefManager;
+import com.example.irfan.storeexpressagas.models.CartRequest;
+import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.GResponse;
+import com.example.irfan.storeexpressagas.models.ItemVM;
+import com.example.irfan.storeexpressagas.models.ProfileResponse;
+import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +43,58 @@ public class ProfileActivity extends BaseActivity implements NavigationView.OnNa
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        test();
     }
 
+
+
+    public void test(){
+        showProgress();
+        Log.d("test",Auth.getToken(this));
+        List<ItemVM> itemlst = new ArrayList<>();
+
+        ItemVM obj= new ItemVM();
+        obj.Id=1;
+        obj.Quantity=2;
+        itemlst.add(obj);
+        ItemVM obj2= new ItemVM();
+        obj2.Id=2;
+        obj2.Quantity=2;
+        itemlst.add(obj2);
+
+        CartRequest cart = new CartRequest();
+        cart.items=itemlst;
+
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(cart);
+        Log.d("test", Reslog);
+
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).test(cart).enqueue(new GeneralCallBack<GResponse>(this) {
+            @Override
+            public void onSuccess(GResponse response) {
+
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("test", Reslog);
+                hideProgress();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
+
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
