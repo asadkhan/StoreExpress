@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         recyclerViewCat = (RecyclerView) findViewById(R.id.recycler_view_cat);
 
         mAdapterCat = new CategoryListAdapter(this.catList);
-        mAdapterCat.setClickListener(this);
+
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         // RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -81,7 +81,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         recyclerViewCat.setLayoutManager(horizontalLayoutManagaer);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCat.setAdapter(this.mAdapterCat);
-
+        mAdapterCat.setClickListener(this);
 
 
         recyclerViewFProduct = (RecyclerView) findViewById(R.id.recycler_view_fProducts);
