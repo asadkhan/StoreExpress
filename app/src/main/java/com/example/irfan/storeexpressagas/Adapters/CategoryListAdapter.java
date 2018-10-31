@@ -1,7 +1,9 @@
 package com.example.irfan.storeexpressagas.Adapters;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.activities.MainActivity;
+import com.example.irfan.storeexpressagas.extras.AdapterCallback;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.squareup.picasso.Picasso;
 
@@ -20,8 +24,11 @@ import java.util.List;
 
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ListViewHolder> {
 
+
+    private Context mContext;
+    private AdapterCallback.OnItemClickListener clickListener;
     private List<CategoryResponse.catValue> categories;
-    public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
         public ImageButton catImg;
         public TextView    txtCatName;
 
@@ -38,15 +45,12 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         }
 
-
-
         @Override
         public void onClick(View view) {
-            // Log.d("APITEST:", "onClick " + getPosition() + " " + mItem);
-
-
-
+            if (clickListener != null) clickListener.onClick(view, getAdapterPosition());
         }
+
+
 
 
     }
@@ -79,11 +83,15 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         // formatting the date appropriately.
 
 
-            }
+    }
 
     @Override
     public int getItemCount() {
         return categories.size();
+    }
+
+    public void setClickListener(AdapterCallback.OnItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
     }
 
 

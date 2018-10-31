@@ -4,14 +4,37 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.irfan.storeexpressagas.Adapters.CategoryListAdapter;
+import com.example.irfan.storeexpressagas.Adapters.CategoryListAllCatAdapter;
+import com.example.irfan.storeexpressagas.Adapters.FproductListAdapter;
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.FproductTwoCol;
+import com.example.irfan.storeexpressagas.network.RestClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AllCatActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    public RecyclerView recyclerViewAllCat;
+
+    public CategoryListAllCatAdapter mAdapterCat;
+
+
+
+    public List<CategoryResponse.catValue> catList = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +52,29 @@ public class AllCatActivity extends BaseActivity implements NavigationView.OnNav
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        recyclerViewAllCat = (RecyclerView) findViewById(R.id.recycler_view_allcat);
+
+        mAdapterCat = new CategoryListAllCatAdapter(this.catList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        // RecyclerView.ItemDecoration itemDecoration =
+        //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        //recyclerViewAllCat.addItemDecoration(itemDecoration);
+
+        recyclerViewAllCat.setHasFixedSize(true);
+        recyclerViewAllCat.setLayoutManager(mLayoutManager);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewAllCat.setAdapter(this.mAdapterCat);
+
+getCategories();
+
+
     }
+
+
+
+
+
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -111,5 +156,59 @@ public class AllCatActivity extends BaseActivity implements NavigationView.OnNav
     }
 
 
+    public void getCategories(){
+
+        showProgress();
+        Log.d("test","intest");
+        RestClient.getAuthAdapter().getCategories().enqueue(new GeneralCallBack<CategoryResponse>(this) {
+            @Override
+            public void onSuccess(CategoryResponse response) {
+
+                hideProgress();
+
+                if (!response.getIserror()) {
+
+
+
+                    catList.clear();
+                    List<CategoryResponse.catValue> list = response.getValue();
+                    for(CategoryResponse.catValue obj : list){
+
+                        Log.d("test",obj.getName());
+                        Log.d("test",obj.getImage());
+                        catList.add(obj);
+                    }
+
+
+
+
+                    mAdapterCat.notifyDataSetChanged();
+
+                    //getFproducts();
+
+                }
+                else{
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
+
+
+
+    }
 
 }
