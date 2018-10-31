@@ -5,6 +5,9 @@ import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.GeneralResponse;
 import com.example.irfan.storeexpressagas.models.LoginResponse;
+import com.example.irfan.storeexpressagas.models.OrderModel;
+import com.example.irfan.storeexpressagas.models.OrderRequest;
+import com.example.irfan.storeexpressagas.models.OrderResponse;
 import com.example.irfan.storeexpressagas.models.ProfileResponse;
 import com.example.irfan.storeexpressagas.models.RegistrationRequest;
 
@@ -32,6 +35,10 @@ public interface WebCalls {
 
     @POST(EndPoints.TEST)
     Call<GResponse> test(@Body CartRequest cart);
+
+    @POST(EndPoints.PLACEORDER)
+    Call<OrderResponse> placeORder(@Body OrderModel order);
+
 
 
     @GET(EndPoints.FPRODUCT)

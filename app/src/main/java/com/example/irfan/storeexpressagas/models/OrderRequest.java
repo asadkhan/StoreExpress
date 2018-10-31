@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 public class OrderRequest {
 
     @SerializedName("PaymentStatus")
-    public static int PaymentStatus ;
+    public static int PaymentStatus=-1 ;
     @SerializedName("OrderType")
-    public static int OrderType ;
+    public static int OrderType=-1 ;
     @SerializedName("PaymentMeathod")
-    public static int PaymentMeathod ;
+    public static int PaymentMeathod =-1;
 }

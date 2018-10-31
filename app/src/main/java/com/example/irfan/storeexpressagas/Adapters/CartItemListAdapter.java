@@ -23,7 +23,7 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView img;
         public TextView txtItemName,txtQtyBox,txtItemPrice,txtItemRemove;
-public Button btnPlus,btnMinus;
+        public Button btnPlus,btnMinus;
 
         private String mItem;
         private TextView mTextView;

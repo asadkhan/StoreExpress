@@ -1,109 +1,35 @@
 package com.example.irfan.storeexpressagas.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
-import com.example.irfan.storeexpressagas.Adapters.CategoryListAdapter;
-import com.example.irfan.storeexpressagas.Adapters.FproductListAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
-import com.example.irfan.storeexpressagas.extras.PrefManager;
-import com.example.irfan.storeexpressagas.models.Cart;
-import com.example.irfan.storeexpressagas.models.CategoryResponse;
 
-import java.util.ArrayList;
-import java.util.List;
+public class OStatusPickupActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-public class CartActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
-
-    public RecyclerView recyclerViewCart;
-
-    public CartItemListAdapter mAdapterCart;
-    public Button btnCheckout;
-
-    public PrefManager sharedperference;
-    public List<Cart> cartItemList = new ArrayList<>();
-
-
-
+    public static int OrderID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
-        sharedperference=new PrefManager(this);
-        btnCheckout=(Button) findViewById(R.id.btn_checkout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_cart);
+        setContentView(R.layout.activity_order_status_pickup);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_osp);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_cart);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_osp);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_cart);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_osp);
         navigationView.setNavigationItemSelectedListener(this);
 
-        recyclerViewCart = (RecyclerView) findViewById(R.id.recycler_view_cart);
-
-        mAdapterCart = new CartItemListAdapter(this.cartItemList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-
-        // RecyclerView.ItemDecoration itemDecoration =
-        //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
-        //recyclerViewCart.addItemDecoration(itemDecoration);
-
-        recyclerViewCart.setHasFixedSize(true);
-        recyclerViewCart.setLayoutManager(mLayoutManager);
-        //recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewCart.setAdapter(this.mAdapterCart);
-        getCart();
-        btnCheckout.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Log.d("test","click");
-        switch (v.getId()) {
-            case R.id.btn_checkout:
-
-                checkOut();
-                break;
-
-
-        }
-
-    }
-
-
-    public void checkOut(){
-        Intent i;
-
-        if(sharedperference.getToken()==null || sharedperference.getToken()=="") {
-            i = new Intent(CartActivity.this, Login.class);
-            sharedperference.saveLogin("checkout");
-        }
-        else{
-            i = new Intent(CartActivity.this, CheckOutFirstActivity.class);
-
-        }
-
-        //i = new Intent(SplashScreen.this, LanuageSelection.class);
-
-
-        startActivity(i);
-        finish();
 
 
 
@@ -115,7 +41,7 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        DrawerLayout   mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_cart);
+        DrawerLayout   mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_osp);
         if (id == R.id.menu_about) {
             // Handle the camera action
             mDrawerLayout.closeDrawers();
@@ -182,31 +108,10 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         }
 
 
+
 //         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 //        drawer.closeDrawer(GravityCompat.END);
         return true;
-    }
-
-
-    public void getCart(){
-        cartItemList.clear();
-        List<Cart> cartlst=Cart.getCart(this);
-
-
-        for(Cart obj : cartlst){
-            Log.d("test","OBJ"+obj.ItemName);
-            Cart t = new Cart();
-            t.ItemQty=obj.ItemQty;
-            t.ItemID=obj.ItemID;
-            t.ItemImg=obj.ItemImg;
-            t.ItemPrice=obj.ItemPrice;
-            t.ItemName=obj.ItemName;
-
-            cartItemList.add(t);
-
-        }
-
-        mAdapterCart.notifyDataSetChanged();
     }
 
 }

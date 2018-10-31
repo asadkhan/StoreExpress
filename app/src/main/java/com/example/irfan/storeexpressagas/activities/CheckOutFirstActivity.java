@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -17,18 +18,30 @@ import android.widget.RadioGroup;
 import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.CheckOutCartItemAdapter;
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.extras.PrefManager;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.CartRequest;
+import com.example.irfan.storeexpressagas.models.GResponse;
+import com.example.irfan.storeexpressagas.models.ItemVM;
+import com.example.irfan.storeexpressagas.models.OrderModel;
+import com.example.irfan.storeexpressagas.models.OrderRequest;
+import com.example.irfan.storeexpressagas.models.OrderResponse;
+import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckOutFirstActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,CompoundButton.OnCheckedChangeListener {
+public class CheckOutFirstActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,CompoundButton.OnCheckedChangeListener,View.OnClickListener {
     public RecyclerView recyclerViewCheckoutItem;
 
     public CheckOutCartItemAdapter mAdapterCheckoutitem;
+
+    public Button btnNext;
 
 public RadioButton rBtndelivery,rBtnPickUp;
 
@@ -45,7 +58,8 @@ public RadioButton rBtndelivery,rBtnPickUp;
         rBtndelivery.setOnCheckedChangeListener(this);
         rBtnPickUp = (RadioButton) findViewById(R.id.radioPickUp);
         rBtnPickUp.setOnCheckedChangeListener(this);
-
+        btnNext=(Button) findViewById(R.id.btn_next);
+        btnNext.setOnClickListener(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_checkoutf);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_checkoutF);
@@ -80,12 +94,43 @@ public RadioButton rBtndelivery,rBtnPickUp;
             if (buttonView.getId() == R.id.radioDelivery) {
                 rBtndelivery.setChecked(true);
                 rBtnPickUp.setChecked(false);
+                OrderRequest.OrderType=1;
+
             }
             if (buttonView.getId() == R.id.radioPickUp) {
                 rBtnPickUp.setChecked(true);
                 rBtndelivery.setChecked(false);
+
+                OrderRequest.OrderType=0;
+                OrderRequest.PaymentMeathod=0;
+                OrderRequest.PaymentStatus=0;
             }
         }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        Log.d("test","Next click");
+        Log.d("test",String.valueOf(OrderRequest.OrderType));
+        switch (v.getId()) {
+            case R.id.btn_next:
+                Log.d("test","Next click");
+            if(OrderRequest.OrderType !=-1){
+
+
+                if(OrderRequest.OrderType==0){
+                    placeOrderPickup();
+
+                }
+            }
+
+                break;
+
+
+
+        }
+
     }
     public void getCart(){
         cartItemList.clear();
@@ -184,7 +229,100 @@ public RadioButton rBtndelivery,rBtnPickUp;
         return true;
     }
 
+public void placeOrderPickup(){
+    Log.d("test","place oder call");
+    showProgress();
+    Log.d("test", Auth.getToken(this));
+    List<ItemVM> itemlst = new ArrayList<>();
+    List<Cart> cartItems = Cart.getCart(this);
 
+    //  Log.d("test",Auth.getToken(c));
+
+    for(Cart obj : cartItems){
+        ItemVM Iobj= new ItemVM();
+        Iobj.Id=obj.ItemID;
+        Iobj.Quantity=obj.ItemQty;
+        itemlst.add(Iobj);
+    }
+    CartRequest cart = new CartRequest();
+    cart.items=itemlst;
+
+    Gson gson = new Gson();
+    String Reslog= gson.toJson(cart);
+    Log.d("test", Reslog);
+
+    RestClient.getAuthAdapterToekn(Auth.getToken(this)).test(cart).enqueue(new GeneralCallBack<GResponse>(this) {
+        @Override
+        public void onSuccess(GResponse response) {
+
+            if(!response.getIserror()) {
+
+                Gson gson = new Gson();
+                String Reslog = gson.toJson(response);
+                Log.d("test", Reslog);
+
+                placeOrderPickupNext();
+
+            }hideProgress();
+
+
+
+
+        }
+
+        @Override
+        public void onFailure(Throwable throwable) {
+            //onFailure implementation would be in GeneralCallBack class
+            hideProgress();
+            Log.d("test","failed");
+
+        }
+
+
+
+    });
+}
+
+
+    public void placeOrderPickupNext(){
+
+        showProgress();
+        OrderModel obj = new OrderModel();
+        obj.OrderType=OrderRequest.OrderType;
+        obj.PaymentMeathod=OrderRequest.PaymentMeathod;
+        obj.PaymentStatus=OrderRequest.PaymentStatus;
+
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(obj);
+        Log.d("test", Reslog);
+
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).placeORder(obj).enqueue(new GeneralCallBack<OrderResponse>(this) {
+            @Override
+            public void onSuccess(OrderResponse response) {
+
+
+
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("test", Reslog);
+                hideProgress();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
+    }
 
 
 }

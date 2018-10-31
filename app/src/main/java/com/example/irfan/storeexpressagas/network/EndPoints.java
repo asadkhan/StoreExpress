@@ -9,5 +9,8 @@ public class EndPoints {
     static final String LOGIN="/oauth/token";
     static final String FPRODUCT=API_PREFIX+"item/featureproducts";
     static final String PRODUCTBYCAT=API_PREFIX+"item/GetItem";
+    static final String PLACEORDER=API_PREFIX+"order/placeorder";
+
+
 
 }
