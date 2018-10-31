@@ -49,11 +49,12 @@
                     android:hint="Email Address or Phone"
                     android:inputType="text"
                     android:paddingBottom="10dp"
-                    android:paddingEnd="15dp"
-                    android:paddingStart="15dp"
+                    android:paddingEnd="25dp"
+                    android:paddingStart="25dp"
                     android:paddingTop="10dp"
                     android:textColor="@android:color/darker_gray"
                     android:textCursorDrawable="@null"
+                    android:textSize="14sp"
                     tools:background="@drawable/border_radius_product" />
 
             </LinearLayout>
@@ -77,7 +78,7 @@
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Milk"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <ImageButton
                         android:id="@+id/imageButton"
@@ -116,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="Butter"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <ImageButton
                         android:id="@+id/imageButton"
@@ -156,7 +157,7 @@
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Bread"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <ImageButton
                         android:id="@+id/imageButton"
@@ -196,7 +197,7 @@
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Shampoo"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <ImageButton
                         android:id="@+id/imageButton"
@@ -236,7 +237,7 @@
                         android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:text="Coffee"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <ImageButton
                         android:id="@+id/imageButton"

@@ -73,8 +73,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         // RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
-        RecyclerView.ItemDecoration itemDecoration =
-                new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+//        RecyclerView.ItemDecoration itemDecoration =
+//                new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
         //recyclerViewCat.addItemDecoration(itemDecoration);
 
         recyclerViewCat.setHasFixedSize(false);
@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         // RecyclerView.ItemDecoration itemDecoration =
         //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
-        recyclerViewFProduct.addItemDecoration(itemDecoration);
+//        recyclerViewFProduct.addItemDecoration(itemDecoration);
 
         recyclerViewFProduct.setHasFixedSize(true);
         recyclerViewFProduct.setLayoutManager(mLayoutManager);

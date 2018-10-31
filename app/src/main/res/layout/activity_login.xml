@@ -36,10 +36,11 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/border_radius"
         android:cursorVisible="true"
-        android:textCursorDrawable="@null"
         android:hint="Email Address "
         android:inputType="textPersonName"
-        android:textColor="@android:color/darker_gray" />
+        android:textColor="@android:color/darker_gray"
+        android:textCursorDrawable="@null"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/txt_password"
@@ -47,10 +48,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/border_radius"
         android:cursorVisible="true"
-        android:textCursorDrawable="@null"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@android:color/darker_gray"
+        android:textCursorDrawable="@null"
+        android:textSize="14sp"
         tools:ignore="MissingPrefix" />
 
     <TextView
@@ -70,7 +72,8 @@
         android:background="@drawable/border_radius_red"
         android:stateListAnimator="@null"
         android:text="Sign In"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -115,5 +118,6 @@
         android:stateListAnimator="@null"
         android:text="Create new account"
         android:textColor="#f90000"
+        android:textSize="14sp"
         tools:textAllCaps="false" />
 </LinearLayout>
