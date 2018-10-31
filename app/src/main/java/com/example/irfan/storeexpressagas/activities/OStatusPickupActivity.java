@@ -4,21 +4,39 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.irfan.storeexpressagas.Adapters.CheckOutCartItemAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.extras.Orders;
+import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.OrderRequest;
 
-public class OStatusPickupActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+import java.util.List;
 
+public class OStatusPickupActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+    public RecyclerView recyclerViewCheckoutItem;
+
+    public CheckOutCartItemAdapter mAdapterCheckoutitem;
+
+    public List<Cart> cartItemList = new ArrayList<>();
+public Button  btnOders;
     public static int OrderID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_status_pickup);
-
+ btnOders=(Button) findViewById(R.id.btn_openorders);
+        btnOders.setOnClickListener(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_osp);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_osp);
@@ -29,13 +47,59 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_osp);
         navigationView.setNavigationItemSelectedListener(this);
+        recyclerViewCheckoutItem = (RecyclerView) findViewById(R.id.recycler_view_orderstatusp);
+
+        mAdapterCheckoutitem = new CheckOutCartItemAdapter(this.cartItemList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        // RecyclerView.ItemDecoration itemDecoration =
+        //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        //recyclerViewCart.addItemDecoration(itemDecoration);
+
+        recyclerViewCheckoutItem.setHasFixedSize(true);
+        recyclerViewCheckoutItem.setLayoutManager(mLayoutManager);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewCheckoutItem.setAdapter(this.mAdapterCheckoutitem);
+
+getCart();
+
+    }
+    @Override
+    public void onClick(View v) {
+        Log.d("test","Next click");
+        Log.d("test",String.valueOf(OrderRequest.OrderType));
+        switch (v.getId()) {
+            case R.id.btn_openorders:
+                openActivity(OrdersActivity.class);
+
+                break;
 
 
 
+        }
 
     }
 
+    public void getCart(){
+        cartItemList.clear();
+        List<Cart> cartlst=Cart.getCart(this);
 
+
+        for(Cart obj : cartlst){
+            Log.d("test","OBJ"+obj.ItemName);
+            Cart t = new Cart();
+            t.ItemQty=obj.ItemQty;
+            t.ItemID=obj.ItemID;
+            t.ItemImg=obj.ItemImg;
+            t.ItemPrice=obj.ItemPrice;
+            t.ItemName=obj.ItemName;
+
+            cartItemList.add(t);
+
+        }
+
+        mAdapterCheckoutitem.notifyDataSetChanged();
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

@@ -120,8 +120,8 @@ public RadioButton rBtndelivery,rBtnPickUp;
 
 
                 if(OrderRequest.OrderType==0){
-                    placeOrderPickup();
-
+                  //  placeOrderPickup();
+                openActivity(OStatusPickupActivity.class);
                 }
             }
 
