@@ -37,21 +37,15 @@
                 android:layout_marginTop="10dip"
                 android:background="@color/Divider"
                 android:clickable="false" />
-
-            <include
-                layout="@layout/all_cate_btn"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_allcat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
 
-            <include
-                layout="@layout/all_cate_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
-            <include
-                layout="@layout/all_cate_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
+
 
         </LinearLayout>
     </ScrollView>

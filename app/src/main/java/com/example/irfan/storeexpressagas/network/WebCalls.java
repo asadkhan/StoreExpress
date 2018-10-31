@@ -22,6 +22,10 @@ import retrofit2.http.POST;
 public interface WebCalls {
 
 
+    @GET(EndPoints.PRODUCTBYCAT)
+    Call<FproductResponse> getProductsByCat(String categoryname);
+
+
     @GET(EndPoints.CATEGORIES)
     Call<CategoryResponse> getCategories();
 
