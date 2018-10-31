@@ -30,7 +30,7 @@
                         android:paddingLeft="20dip"
                         android:text="PRODUCT REQUEST"
                         android:textColor="@color/darkGrey"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -46,7 +46,8 @@
                         android:layout_marginBottom="10dip"
                         android:background="@drawable/border_radius_invert"
                         android:hint="Product Type"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/editText5"
@@ -55,7 +56,8 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/border_radius_invert"
                         android:hint="Product Name"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/editText6"
@@ -64,7 +66,8 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/border_radius_invert"
                         android:hint="Size"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/editText7"
@@ -73,7 +76,8 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/border_radius_invert"
                         android:hint="Manufecturer"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/editText2"
@@ -83,7 +87,8 @@
                         android:gravity="top"
                         android:hint="Description"
                         android:inputType="textMultiLine"
-                        android:lines="4" />
+                        android:lines="4"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -99,6 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/border_radius_red"
+                        android:stateListAnimator="@null"
                         android:text="REQUEST"
                         android:textColor="@color/colorAccent"
                         android:textSize="14sp" />
