@@ -10,6 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.CheckOutCartItemAdapter;
@@ -22,12 +25,12 @@ import com.example.irfan.storeexpressagas.models.Cart;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckOutFirstActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CheckOutFirstActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,CompoundButton.OnCheckedChangeListener {
     public RecyclerView recyclerViewCheckoutItem;
 
     public CheckOutCartItemAdapter mAdapterCheckoutitem;
 
-
+public RadioButton rBtndelivery,rBtnPickUp;
 
     public List<Cart> cartItemList = new ArrayList<>();
 
@@ -37,6 +40,11 @@ public class CheckOutFirstActivity extends BaseActivity implements NavigationVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkoutfirst);
+
+        rBtndelivery = (RadioButton) findViewById(R.id.radioDelivery);
+        rBtndelivery.setOnCheckedChangeListener(this);
+        rBtnPickUp = (RadioButton) findViewById(R.id.radioPickUp);
+        rBtnPickUp.setOnCheckedChangeListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_checkoutf);
         setSupportActionBar(toolbar);
@@ -66,6 +74,19 @@ public class CheckOutFirstActivity extends BaseActivity implements NavigationVie
 
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            if (buttonView.getId() == R.id.radioDelivery) {
+                rBtndelivery.setChecked(true);
+                rBtnPickUp.setChecked(false);
+            }
+            if (buttonView.getId() == R.id.radioPickUp) {
+                rBtnPickUp.setChecked(true);
+                rBtndelivery.setChecked(false);
+            }
+        }
+    }
     public void getCart(){
         cartItemList.clear();
         List<Cart> cartlst=Cart.getCart(this);
