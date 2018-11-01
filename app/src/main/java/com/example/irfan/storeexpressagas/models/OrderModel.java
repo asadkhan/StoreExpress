@@ -11,5 +11,9 @@ public class OrderModel {
         public  int OrderType=-1 ;
         @SerializedName("PaymentMeathod")
         public  int PaymentMeathod =-1;
+        @SerializedName("Address")
+        public  String Address ;
+        @SerializedName("ContactNo")
+        public  String ContactNo ;
 
 }

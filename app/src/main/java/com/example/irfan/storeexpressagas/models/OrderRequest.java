@@ -10,4 +10,8 @@ public class OrderRequest {
     public static int OrderType=-1 ;
     @SerializedName("PaymentMeathod")
     public static int PaymentMeathod =-1;
+    @SerializedName("Address")
+    public static String Address ;
+    @SerializedName("ContactNo")
+    public static String ContactNo ;
 }
