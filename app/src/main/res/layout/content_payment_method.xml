@@ -60,7 +60,10 @@
                 android:orientation="vertical">
 
 
-                <include layout="@layout/content_payment_method_pro" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_adresses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/textView12"

@@ -1,4 +1,5 @@
 package com.example.irfan.storeexpressagas.network;
+import com.example.irfan.storeexpressagas.models.AddressResponse;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.FproductResponse;
@@ -27,6 +28,10 @@ public interface WebCalls {
 
     @GET(EndPoints.PRODUCTBYCAT)
     Call<FproductResponse> getProductsByCat(String categoryname);
+
+
+    @GET(EndPoints.ADRESSES)
+    Call<AddressResponse> getAddresses();
 
 
     @GET(EndPoints.CATEGORIES)

@@ -14,7 +14,7 @@
         android:weightSum="1">
 
         <RadioButton
-            android:id="@+id/radioButton35"
+            android:id="@+id/radio_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.05"
@@ -24,7 +24,7 @@
             android:text="@null" />
 
         <TextView
-            android:id="@+id/textView98"
+            android:id="@+id/txt_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
@@ -35,7 +35,7 @@
             android:textStyle="normal" />
 
         <TextView
-            android:id="@+id/textView111"
+            android:id="@+id/txt_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"

@@ -4,20 +4,39 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.irfan.storeexpressagas.Adapters.AddressListAdapter;
+import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.models.AddressResponse;
+import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.CartRequest;
+import com.example.irfan.storeexpressagas.models.GResponse;
+import com.example.irfan.storeexpressagas.models.ItemVM;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
+import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PaymentMethodActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 public Button btnFinish;
+    public RecyclerView recyclerViewAdress;
 
+    public AddressListAdapter mAdapter;
+public List<AddressResponse.Value> adddressLst = new ArrayList<>();
 
 @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +44,8 @@ public Button btnFinish;
         setContentView(R.layout.activity_payment_method);
         btnFinish=(Button)findViewById(R.id.btn_finish);
         btnFinish.setOnClickListener(this);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_payment_method);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_payment_method);
@@ -35,8 +56,21 @@ public Button btnFinish;
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_paymentmethod);
         navigationView.setNavigationItemSelectedListener(this);
+    recyclerViewAdress = (RecyclerView) findViewById(R.id.recycler_view_adresses);
 
+    mAdapter = new AddressListAdapter(this.adddressLst);
+    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
+    // RecyclerView.ItemDecoration itemDecoration =
+    //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+    //recyclerViewCart.addItemDecoration(itemDecoration);
+
+    recyclerViewAdress.setHasFixedSize(true);
+    recyclerViewAdress.setLayoutManager(mLayoutManager);
+    //recyclerView.setItemAnimator(new DefaultItemAnimator());
+    recyclerViewAdress.setAdapter(this.mAdapter);
+
+    getAddresses();
     }
 
 
@@ -57,7 +91,53 @@ public Button btnFinish;
 
     }
 
-public void finish(){
+
+
+    public void getAddresses(){
+        Log.d("test","place oder call");
+        showProgress();
+
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).getAddresses().enqueue(new GeneralCallBack<AddressResponse>(this) {
+            @Override
+            public void onSuccess(AddressResponse response) {
+
+                if(!response.getIserror()) {
+                     adddressLst.clear();
+                    Gson gson = new Gson();
+                    String Reslog = gson.toJson(response);
+                    Log.d("test", Reslog);
+                    List<AddressResponse.Value> lst=response.getValue();
+                    for(AddressResponse.Value obj : lst){
+
+                        adddressLst.add(obj);
+                    }
+
+                    mAdapter.notifyDataSetChanged();
+
+
+                }hideProgress();
+
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
+    }
+
+
+
+    public void finish(){
     openActivity(OrderStatusDeliveryActivity.class);
 
 }
