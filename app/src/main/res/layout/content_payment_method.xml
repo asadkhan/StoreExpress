@@ -113,6 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.05"
+                        android:buttonTint="#ff0000"
                         android:paddingLeft="10dip"
                         android:text="@null" />
 
@@ -151,6 +152,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.05"
+                        android:buttonTint="#ff0000"
                         android:paddingLeft="10dip"
                         android:text="@null" />
 
@@ -160,7 +162,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"
                         android:gravity="top|left"
-                        android:text="1234 5678 9101 1121"
+                        android:text="Credit Card / Debit Card"
                         android:textColor="@color/darkGrey"
                         android:textSize="12sp"
                         android:textStyle="normal" />
@@ -181,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Add a new debit/creadit card >"
+                    android:text="Add a new Debit / Creadit Card >"
                     android:textColor="@color/colorPrimary" />
 
             </LinearLayout>

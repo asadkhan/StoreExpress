@@ -82,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="1"
-        android:background="?android:attr/listDivider" />
+        android:background="@color/Divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,7 +102,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="0.001"
-            android:background="?android:attr/listDivider" />
+            android:background="@color/Divider" />
 
         <Button
             android:id="@+id/button5"
