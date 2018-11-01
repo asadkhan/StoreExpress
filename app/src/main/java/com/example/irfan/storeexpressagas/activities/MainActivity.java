@@ -80,8 +80,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         recyclerViewCat.setHasFixedSize(false);
         recyclerViewCat.setLayoutManager(horizontalLayoutManagaer);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewCat.setAdapter(this.mAdapterCat);
         mAdapterCat.setClickListener(this);
+        recyclerViewCat.setAdapter(this.mAdapterCat);
+
+
 
 
         recyclerViewFProduct = (RecyclerView) findViewById(R.id.recycler_view_fProducts);
@@ -114,7 +116,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void onClick(View view, int position) {
-        final CategoryResponse.catValue cat = catList.get(position);
+        Log.d("test","Click iterface ");
+       CategoryResponse.catValue cat = catList.get(position);
         getProductsByCat(cat.getName());
         Log.d("test",cat.getName());
     }
