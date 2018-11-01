@@ -22,6 +22,7 @@ import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.extras.Orders;
 import com.example.irfan.storeexpressagas.extras.PrefManager;
 import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CartRequest;
@@ -120,8 +121,13 @@ public RadioButton rBtndelivery,rBtnPickUp;
 
 
                 if(OrderRequest.OrderType==0){
-                  //  placeOrderPickup();
-                openActivity(OStatusPickupActivity.class);
+                  placeOrderPickup();
+                //openActivity(OStatusPickupActivity.class);
+                }
+                else if(OrderRequest.OrderType==1){
+
+                    PlaceOrderDelivery();
+
                 }
             }
 
@@ -284,6 +290,12 @@ public void placeOrderPickup(){
 }
 
 
+public void PlaceOrderDelivery(){
+
+        openActivity(PaymentMethodActivity.class);
+        finish();
+}
+
     public void placeOrderPickupNext(){
 
         showProgress();
@@ -299,12 +311,16 @@ public void placeOrderPickup(){
         RestClient.getAuthAdapterToekn(Auth.getToken(this)).placeORder(obj).enqueue(new GeneralCallBack<OrderResponse>(this) {
             @Override
             public void onSuccess(OrderResponse response) {
-
-
-
                 Gson gson = new Gson();
                 String Reslog= gson.toJson(response);
                 Log.d("test", Reslog);
+
+                if(!response.getIserror()){
+
+                    openActivity(OStatusPickupActivity.class);
+
+                }
+
                 hideProgress();
 
 

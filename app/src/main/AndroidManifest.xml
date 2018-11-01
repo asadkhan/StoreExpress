@@ -66,6 +66,14 @@
         <activity android:name=".activities.OStatusPickupActivity"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
+
+        <activity android:name=".activities.PaymentMethodActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
+        <activity android:name=".activities.OrderStatusDeliveryActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>
