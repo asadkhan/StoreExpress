@@ -192,6 +192,7 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         cartItemList.clear();
         List<Cart> cartlst=Cart.getCart(this);
 
+       // cartItemList=cartlst;
 
         for(Cart obj : cartlst){
             Log.d("test","OBJ"+obj.ItemName);
