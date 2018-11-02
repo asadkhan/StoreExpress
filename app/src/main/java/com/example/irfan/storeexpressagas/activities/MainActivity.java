@@ -3,6 +3,7 @@ package com.example.irfan.storeexpressagas.activities;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 
@@ -11,8 +12,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.irfan.storeexpressagas.Adapters.CategoryListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.FproductListAdapter;
@@ -53,7 +57,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //loadViews();
         Log.d("test","calling test...");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.inflateMenu(R.menu.navigation_menu);
         setSupportActionBar(toolbar);
+
         MenuHandler.Activitycontextold=this;
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -406,5 +412,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+       /* getMenuInflater().inflate(R.menu.toolbarmenu, menu);
+        MenuItem item = menu.findItem(R.id.badge);
+        MenuItemCompat.setActionView(item, R.layout.menu_cart);
+        RelativeLayout notifCount = (RelativeLayout)   MenuItemCompat.getActionView(item);
 
+        TextView tv = (TextView) notifCount.findViewById(R.id.actionbar_notifcation_textview);
+        tv.setText("12");
+*/
+        return super.onCreateOptionsMenu(menu);
+    }
 }

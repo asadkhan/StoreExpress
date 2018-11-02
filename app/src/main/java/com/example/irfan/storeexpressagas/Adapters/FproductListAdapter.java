@@ -8,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.activities.ProductActivity;
+import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.ActivityManager;
+import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.FproductTwoCol;
@@ -25,7 +28,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
     private List<FproductTwoCol> productsList;
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView img1,img2;
-        public TextView TxtPrice1,TxtPrice2,TxtName1,TxtName2;
+        public TextView TxtPrice1,TxtPrice2,TxtName1,TxtName2,TxtAddToCart,TxtAddToCartTwo;
 
 
         private String mItem;
@@ -41,9 +44,15 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
             TxtPrice2 = (TextView) view.findViewById(R.id.txt_price2);
             TxtName1 = (TextView) view.findViewById(R.id.txt_name1);
             TxtName2 = (TextView) view.findViewById(R.id.txt_name2);
+            TxtAddToCart=(TextView) view.findViewById(R.id.txt_add);
+            TxtAddToCartTwo=(TextView) view.findViewById(R.id.txt_AddTwo);
+
+
             img1.setOnClickListener(this);
             TxtName1.setOnClickListener(this);
             img2.setOnClickListener(this);
+            TxtAddToCart.setOnClickListener(this);
+            TxtAddToCartTwo.setOnClickListener(this);
         }
 
 
@@ -51,6 +60,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
         @Override
         public void onClick(View view) {
             Log.d("test:", "click");
+
             if(view.getId()==R.id.Img_Product1  ) {
               FproductTwoCol   mobj = productsList.get(getPosition());
 
@@ -88,6 +98,54 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
             if(view.getId()==R.id.txt_name1) {
                 Log.d("test:", "name click");
             }
+
+
+            if(view.getId()==R.id.txt_add){
+                Log.d("test:", "add cart");
+                FproductTwoCol   mobj = productsList.get(getPosition());
+                Cart item = new Cart();
+
+                if(mobj.ProductoneID !=0){
+                    item.ItemID=mobj.ProductoneID;
+                    item.ItemName=mobj.ProductoneName;
+                    item.ItemImg=mobj.ProductoneImg;
+                    item.ItemPrice=Integer.valueOf(mobj.ProductonePrice);
+                    item.ItemQty=1;
+
+
+                }
+
+
+                item.addToCart(item.ItemID,item.ItemName,item.ItemPrice,item.ItemQty,view.getContext(),item.ItemImg);
+                //showMessageToast(view.getResources().getString(R.string.msg_add_to_car));
+                Toast.makeText(view.getContext(),view.getResources().getString(R.string.msg_add_to_car) ,
+                        Toast.LENGTH_LONG).show();
+            }
+
+            if(view.getId()==R.id.txt_AddTwo){
+                Log.d("test:", "add cart");
+                FproductTwoCol   mobj = productsList.get(getPosition());
+                Cart item = new Cart();
+
+
+                if(mobj.ProducttwoID !=0){
+                    item.ItemID=mobj.ProducttwoID;
+                    item.ItemName=mobj.ProducttwoName;
+                    item.ItemImg=mobj.ProducttwoImg;
+                    item.ItemPrice=Integer.valueOf(mobj.ProducttwoPrice);
+                    item.ItemQty=1;
+
+
+                }
+
+                item.addToCart(item.ItemID,item.ItemName,item.ItemPrice,item.ItemQty,view.getContext(),item.ItemImg);
+                //showMessageToast(view.getResources().getString(R.string.msg_add_to_car));
+                Toast.makeText(view.getContext(),view.getResources().getString(R.string.msg_add_to_car) ,
+                        Toast.LENGTH_LONG).show();
+            }
+
+
+
 
 
 

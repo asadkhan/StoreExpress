@@ -37,11 +37,12 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         private TextView mTextView;
         public ListViewHolder(View view) {
             super(view);
-            view.setOnClickListener(this);
+           // view.setOnClickListener(this);
 
             catImg = (ImageButton) view.findViewById(R.id.imgCat);
             txtCatName = (TextView) view.findViewById(R.id.txtCat);
-
+            catImg.setOnClickListener(this);
+            txtCatName.setOnClickListener(this);
 
         }
 

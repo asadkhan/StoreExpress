@@ -92,7 +92,7 @@
                         android:background="@mipmap/cart_mini" />
 
                     <TextView
-                        android:id="@+id/textView193"
+                        android:id="@+id/txt_add"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Add to cart"
@@ -186,7 +186,7 @@
                         android:background="@mipmap/cart_mini" />
 
                     <TextView
-                        android:id="@+id/textView190"
+                        android:id="@+id/txt_AddTwo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Add to cart"
