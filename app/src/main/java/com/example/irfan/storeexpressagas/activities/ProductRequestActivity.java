@@ -2,16 +2,26 @@ package com.example.irfan.storeexpressagas.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.models.Cart;
 
-public class ProductRequestActivity extends BaseActivity implements  NavigationView.OnNavigationItemSelectedListener {
+public class ProductRequestActivity extends BaseActivity implements  NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+    public TextView tv;
+    public ImageView i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,4 +121,39 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+
+        switch (v.getId()) {
+            case R.id.actionbar_notifcation_img:
+                openActivity(CartActivity.class);
+                break;
+
+            case R.id.actionbar_notifcation_textview:
+                Log.d("test","show msg call");
+                //  showMessageDailogNextScreen("test","testing message",Login.class);
+                openActivity(CartActivity.class);
+                break;
+
+
+
+        }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbarmenu, menu);
+        MenuItem item = menu.findItem(R.id.badge);
+        MenuItemCompat.setActionView(item, R.layout.menu_cart);
+        RelativeLayout notifCount = (RelativeLayout)   MenuItemCompat.getActionView(item);
+        i =notifCount.findViewById(R.id.actionbar_notifcation_img);
+        tv = (TextView) notifCount.findViewById(R.id.actionbar_notifcation_textview);
+        //tv.setText("12");
+        tv.setText(String.valueOf(Cart.getCartTotalItem(this)));
+        i.setOnClickListener(this);
+        tv.setOnClickListener(this);
+        return super.onCreateOptionsMenu(menu);
+    }
 }

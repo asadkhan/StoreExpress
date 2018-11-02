@@ -1,14 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="48dp"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="right" >
 
     <!-- Menu Item Image -->
     <ImageView
-        android:layout_width="48dp"
+        android:id="@+id/actionbar_notifcation_img"
+        android:layout_width="30dp"
         android:layout_height="fill_parent"
         android:clickable="true"
-        android:src="@drawable/ic_menu_camera" />
+        android:src="@mipmap/agha_cart"
+        android:tint="#ffffffff" />
 
     <!-- Badge Count -->
     <TextView
@@ -16,8 +19,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:padding="5dp"
-        android:text="99"
-        android:textColor="@color/drawer_bg" />
+        android:background="@drawable/badge_circle"
+        android:padding="6dp"
+        android:text="+99"
+        android:textColor="#ff0000"
+        android:textSize="10sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

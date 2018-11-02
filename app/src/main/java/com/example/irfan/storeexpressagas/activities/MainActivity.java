@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,12 +39,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,AdapterCallback.OnItemClickListener{
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,AdapterCallback.OnItemClickListener,View.OnClickListener{
     public RecyclerView recyclerViewCat;
     public RecyclerView recyclerViewFProduct;
     public CategoryListAdapter mAdapterCat;
     public FproductListAdapter mAdapterFproduct;
-
+    public TextView tv;
+    public ImageView i;
     public   List<CategoryResponse.catValue> catList = new ArrayList<>();
 
     public   List<FproductTwoCol> producListTwoCol = new ArrayList<>();
@@ -57,7 +59,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //loadViews();
         Log.d("test","calling test...");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.inflateMenu(R.menu.navigation_menu);
+       // toolbar.inflateMenu(R.menu.navigation_menu);
         setSupportActionBar(toolbar);
 
         MenuHandler.Activitycontextold=this;
@@ -119,8 +121,27 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     }
 
-
     @Override
+    public void onClick(View v) {
+
+
+        switch (v.getId()) {
+            case R.id.actionbar_notifcation_img:
+            openActivity(CartActivity.class);
+                break;
+
+            case R.id.actionbar_notifcation_textview:
+                Log.d("test","show msg call");
+                //  showMessageDailogNextScreen("test","testing message",Login.class);
+                openActivity(CartActivity.class);
+                break;
+
+
+
+        }
+    }
+
+@Override
     public void onClick(View view, int position) {
         Log.d("test","Click iterface ");
        CategoryResponse.catValue cat = catList.get(position);
@@ -414,14 +435,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       /* getMenuInflater().inflate(R.menu.toolbarmenu, menu);
+        getMenuInflater().inflate(R.menu.toolbarmenu, menu);
         MenuItem item = menu.findItem(R.id.badge);
         MenuItemCompat.setActionView(item, R.layout.menu_cart);
         RelativeLayout notifCount = (RelativeLayout)   MenuItemCompat.getActionView(item);
-
-        TextView tv = (TextView) notifCount.findViewById(R.id.actionbar_notifcation_textview);
-        tv.setText("12");
-*/
+ i =notifCount.findViewById(R.id.actionbar_notifcation_img);
+         tv = (TextView) notifCount.findViewById(R.id.actionbar_notifcation_textview);
+        //tv.setText("12");
+        tv.setText(String.valueOf(Cart.getCartTotalItem(this)));
+i.setOnClickListener(this);
+tv.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
     }
 }

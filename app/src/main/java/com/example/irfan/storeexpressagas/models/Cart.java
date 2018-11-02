@@ -77,6 +77,12 @@ public class Cart {
     }
 
 
+    public static int getCartTotalItem(Context context){
+        DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
+        return  databaseHelper.getItemCount();
+    }
+
+
 
 
 
