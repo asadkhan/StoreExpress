@@ -74,6 +74,12 @@
         <activity android:name=".activities.OrderStatusDeliveryActivity"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
+
+
+        <activity android:name=".activities.ProductsListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
     </application>
 
 </manifest>

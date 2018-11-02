@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.irfan.storeexpressagas.Adapters.CategoryListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.CategoryListAllCatAdapter;
@@ -16,6 +17,7 @@ import com.example.irfan.storeexpressagas.Adapters.FproductListAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.AdapterCallback;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.FproductTwoCol;
@@ -24,7 +26,7 @@ import com.example.irfan.storeexpressagas.network.RestClient;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllCatActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AllCatActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
     public RecyclerView recyclerViewAllCat;
 
@@ -66,6 +68,8 @@ public class AllCatActivity extends BaseActivity implements NavigationView.OnNav
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewAllCat.setAdapter(this.mAdapterCat);
 
+
+
 getCategories();
 
 
@@ -74,6 +78,12 @@ getCategories();
 
 
 
+    @Override
+    public void onClick(View v) {
+        Log.d("test","click");
+
+
+    }
 
 
 
