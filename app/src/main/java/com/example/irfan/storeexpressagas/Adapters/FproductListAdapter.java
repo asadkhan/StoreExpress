@@ -184,8 +184,8 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
         holder.TxtPrice2.setText(Obj.ProducttwoPrice);
 
 
-        Picasso.with(holder.img1.getContext()).load(imgURL1).resize(90, 90).centerCrop().into(holder.img1);
-        Picasso.with(holder.img2.getContext()).load(imgURL2).resize(90, 90).centerCrop().into(holder.img2);
+        Picasso.with(holder.img1.getContext()).load(imgURL1).resize(800, 800).centerCrop().into(holder.img1);
+        Picasso.with(holder.img2.getContext()).load(imgURL2).resize(800, 800).centerCrop().into(holder.img2);
 
         // formatting the date appropriately.
 

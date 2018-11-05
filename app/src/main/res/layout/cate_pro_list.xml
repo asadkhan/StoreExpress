@@ -46,7 +46,7 @@
                         android:paddingTop="5dip"
                         android:text="Rs. "
                         android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -56,7 +56,7 @@
                         android:paddingBottom="5dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -64,11 +64,16 @@
                     android:id="@+id/txt_name1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:paddingTop="5dip"
+                    android:lines="3"
+                    android:maxHeight="3dp"
+                    android:maxLines="3"
+                    android:minHeight="3dp"
+                    android:minLines="3"
                     android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
                     android:textColor="#555455"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <View
@@ -100,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:text="Add to cart"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -142,7 +147,7 @@
                         android:paddingTop="5dip"
                         android:text="Rs. "
                         android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -152,7 +157,7 @@
                         android:paddingBottom="5dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -161,10 +166,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:paddingTop="5dip"
-                    android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
+                    android:lines="3"
+                    android:maxHeight="3dp"
+                    android:maxLines="3"
+                    android:minHeight="3dp"
+                    android:minLines="3"
+                    android:padding="10dp"
+                    android:text=" Lindt Lindor 60%\nDark Choclate - 200grm Lindt Lindor 60%\nDark"
                     android:textColor="#555455"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <View
@@ -196,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:text="Add to cart"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>

@@ -17,68 +17,26 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".baseclasses.BaseActivity" />
-        <activity
-            android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activities.Login" />
-        <activity android:name=".activities.Registration" />
-        <activity android:name=".activities.AboutActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.ProductActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.CartActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.CheckOutFirstActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.ProductRequestActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.ShoppingListActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.OrdersActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.AllCatActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.OStatusPickupActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.PaymentMethodActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-        <activity android:name=".activities.OrderStatusDeliveryActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
-
-        <activity android:name=".activities.ProductsListActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+        <activity android:name=".baseclasses.BaseActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.MainActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.Login" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".activities.Registration" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activities.AboutActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activities.ProductActivity" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name=".activities.CartActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.CheckOutFirstActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.ProductRequestActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.ProfileActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.ShoppingListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.OrdersActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.AllCatActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.OStatusPickupActivity" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name=".activities.PaymentMethodActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.OrderStatusDeliveryActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.ProductsListActivity" android:screenOrientation="portrait"  android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

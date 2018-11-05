@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="SIGNIN TO YOUR ACCOUNT"
+        android:text="SIGN IN TO YOUR ACCOUNT"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <EditText
