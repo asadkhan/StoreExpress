@@ -67,7 +67,9 @@
                     android:gravity="center"
                     android:paddingTop="5dip"
                     android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
-                    android:textSize="10sp" />
+                    android:textColor="#555455"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/divider356"
@@ -161,7 +163,9 @@
                     android:gravity="center"
                     android:paddingTop="5dip"
                     android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
-                    android:textSize="10sp" />
+                    android:textColor="#555455"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/divider35"
