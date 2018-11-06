@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView img1,img2;
         public TextView TxtPrice1,TxtPrice2,TxtName1,TxtName2,TxtAddToCart,TxtAddToCartTwo;
-
+       public LinearLayout Ladd ,Ladd1 ;
 
         private String mItem;
 
@@ -46,8 +47,10 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
             TxtName2 = (TextView) view.findViewById(R.id.txt_name2);
             TxtAddToCart=(TextView) view.findViewById(R.id.txt_add);
             TxtAddToCartTwo=(TextView) view.findViewById(R.id.txt_AddTwo);
-
-
+             Ladd = (LinearLayout )view.findViewById(R.id.ladd);
+            Ladd1 = (LinearLayout )view.findViewById(R.id.ladd);
+            Ladd.setOnClickListener(this);
+            Ladd1.setOnClickListener(this);
             img1.setOnClickListener(this);
             TxtName1.setOnClickListener(this);
             img2.setOnClickListener(this);
@@ -100,7 +103,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
             }
 
 
-            if(view.getId()==R.id.txt_add){
+            if(view.getId()==R.id.txt_add) {
                 Log.d("test:", "add cart");
                 FproductTwoCol   mobj = productsList.get(getPosition());
                 Cart item = new Cart();

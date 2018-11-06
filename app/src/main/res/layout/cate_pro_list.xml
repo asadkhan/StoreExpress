@@ -77,6 +77,7 @@
                     android:background="#F7F5F5" />
 
                 <LinearLayout
+                    android:id="@+id/ladd1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -171,6 +172,7 @@
                     android:background="#F7F5F5" />
 
                 <LinearLayout
+                    android:id="@+id/ladd"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
