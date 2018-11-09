@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="48dp"
     android:background="#F7F5F5"
-    android:paddingTop="25dp"
     android:orientation="vertical">
 
     <ScrollView
@@ -136,7 +136,7 @@
                     android:text="American Garden Italian dressing has only 30 calories per serving, so it’s an ideal option whether you are on diet or trying to cook and eat healthy\n\nA splash of this dressing will turn even the dullest salad into a delightful treat. But do not limit yourself to veggies, as this product can be added to marinades or enjoyed as a dip."
                     android:textAlignment="gravity"
                     android:textColor="#555455"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -150,15 +150,14 @@
                     android:weightSum="9">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/btn_plus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@mipmap/plus_s"
                             android:text="@null" />
                     </LinearLayout>
@@ -182,15 +181,14 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/btn_minus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@mipmap/minus_s"
                             android:text="@null" />
                     </LinearLayout>

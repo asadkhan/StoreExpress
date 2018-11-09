@@ -52,7 +52,7 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
         btnMinus.setOnClickListener(this);
         btn_add_to_cart.setOnClickListener(this);
 
-        Picasso.with(this).load(obj.img).resize(90, 90).centerCrop().into(img);
+        Picasso.with(this).load(obj.img).resize(250, 250).centerCrop().into(img);
         name.setText(obj.name);
         price.setText(obj.price);
        // description.setText(obj.getDescription().toString());
@@ -192,7 +192,7 @@ public void plus(){
 int qty= Integer.valueOf(txt_qty_box.getText().toString());
 qty=qty+1;
 int objprice = (qty * Integer.valueOf(obj.price));
-    price.setText(String.valueOf(objprice));
+   // price.setText(String.valueOf(objprice));
     txt_qty_box.setText(String.valueOf(qty));
 
 }
@@ -206,7 +206,7 @@ int objprice = (qty * Integer.valueOf(obj.price));
          qty=1;
         }
         int objprice = (qty * Integer.valueOf(obj.price));
-        price.setText(String.valueOf(objprice));
+        //price.setText(String.valueOf(objprice));
         txt_qty_box.setText(String.valueOf(qty));
 
     }

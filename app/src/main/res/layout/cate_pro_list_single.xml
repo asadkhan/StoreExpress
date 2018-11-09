@@ -69,7 +69,9 @@
                     android:paddingStart="10dp"
                     android:paddingTop="5dip"
                     android:text="@string/pro_desc"
-                    android:textSize="10sp" />
+                    android:textColor="#555455"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/divider356"

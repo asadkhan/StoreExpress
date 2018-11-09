@@ -80,7 +80,7 @@ public class CategoryListAllCatAdapter  extends RecyclerView.Adapter<CategoryLis
         String imgURL=catObj.getImage();
         holder.btnallcat.setText(catObj.getName());
 
-        //  Picasso.with(holder.catImg.getContext()).load(imgURL).resize(60, 60).centerCrop().into(holder.catImg);
+        //Picasso.with(holder.catImg.getContext()).load(imgURL).resize(60, 60).centerCrop().into(holder.catImg);
 
         // formatting the date appropriately.
 

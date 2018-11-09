@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#fff"
     android:orientation="vertical">
 
 
@@ -42,15 +43,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="top"
+                android:maxHeight="3dp"
+                android:maxLines="3"
+                android:minHeight="3dp"
+                android:minLines="3"
                 android:text="American Garden\nItalian Dressing 473ml"
                 android:textColor="#555455"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <Button
@@ -93,9 +98,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right"
+                android:gravity="top|right"
                 android:orientation="horizontal">
 
                 <TextView
@@ -104,26 +109,28 @@
                     android:layout_height="wrap_content"
                     android:text="Rs. "
                     android:textColor="#555455"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txt_cartitem_price2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#555455"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/txt_cartitem_remove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="bottom|right"
+                android:layout_weight="1"
+                android:gravity="right|center"
                 android:text="Remove"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:id="@+id/divider5"
         android:layout_width="match_parent"

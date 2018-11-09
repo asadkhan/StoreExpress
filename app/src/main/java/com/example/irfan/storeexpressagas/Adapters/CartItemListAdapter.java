@@ -114,7 +114,7 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
         holder.txtItemPrice.setText(String.valueOf(cartitem.ItemPrice));
 
 
-        Picasso.with(holder.img.getContext()).load(imgURL).resize(60, 60).centerCrop().into(holder.img);
+        Picasso.with(holder.img.getContext()).load(imgURL).resize(250, 250).centerCrop().into(holder.img);
 
         // formatting the date appropriately.
 

@@ -8,7 +8,7 @@
     <!-- Menu Item Image -->
     <ImageView
         android:id="@+id/actionbar_notifcation_img"
-        android:layout_width="20dp"
+        android:layout_width="23dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="false"
