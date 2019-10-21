@@ -29,7 +29,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
     private List<FproductTwoCol> productsList;
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView img1,img2;
-        public TextView TxtPrice1,TxtPrice2,TxtName1,TxtName2,TxtAddToCart,TxtAddToCartTwo;
+        public TextView TxtPrice1,TxtPrice2,TxtName1,TxtName2,TxtAddToCart,TxtAddToCartTwo,TxtPriceLabel;
        public LinearLayout Ladd ,Ladd1 ;
 
         private String mItem;
@@ -40,9 +40,9 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
 
             img1 = (ImageView) view.findViewById(R.id.Img_Product1);
             img2 = (ImageView) view.findViewById(R.id.ImgProduct2);
-
+            TxtPriceLabel=view.findViewById(R.id.txt_label);
             TxtPrice1 = (TextView) view.findViewById(R.id.txt_price1);
-            TxtPrice2 = (TextView) view.findViewById(R.id.txt_price2);
+            TxtPrice2 = (TextView) view.findViewById(R.id.txt_label);
             TxtName1 = (TextView) view.findViewById(R.id.txt_name1);
             TxtName2 = (TextView) view.findViewById(R.id.txt_name2);
             TxtAddToCart=(TextView) view.findViewById(R.id.txt_add);
@@ -185,7 +185,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
 
         holder.TxtPrice1.setText(Obj.ProductonePrice);
         holder.TxtPrice2.setText(Obj.ProducttwoPrice);
-
+      //  holder.TxtPriceLabel.setText("Rs. ");
 
         Picasso.with(holder.img1.getContext()).load(imgURL1).resize(800, 800).centerCrop().into(holder.img1);
         Picasso.with(holder.img2.getContext()).load(imgURL2).resize(800, 800).centerCrop().into(holder.img2);
