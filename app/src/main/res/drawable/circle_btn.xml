@@ -2,16 +2,18 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 <item>
     <shape android:shape="oval">
-        <solid android:color="@color/light_grey"/>
+        <!--<solid android:color="@color/light_grey"/>-->
+        <!--<gradient android:type="radial" android:gradientRadius="100%p" android:startColor="@color/black" android:endColor="@color/light_grey" />-->
         <corners android:radius="0dp" />
+        <padding android:bottom="3dp" android:left="0dp" android:right="3dp" android:top="0dp"></padding>
     </shape>
 </item>
 
 <item
     android:left="0dp"
-    android:right="1dp"
-    android:top="-1dp"
-    android:bottom="2dp">
+    android:right="0dp"
+    android:top="0dp"
+    android:bottom="0dp">
     <shape android:shape="oval">
         <solid android:color="#ffffff"/>
         <corners android:radius="50dp" />

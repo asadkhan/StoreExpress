@@ -41,58 +41,23 @@
 
     </RelativeLayout>
 
-    <HorizontalScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_cat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F7F5F5"
-        android:scrollbars="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout">
+        android:background="@color/grey_bg"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
-    </HorizontalScrollView>
-
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_fProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        android:paddingTop="10dp">
+        android:background="@color/grey_bg"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="5dp"
+        android:scrollbars="vertical" />
 
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_cat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/grey_bg"/>
-
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view_fProducts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="vertical"
-                android:background="@color/grey_bg"/>
-
-
-        </LinearLayout>
-
-    </ScrollView>
 </LinearLayout>

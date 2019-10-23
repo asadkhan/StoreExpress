@@ -55,7 +55,6 @@
                         android:layout_height="wrap_content"
                         android:paddingBottom="5dip"
                         android:paddingTop="5dip"
-
                         android:textColor="@color/colorPrimary"
                         android:textSize="14sp"
                         android:textStyle="bold" />
