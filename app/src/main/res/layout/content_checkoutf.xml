@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="25dp"
+    android:layout_marginTop="?attr/actionBarSize"
     android:orientation="vertical">
 
 
@@ -50,8 +50,8 @@
                 android:layout_marginBottom="10dip"
                 android:orientation="horizontal"
                 android:paddingBottom="10dp"
-                android:paddingEnd="20dip"
-                android:paddingStart="20dip"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
                 android:paddingTop="10dp">
 
                 <TextView
@@ -219,10 +219,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
-                        android:stateListAnimator="@null"
                         android:layout_marginEnd="40dp"
                         android:layout_marginStart="40dp"
                         android:background="@drawable/border_radius_red"
+                        android:stateListAnimator="@null"
                         android:text="Next"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp" />

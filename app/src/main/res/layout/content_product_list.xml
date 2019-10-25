@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
     android:background="#F7F5F5"
-    android:paddingTop="20dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -16,6 +16,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="10dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -62,9 +63,6 @@
         android:paddingTop="10dp">
 
 
-
-
-
     </LinearLayout>
 
     <ScrollView
@@ -79,13 +77,12 @@
             android:orientation="vertical">
 
 
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_fProducts_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical"
-                android:background="@color/grey_bg"/>
+                android:background="@color/grey_bg"
+                android:scrollbars="vertical" />
 
 
         </LinearLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
     android:background="#f7f5f5"
     android:orientation="vertical">
 
@@ -37,14 +38,11 @@
                 android:layout_marginTop="10dip"
                 android:background="@color/Divider"
                 android:clickable="false" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_allcat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-
-
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
