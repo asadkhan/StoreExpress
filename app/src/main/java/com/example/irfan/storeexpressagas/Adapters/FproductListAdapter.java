@@ -72,6 +72,8 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
                 obj.name=mobj.ProductoneName;
                 obj.price=mobj.ProductonePrice;
                 obj.itemID=mobj.ProductoneID;
+                obj.desc=mobj.ProductoneDesc;
+                obj.qty=mobj.ProductoneQty;
                 ProductActivity.obj=null;
                 ProductActivity.obj=obj;
                 ActivityManager.startActivity(view.getContext(),ProductActivity.class);
@@ -85,7 +87,8 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
                 Product obj =new Product();
                 obj.itemID=mobj.ProducttwoID;
                 obj.img=mobj.ProducttwoImg;
-
+                obj.desc=mobj.ProducttwoDesc;
+                obj.qty=mobj.ProducttwoQty;
                 obj.name=mobj.ProducttwoName;
                 obj.price=mobj.ProducttwoPrice;
                 ProductActivity.obj=null;
@@ -112,6 +115,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
                     item.ItemID=mobj.ProductoneID;
                     item.ItemName=mobj.ProductoneName;
                     item.ItemImg=mobj.ProductoneImg;
+
                     item.ItemPrice=Integer.valueOf(mobj.ProductonePrice);
                     item.ItemQty=1;
 

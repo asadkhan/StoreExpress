@@ -93,7 +93,16 @@ public RadioButton rBtndelivery,rBtnPickUp;
         recyclerViewCheckoutItem.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCheckoutItem.setAdapter(this.mAdapterCheckoutitem);
+
+        // set to pickup only
+        OrderRequest.OrderType=1;
+        OrderRequest.PaymentMeathod=0;
+        OrderRequest.PaymentStatus=2;
+        //
+
         getCart();
+
+
 
     }
 
@@ -110,9 +119,9 @@ public RadioButton rBtndelivery,rBtnPickUp;
                 rBtnPickUp.setChecked(true);
                 rBtndelivery.setChecked(false);
 
-                OrderRequest.OrderType=0;
+                OrderRequest.OrderType=1;
                 OrderRequest.PaymentMeathod=0;
-                OrderRequest.PaymentStatus=0;
+                OrderRequest.PaymentStatus=2;
             }
         }
     }
@@ -128,11 +137,11 @@ public RadioButton rBtndelivery,rBtnPickUp;
             if(OrderRequest.OrderType !=-1){
 
 
-                if(OrderRequest.OrderType==0){
+                if(OrderRequest.OrderType==1){
                   placeOrderPickup();
                 //openActivity(OStatusPickupActivity.class);
                 }
-                else if(OrderRequest.OrderType==1){
+                else if(OrderRequest.OrderType==2){
 
                     PlaceOrderDelivery();
 
@@ -271,7 +280,7 @@ public void placeOrderPickup(){
 
     Gson gson = new Gson();
     String Reslog= gson.toJson(cart);
-    Log.d("test", Reslog);
+    Log.d("testme", Reslog);
 
     RestClient.getAuthAdapterToekn(Auth.getToken(this)).test(cart).enqueue(new GeneralCallBack<GResponse>(this) {
         @Override
@@ -316,25 +325,29 @@ public void PlaceOrderDelivery(){
 
         showProgress();
         OrderModel obj = new OrderModel();
-        obj.OrderType=OrderRequest.OrderType;
-        obj.PaymentMeathod=OrderRequest.PaymentMeathod;
-        obj.PaymentStatus=OrderRequest.PaymentStatus;
+        obj.OrderType=1;
+        obj.PaymentMeathod=1;
+        obj.PaymentStatus=1;
 
         Gson gson = new Gson();
         String Reslog= gson.toJson(obj);
-        Log.d("test", Reslog);
+        Log.d("testme", Reslog);
 
         RestClient.getAuthAdapterToekn(Auth.getToken(this)).placeORder(obj).enqueue(new GeneralCallBack<OrderResponse>(this) {
             @Override
             public void onSuccess(OrderResponse response) {
                 Gson gson = new Gson();
                 String Reslog= gson.toJson(response);
-                Log.d("test", Reslog);
+                Log.d("testme", Reslog);
 
                 if(!response.getIserror()){
 
-                    openActivity(OStatusPickupActivity.class);
+                    if(response.getValue().getOrderType()==1) {
 
+
+                        OStatusPickupActivity.orderid=response.getValue().getOrderId();
+                        openActivity(OStatusPickupActivity.class);
+                    }
                 }
 
                 hideProgress();

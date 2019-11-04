@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ProductActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
     ImageView img;
-    TextView name,price,description,txt_qty_box;
+    TextView name,price,description,txt_qty_box,txt_instock;
     Button btnPlus,btnMinus,btn_add_to_cart;
     public TextView tv;
     public ImageView i;
@@ -44,6 +44,7 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
         price = (TextView) findViewById(R.id.txt_product_price);
         description = (TextView) findViewById(R.id.txt_product_desc);
         txt_qty_box = (TextView) findViewById(R.id.txt_qty_box);
+        txt_instock = (TextView) findViewById(R.id.txt_instock);
         btnPlus = (Button) findViewById(R.id.btn_plus);
         btnMinus = (Button) findViewById(R.id.btn_minus);
         btn_add_to_cart=(Button) findViewById(R.id.btn_add_to_cart);
@@ -55,7 +56,8 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
         Picasso.with(this).load(obj.img).resize(250, 250).centerCrop().into(img);
         name.setText(obj.name);
         price.setText(obj.price);
-       // description.setText(obj.getDescription().toString());
+       description.setText(obj.desc);
+        txt_instock.setText(txt_instock.getText()+String.valueOf(obj.qty));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_about_product);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_product);

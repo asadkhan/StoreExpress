@@ -5,6 +5,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -14,14 +16,37 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.irfan.storeexpressagas.Adapters.CategoryListAllCatAdapter;
+import com.example.irfan.storeexpressagas.Adapters.CompOrderListAdapter;
+import com.example.irfan.storeexpressagas.Adapters.OrderListAdapter;
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.CustomerOrderResponse;
+import com.example.irfan.storeexpressagas.network.RestClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrdersActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
     public TextView tv;
     public ImageView i;
+
+    public RecyclerView recyclerViewCurrentOrders;
+
+    public OrderListAdapter mAdapterCurrentOrders;
+
+    public RecyclerView recyclerViewCompOrders;
+
+    public CompOrderListAdapter mAdapterCompOrders;
+
+    public List<CustomerOrderResponse.Value> orders= new ArrayList<>();
+
+    public List<CustomerOrderResponse.Value> Comporders= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +64,39 @@ public class OrdersActivity extends BaseActivity implements NavigationView.OnNav
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_orders);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+        recyclerViewCurrentOrders = (RecyclerView) findViewById(R.id.recycler_view_currentOrders);
+
+        mAdapterCurrentOrders = new OrderListAdapter(this.orders);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        // RecyclerView.ItemDecoration itemDecoration =
+        //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        //recyclerViewAllCat.addItemDecoration(itemDecoration);
+
+        recyclerViewCurrentOrders.setHasFixedSize(true);
+        recyclerViewCurrentOrders.setLayoutManager(mLayoutManager);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewCurrentOrders.setAdapter(this.mAdapterCurrentOrders);
+
+
+
+        recyclerViewCompOrders = (RecyclerView) findViewById(R.id.recycler_view_compOrders);
+
+        mAdapterCompOrders = new CompOrderListAdapter(this.Comporders);
+       // RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        // RecyclerView.ItemDecoration itemDecoration =
+        //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        //recyclerViewAllCat.addItemDecoration(itemDecoration);
+        RecyclerView.LayoutManager mLayoutManagerCompOrders = new LinearLayoutManager(getApplicationContext());
+        recyclerViewCompOrders.setHasFixedSize(true);
+        recyclerViewCompOrders.setLayoutManager(mLayoutManagerCompOrders);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewCompOrders.setAdapter(this.mAdapterCompOrders);
+
+
+        getOrders();
 
     }
 
@@ -115,6 +173,72 @@ public class OrdersActivity extends BaseActivity implements NavigationView.OnNav
         }
 
         return  true;
+    }
+
+
+
+    public void getOrders(){
+
+        showProgress();
+        Log.d("test","intest");
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).getCustomerOrders().enqueue(new GeneralCallBack<CustomerOrderResponse>(this) {
+            @Override
+            public void onSuccess(CustomerOrderResponse response) {
+
+                hideProgress();
+
+                if (!response.getIserror()) {
+
+
+
+                    orders.clear();
+                    Comporders.clear();
+                    List<CustomerOrderResponse.Value> list = response.getValue();
+                    for(CustomerOrderResponse.Value obj : list){
+
+                        if(obj.getOrderstatusID() ==2 || obj.getOrderstatusID()==9) {
+                            orders.add(obj);
+                        }
+
+                        if(obj.getOrderstatusID() ==6 || obj.getOrderstatusID()==10) {
+                            Comporders.add(obj);
+                        }
+
+
+                    }
+
+
+
+
+                    mAdapterCurrentOrders.notifyDataSetChanged();
+
+                    mAdapterCompOrders.notifyDataSetChanged();
+
+                    //getFproducts();
+
+                }
+                else{
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
+
+
+
     }
 
 

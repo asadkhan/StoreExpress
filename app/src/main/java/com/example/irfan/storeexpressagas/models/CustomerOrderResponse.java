@@ -3,7 +3,9 @@ package com.example.irfan.storeexpressagas.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class OrderResponse {
+import java.util.List;
+
+public class CustomerOrderResponse {
     @SerializedName("code")
     @Expose
     private Integer code;
@@ -18,7 +20,7 @@ public class OrderResponse {
     private String date;
     @SerializedName("value")
     @Expose
-    private Value value;
+    private List<Value> value = null;
 
     public Integer getCode() {
         return code;
@@ -52,11 +54,11 @@ public class OrderResponse {
         this.date = date;
     }
 
-    public Value getValue() {
+    public List<Value> getValue() {
         return value;
     }
 
-    public void setValue(Value value) {
+    public void setValue(List<Value> value) {
         this.value = value;
     }
 
@@ -65,12 +67,24 @@ public class OrderResponse {
         @SerializedName("orderId")
         @Expose
         private Integer orderId;
+        @SerializedName("orderstatusID")
+        @Expose
+        private Integer orderstatusID;
         @SerializedName("orderStatus")
         @Expose
         private String orderStatus;
         @SerializedName("orderType")
         @Expose
         private Integer orderType;
+        @SerializedName("totalprice")
+        @Expose
+        private Integer totalprice;
+        @SerializedName("orderDate")
+        @Expose
+        private String orderDate;
+        @SerializedName("itemsLst")
+        @Expose
+        private Object itemsLst;
 
         public Integer getOrderId() {
             return orderId;
@@ -78,6 +92,14 @@ public class OrderResponse {
 
         public void setOrderId(Integer orderId) {
             this.orderId = orderId;
+        }
+
+        public Integer getOrderstatusID() {
+            return orderstatusID;
+        }
+
+        public void setOrderstatusID(Integer orderstatusID) {
+            this.orderstatusID = orderstatusID;
         }
 
         public String getOrderStatus() {
@@ -96,5 +118,30 @@ public class OrderResponse {
             this.orderType = orderType;
         }
 
+        public Integer getTotalprice() {
+            return totalprice;
+        }
+
+        public void setTotalprice(Integer totalprice) {
+            this.totalprice = totalprice;
+        }
+
+        public String getOrderDate() {
+            return orderDate;
+        }
+
+        public void setOrderDate(String orderDate) {
+            this.orderDate = orderDate;
+        }
+
+        public Object getItemsLst() {
+            return itemsLst;
+        }
+
+        public void setItemsLst(Object itemsLst) {
+            this.itemsLst = itemsLst;
+        }
+
     }
+
 }

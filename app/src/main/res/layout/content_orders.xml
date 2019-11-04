@@ -37,7 +37,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#e8e8e8"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -58,81 +58,16 @@
 
             </LinearLayout>
 
-            <LinearLayout
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_currentOrders"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingBottom="15dip"
-                android:paddingLeft="20dip"
-                android:paddingRight="20dip"
-                android:paddingTop="15dip">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView4_7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="23 Aug 2018"
-                        android:textColor="#000000"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView3_4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="ASM-32511"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/textView4_6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:text="View Complete Order"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="right|center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView4_8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dip"
-                        android:text="Status"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView45"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ready for Pickup"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#e8e8e8"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -153,11 +88,13 @@
 
             </LinearLayout>
 
-            <include
-                layout="@layout/content_orders_pro"
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_compOrders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                />
 
         </LinearLayout>
     </ScrollView>

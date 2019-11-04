@@ -116,7 +116,7 @@
                         android:paddingBottom="10dip"
                         android:paddingStart="20dip"
                         android:paddingTop="10dip"
-                        android:text="PICKUP OR DELIVERY?"
+                        android:text=""
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -125,7 +125,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="invisible"
+                    >
 
                     <RadioGroup
                         android:id="@+id/radioOrderType"
@@ -223,7 +225,7 @@
                         android:layout_marginEnd="40dp"
                         android:layout_marginStart="40dp"
                         android:background="@drawable/border_radius_red"
-                        android:text="Next"
+                        android:text="Proceed To Pickup"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp" />
                 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.irfan.storeexpressagas.network;
 import com.example.irfan.storeexpressagas.models.AddressResponse;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.CustomerOrderResponse;
 import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.GeneralResponse;
@@ -9,6 +10,7 @@ import com.example.irfan.storeexpressagas.models.LoginResponse;
 import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
 import com.example.irfan.storeexpressagas.models.OrderResponse;
+import com.example.irfan.storeexpressagas.models.PickupOrderDeatilResponse;
 import com.example.irfan.storeexpressagas.models.ProfileResponse;
 import com.example.irfan.storeexpressagas.models.RegistrationRequest;
 
@@ -28,6 +30,14 @@ public interface WebCalls {
 
     @GET(EndPoints.PRODUCTBYCAT)
     Call<FproductResponse> getProductsByCat(@Query("categoryname") String categoryname);
+
+
+
+    @GET(EndPoints.PICKUPORDERDETAILS)
+    Call<PickupOrderDeatilResponse> getPickupOrderDetails(@Query("id") int id);
+
+    @GET(EndPoints.CUSTOMERSORDERS)
+    Call<CustomerOrderResponse> getCustomerOrders();
 
 
     @GET(EndPoints.ADRESSES)

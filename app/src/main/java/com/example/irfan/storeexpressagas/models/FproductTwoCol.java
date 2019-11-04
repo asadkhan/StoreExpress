@@ -4,7 +4,15 @@ public class FproductTwoCol {
 
    public String ProductoneName;
     public String ProducttwoName;
- public int ProductoneID;
+
+    public String ProductoneDesc;
+    public String ProducttwoDesc;
+
+    public int ProductoneQty;
+    public int ProducttwoQty;
+
+
+    public int ProductoneID;
 
     public String ProductonePrice;
     public String ProducttwoPrice;

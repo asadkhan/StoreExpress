@@ -19,11 +19,18 @@ import android.widget.TextView;
 
 import com.example.irfan.storeexpressagas.Adapters.CheckOutCartItemAdapter;
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.extras.Orders;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
+import com.example.irfan.storeexpressagas.models.OrderResponse;
+import com.example.irfan.storeexpressagas.models.PickupOrderDeatilResponse;
+import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,15 +41,18 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
     public CheckOutCartItemAdapter mAdapterCheckoutitem;
 
     public List<Cart> cartItemList = new ArrayList<>();
-    public TextView tv;
+    public TextView tv,txt_orderID,txt_totalprice;
     public ImageView i;
-
+    public static int orderid;
     public Button  btnOders;
     public static int OrderID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_status_pickup);
+
+        txt_orderID =(TextView) findViewById(R.id.txt_orderID) ;
+        txt_totalprice =(TextView) findViewById(R.id.txt_totalprice) ;
  btnOders=(Button) findViewById(R.id.btn_openorders);
         btnOders.setOnClickListener(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_osp);
@@ -68,18 +78,77 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
         recyclerViewCheckoutItem.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCheckoutItem.setAdapter(this.mAdapterCheckoutitem);
-
-getCart();
+        getOrderDetails();
+//getCart();
 
     }
+
+
+    public void getOrderDetails(){
+
+        showProgress();
+
+        Log.d("testme", String.valueOf(this.orderid));
+        RestClient.getAuthAdapter().getPickupOrderDetails(this.orderid).enqueue(new GeneralCallBack<PickupOrderDeatilResponse>(this) {
+            @Override
+            public void onSuccess(PickupOrderDeatilResponse response) {
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("testme", Reslog);
+
+                if(!response.getIserror()){
+
+                    txt_orderID.setText(response.getValue().getOrderId().toString());
+                    txt_totalprice.setText(txt_totalprice.getText()+response.getValue().getTotalprice().toString());
+
+                    cartItemList.clear();
+                    List<PickupOrderDeatilResponse.ItemsLst> cartlst=response.getValue().getItemsLst() ;
+                    for(PickupOrderDeatilResponse.ItemsLst obj : cartlst){
+
+                        Cart t = new Cart();
+                        t.ItemQty=obj.getItemQty();
+                        t.ItemID=obj.getItemId();
+                       // t.ItemImg=obj.getItemName();
+                        t.ItemPrice=Integer.valueOf(obj.getItemPrice());
+                        t.ItemName=obj.getItemName();
+
+                        cartItemList.add(t);
+
+                    }
+
+                    mAdapterCheckoutitem.notifyDataSetChanged();
+
+                }
+
+                hideProgress();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("testme",throwable.getMessage());
+
+            }
+
+
+
+        });
+    }
+
+
+
     @Override
     public void onClick(View v) {
         Log.d("test","Next click");
         Log.d("test",String.valueOf(OrderRequest.OrderType));
         switch (v.getId()) {
             case R.id.btn_openorders:
-                openActivity(OrdersActivity.class);
-
+               openActivity(OrdersActivity.class);
+                Log.d("test","open Orders");
                 break;
             case R.id.actionbar_notifcation_img:
                 openActivity(CartActivity.class);

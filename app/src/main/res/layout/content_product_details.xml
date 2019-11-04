@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="10dip"
-                    android:text="In-Stock: 3"
+                    android:text="In-Stock: "
                     android:textColor="@color/stock_green" />
 
                 <TextView
