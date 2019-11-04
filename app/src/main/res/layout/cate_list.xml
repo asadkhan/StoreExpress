@@ -17,15 +17,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/circle_btn"
-            android:padding="10dip"
+            android:padding="15dp"
             app:srcCompat="@mipmap/bakery" />
 
         <TextView
             android:id="@+id/txtCat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dip"
-            android:text="Bakery"
-            android:textSize="10sp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:lines="2"
+            android:text="Cat Food Dog Food"
+            android:textSize="8sp" />
     </LinearLayout>
 </LinearLayout>

@@ -2,73 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:weightSum="10">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txt_item_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="false"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingEnd="20dip"
-        android:paddingStart="20dip"
-        android:paddingTop="10dp">
+        android:layout_weight="6"
+        android:text="@string/checkout_opt"
+        android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/txt_item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentTop="false"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerHorizontal="false"
-            android:layout_centerInParent="false"
-            android:layout_centerVertical="false"
-            android:layout_weight="1.5"
-            android:text="@string/checkout_opt"
-            android:textColor="#000000" />
+    <TextView
+        android:id="@+id/txt_item_price"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:gravity="end"
+        android:text="@string/checkout_opt_price"
+        android:textAllCaps="false"
+        android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/txt_item_price2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentTop="false"
-            android:layout_centerHorizontal="false"
-            android:layout_centerInParent="false"
-            android:layout_centerVertical="false"
-            android:gravity="end"
-            android:text="Rs. "
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/txt_item_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentTop="false"
-            android:layout_centerHorizontal="false"
-            android:layout_centerInParent="false"
-            android:layout_centerVertical="false"
-            android:layout_weight="0.2"
-            android:gravity="end"
-            android:textAllCaps="false"
-            android:textColor="#000000" />
-
-    </LinearLayout>
 </LinearLayout>

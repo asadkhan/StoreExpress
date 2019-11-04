@@ -21,7 +21,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="msg_add_to_car">Item Added To Cart</string>
-    <string name="checkout_opt">2. American Garden Jalapeno\nPaper 454g x 1</string>
+    <string name="checkout_opt">American Garden Jalapeno Paper 454g x 1 American Garden Jalapeno</string>
+    <string name="checkout_opt_price">Rs 100000</string>
     <string name="my_order_reorder_opt">1. Loreum Ipsum Dolor\nRs. 645</string>
 
 </resources>
