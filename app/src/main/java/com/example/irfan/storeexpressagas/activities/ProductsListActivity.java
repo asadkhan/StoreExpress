@@ -106,7 +106,7 @@ public class ProductsListActivity extends BaseActivity implements NavigationView
 
         showProgress();
         Log.d("test","intestFproduct");
-        RestClient.getAuthAdapter().getFeaturepProducts().enqueue(new GeneralCallBack<FproductResponse>(this) {
+        RestClient.getAuthAdapter().getFeaturepProducts(0,0).enqueue(new GeneralCallBack<FproductResponse>(this) {
             @Override
             public void onSuccess(FproductResponse response) {
 

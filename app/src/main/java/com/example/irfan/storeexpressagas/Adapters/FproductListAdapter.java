@@ -40,9 +40,9 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
 
             img1 = (ImageView) view.findViewById(R.id.Img_Product1);
             img2 = (ImageView) view.findViewById(R.id.ImgProduct2);
-            TxtPriceLabel=view.findViewById(R.id.txt_label);
+           // TxtPriceLabel=view.findViewById(R.id.txt_label);
             TxtPrice1 = (TextView) view.findViewById(R.id.txt_price1);
-            TxtPrice2 = (TextView) view.findViewById(R.id.txt_label);
+            TxtPrice2 = (TextView) view.findViewById(R.id.txt_price2);
             TxtName1 = (TextView) view.findViewById(R.id.txt_name1);
             TxtName2 = (TextView) view.findViewById(R.id.txt_name2);
             TxtAddToCart=(TextView) view.findViewById(R.id.txt_add);
@@ -187,10 +187,18 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
         holder.TxtName1.setText(Obj.ProductoneName);
         holder.TxtName2.setText(Obj.ProducttwoName);
 
-        holder.TxtPrice1.setText(Obj.ProductonePrice);
-        holder.TxtPrice2.setText(Obj.ProducttwoPrice);
+        holder.TxtPrice1.setText("Rs "+Obj.ProductonePrice.toString());
+        holder.TxtPrice2.setText("Rs "+Obj.ProducttwoPrice.toString());
       //  holder.TxtPriceLabel.setText("Rs. ");
+        if(imgURL1 !=null && !imgURL1.isEmpty()  ){
 
+            holder.img1.setBackgroundResource(android.R.color.transparent);
+        }
+
+        if(imgURL2 !=null && !imgURL2.isEmpty()  ){
+
+            holder.img2.setBackgroundResource(android.R.color.transparent);
+        }
         Picasso.with(holder.img1.getContext()).load(imgURL1).resize(800, 800).centerCrop().into(holder.img1);
         Picasso.with(holder.img2.getContext()).load(imgURL2).resize(800, 800).centerCrop().into(holder.img2);
 

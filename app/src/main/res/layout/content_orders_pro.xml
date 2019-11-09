@@ -82,6 +82,7 @@
 
             <Button
                 android:id="@+id/btn_reorder"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="25dip"
                 android:background="@drawable/border_radius_red"

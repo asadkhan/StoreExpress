@@ -1,5 +1,6 @@
 package com.example.irfan.storeexpressagas.Adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.activities.CartActivity;
 import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.squareup.picasso.Picasso;
@@ -19,6 +21,13 @@ import java.util.List;
 
 public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapter.ListViewHolder>{
 
+    private Context mContext;
+
+    public void CartItemListAdapter(Context context){
+
+        this.mContext=context;
+
+    }
     private List<Cart> itemList;
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView img;
@@ -66,11 +75,18 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
                     Log.d("test","show msg call");
                     //  showMessageDailogNextScreen("test","testing message",Login.class);
                     int newPosition = getAdapterPosition();
+                    Cart removedItem=itemList.get(newPosition);
                     Cart.removeCartITem(itemList.get(newPosition).ItemID,view.getContext());
                     itemList.remove(newPosition);
                     notifyItemRemoved(newPosition);
                     notifyItemRangeChanged(newPosition, itemList.size());
 
+
+                    if (mContext instanceof CartActivity) {
+                   CartActivity.TotalPrice = (CartActivity.TotalPrice-removedItem.ItemPrice);
+
+                        ((CartActivity) mContext).UpdateTotal();
+                    }
                     break;
 
 
@@ -111,11 +127,16 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
         String imgURL=cartitem.ItemImg;
         holder.txtItemName.setText(cartitem.ItemName);
         holder.txtQtyBox.setText(String.valueOf(cartitem.ItemQty));
-        holder.txtItemPrice.setText(String.valueOf(cartitem.ItemPrice));
+        holder.txtItemPrice.setText(holder.txtItemPrice.getText()+String.valueOf(cartitem.ItemPrice));
 
 
-        Picasso.with(holder.img.getContext()).load(imgURL).resize(250, 250).centerCrop().into(holder.img);
+        try {
+            Picasso.with(holder.img.getContext()).load(imgURL).resize(250, 250).centerCrop().into(holder.img);
+        }
+        catch (Exception e){
 
+
+        }
         // formatting the date appropriately.
 
 

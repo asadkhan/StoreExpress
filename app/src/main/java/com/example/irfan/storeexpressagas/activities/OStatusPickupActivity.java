@@ -39,12 +39,12 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
     public RecyclerView recyclerViewCheckoutItem;
 
     public CheckOutCartItemAdapter mAdapterCheckoutitem;
-
+public PickupOrderDeatilResponse reOrderObj;
     public List<Cart> cartItemList = new ArrayList<>();
     public TextView tv,txt_orderID,txt_totalprice;
     public ImageView i;
     public static int orderid;
-    public Button  btnOders;
+    public Button  btnOders,btn_reOrder;
     public static int OrderID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,8 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
         txt_orderID =(TextView) findViewById(R.id.txt_orderID) ;
         txt_totalprice =(TextView) findViewById(R.id.txt_totalprice) ;
  btnOders=(Button) findViewById(R.id.btn_openorders);
+        btn_reOrder=(Button) findViewById(R.id.btn_reOrder);
+        btn_reOrder.setOnClickListener(this);
         btnOders.setOnClickListener(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_osp);
         setSupportActionBar(toolbar);
@@ -101,6 +103,16 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
                     txt_orderID.setText(response.getValue().getOrderId().toString());
                     txt_totalprice.setText(txt_totalprice.getText()+response.getValue().getTotalprice().toString());
 
+                    if(response.getValue().getOrderstatusID()==6 || response.getValue().getOrderstatusID()==10){
+
+
+                        btn_reOrder.setVisibility(View.VISIBLE);
+                    }
+                    else{
+
+                        btn_reOrder.setVisibility(View.GONE);
+                    }
+
                     cartItemList.clear();
                     List<PickupOrderDeatilResponse.ItemsLst> cartlst=response.getValue().getItemsLst() ;
                     for(PickupOrderDeatilResponse.ItemsLst obj : cartlst){
@@ -115,7 +127,7 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
                         cartItemList.add(t);
 
                     }
-
+                    reOrderObj=response;
                     mAdapterCheckoutitem.notifyDataSetChanged();
 
                 }
@@ -139,7 +151,28 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
         });
     }
 
+public void reOrder(){
 
+        Cart cart = new Cart();
+    Cart.ClearCart(this);
+
+    List<PickupOrderDeatilResponse.ItemsLst> cartlst=this.reOrderObj.getValue().getItemsLst() ;
+    for(PickupOrderDeatilResponse.ItemsLst obj : cartlst){
+
+        Cart t = new Cart();
+        t.ItemQty=obj.getItemQty();
+        t.ItemID=obj.getItemId();
+        // t.ItemImg=obj.getItemName();
+        t.ItemPrice=Integer.valueOf(obj.getItemPrice());
+        t.ItemName=obj.getItemName();
+        t.ItemImg=obj.getimageURL();
+        Cart.addToCart(t.ItemID,t.ItemName,t.ItemPrice,t.ItemQty,this,t.ItemImg);
+
+
+    }
+
+openActivity(CartActivity.class);
+}
 
     @Override
     public void onClick(View v) {
@@ -160,6 +193,9 @@ public class OStatusPickupActivity extends BaseActivity implements NavigationVie
                 openActivity(CartActivity.class);
                 break;
 
+            case R.id.btn_reOrder:
+                reOrder();
+                break;
 
 
         }

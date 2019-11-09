@@ -52,7 +52,7 @@ public class CheckOutFirstActivity extends BaseActivity implements NavigationVie
 public RadioButton rBtndelivery,rBtnPickUp;
 
     public List<Cart> cartItemList = new ArrayList<>();
-    public TextView tv;
+    public TextView tv,txt_total;
     public ImageView i;
 
 
@@ -66,6 +66,9 @@ public RadioButton rBtndelivery,rBtnPickUp;
         rBtndelivery = (RadioButton) findViewById(R.id.radioDelivery);
         rBtndelivery.setOnCheckedChangeListener(this);
         rBtnPickUp = (RadioButton) findViewById(R.id.radioPickUp);
+
+
+        txt_total =(TextView) findViewById(R.id.txt_total);
         rBtnPickUp.setOnCheckedChangeListener(this);
         btnNext=(Button) findViewById(R.id.btn_next);
         btnNext.setOnClickListener(this);
@@ -167,7 +170,7 @@ public RadioButton rBtndelivery,rBtnPickUp;
         cartItemList.clear();
         List<Cart> cartlst=Cart.getCart(this);
 
-
+        int total=0;
         for(Cart obj : cartlst){
             Log.d("test","OBJ"+obj.ItemName);
             Cart t = new Cart();
@@ -178,9 +181,9 @@ public RadioButton rBtndelivery,rBtnPickUp;
             t.ItemName=obj.ItemName;
 
             cartItemList.add(t);
-
+total=total+obj.ItemPrice;
         }
-
+        txt_total.setText(txt_total.getText()+String.valueOf(total));
         mAdapterCheckoutitem.notifyDataSetChanged();
     }
 
@@ -341,7 +344,7 @@ public void PlaceOrderDelivery(){
                 Log.d("testme", Reslog);
 
                 if(!response.getIserror()){
-
+                Cart.ClearCart(CheckOutFirstActivity.this);
                     if(response.getValue().getOrderType()==1) {
 
 

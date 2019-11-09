@@ -70,6 +70,12 @@ public class Cart {
           databaseHelper.removeCartItem(itemID);
     }
 
+    public static void ClearCart(Context context){
+        DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
+        databaseHelper.ClearCart();
+    }
+
+
 
     public static List<Cart> getCart( Context context){
         DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);

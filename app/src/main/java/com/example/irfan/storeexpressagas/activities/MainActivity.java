@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public TextView tv;
     public ImageView i;
     public   List<CategoryResponse.catValue> catList = new ArrayList<>();
-
+    private  int skip=0,take=20;
     public   List<FproductTwoCol> producListTwoCol = new ArrayList<>();
 
     @Override
@@ -56,8 +56,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         setContentView(R.layout.activity_shop_by_cate);
         //parentBinding = binding;
-        //loadViews();
-        Log.d("test","calling test...");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // toolbar.inflateMenu(R.menu.navigation_menu);
         setSupportActionBar(toolbar);
@@ -131,7 +129,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
 
             case R.id.actionbar_notifcation_textview:
-                Log.d("test","show msg call");
+
                 //  showMessageDailogNextScreen("test","testing message",Login.class);
                 openActivity(CartActivity.class);
                 break;
@@ -143,14 +141,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 @Override
     public void onClick(View view, int position) {
-        Log.d("test","Click iterface ");
+
        CategoryResponse.catValue cat = catList.get(position);
         getProductsByCat(cat.getName());
-        Log.d("test",cat.getName());
+
     }
     public void getCategories(){
         showProgress();
-        Log.d("test","intest");
+
         RestClient.getAuthAdapter().getCategories().enqueue(new GeneralCallBack<CategoryResponse>(this) {
             @Override
             public void onSuccess(CategoryResponse response) {
@@ -165,8 +163,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     List<CategoryResponse.catValue> list = response.getValue();
                     for(CategoryResponse.catValue obj : list){
 
-                        Log.d("test",obj.getName());
-                        Log.d("test",obj.getImage());
+
                         catList.add(obj);
                     }
 
@@ -204,8 +201,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void getFproducts(){
 
         showProgress();
-        Log.d("test","intestFproduct");
-        RestClient.getAuthAdapter().getFeaturepProducts().enqueue(new GeneralCallBack<FproductResponse>(this) {
+
+        RestClient.getAuthAdapter().getFeaturepProducts(skip,take).enqueue(new GeneralCallBack<FproductResponse>(this) {
             @Override
             public void onSuccess(FproductResponse response) {
 
@@ -427,7 +424,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+           // MenuHandler.logOut(this);
+            logOut();
+
         }
 
 

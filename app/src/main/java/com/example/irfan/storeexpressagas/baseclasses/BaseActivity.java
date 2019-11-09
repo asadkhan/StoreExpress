@@ -22,6 +22,7 @@ import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.activities.CartActivity;
 import com.example.irfan.storeexpressagas.activities.CheckOutFirstActivity;
 import com.example.irfan.storeexpressagas.activities.Login;
+import com.example.irfan.storeexpressagas.activities.MainActivity;
 import com.example.irfan.storeexpressagas.activities.OrdersActivity;
 import com.example.irfan.storeexpressagas.activities.ProductRequestActivity;
 import com.example.irfan.storeexpressagas.activities.ProfileActivity;
@@ -348,9 +349,10 @@ public class BaseActivity extends AppCompatActivity {
         System.exit(0);
     }
 
-    private void logOut(){
+    public void logOut(){
 
         sharedperference.removeALL();
-       // openActivity(Login.class);
+        Cart.ClearCart(this);
+        openActivity(MainActivity.class);
     }
 }

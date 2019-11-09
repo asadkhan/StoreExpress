@@ -172,6 +172,15 @@ return cartItem;
 
     }
 
+    public void ClearCart() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME,null,null);
+
+        db.close();
+
+    }
+
+
 
     public int getItemCount() {
         String countQuery = "SELECT  * FROM " + TABLE_NAME;

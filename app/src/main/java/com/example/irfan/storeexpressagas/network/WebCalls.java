@@ -57,7 +57,7 @@ public interface WebCalls {
 
 
     @GET(EndPoints.FPRODUCT)
-    Call<FproductResponse> getFeaturepProducts();
+    Call<FproductResponse> getFeaturepProducts(@Query("skip") int skip, @Query("take") int take);
 
 
     @FormUrlEncoded

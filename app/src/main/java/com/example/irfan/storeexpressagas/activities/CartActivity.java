@@ -38,9 +38,10 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
     public CartItemListAdapter mAdapterCart;
     public Button btnCheckout;
 
+    public static int TotalPrice=0;
     public PrefManager sharedperference;
     public List<Cart> cartItemList = new ArrayList<>();
-    public TextView tv;
+    public TextView tv,text_total_price;
     public ImageView i;
 
 
@@ -51,6 +52,9 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(R.layout.activity_cart);
         sharedperference=new PrefManager(this);
         btnCheckout=(Button) findViewById(R.id.btn_checkout);
+
+        text_total_price= (TextView) findViewById(R.id.text_total_price);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_cart);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_cart);
@@ -205,6 +209,7 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
 
 
     public void getCart(){
+        CartActivity.TotalPrice=0;
         cartItemList.clear();
         List<Cart> cartlst=Cart.getCart(this);
 
@@ -218,11 +223,12 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
             t.ItemImg=obj.ItemImg;
             t.ItemPrice=obj.ItemPrice;
             t.ItemName=obj.ItemName;
+            CartActivity.TotalPrice=CartActivity.TotalPrice+t.ItemPrice;
 
             cartItemList.add(t);
 
         }
-
+   UpdateTotal();
         mAdapterCart.notifyDataSetChanged();
     }
 
@@ -241,4 +247,9 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    public  void UpdateTotal(){
+        text_total_price.setText(text_total_price.getText()+String.valueOf(CartActivity.TotalPrice));
+
+    }
 }

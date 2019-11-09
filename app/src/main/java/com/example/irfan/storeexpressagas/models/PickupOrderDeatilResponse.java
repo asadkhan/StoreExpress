@@ -118,6 +118,13 @@ public class PickupOrderDeatilResponse {
         @SerializedName("itemName")
         @Expose
         private String itemName;
+
+        @SerializedName("imageURL")
+        @Expose
+        private String imageURL;
+
+
+
         @SerializedName("itemQty")
         @Expose
         private Integer itemQty;
@@ -139,6 +146,14 @@ public class PickupOrderDeatilResponse {
 
         public void setItemName(String itemName) {
             this.itemName = itemName;
+        }
+
+        public String getimageURL() {
+            return imageURL;
+        }
+
+        public void setimageURL(String imageUrl) {
+            this.imageURL = imageUrl;
         }
 
         public Integer getItemQty() {
