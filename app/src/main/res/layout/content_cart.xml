@@ -56,7 +56,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView62"
+                    android:id="@+id/txt_total_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -128,7 +128,7 @@
                         android:id="@+id/textView620"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text=""
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -178,7 +178,12 @@
                 android:id="@+id/recycler_view_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
+            <TextView
+                android:id="@+id/txt_msg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Cart is Empty" />
         </LinearLayout>
     </ScrollView>
 

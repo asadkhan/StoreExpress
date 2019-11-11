@@ -41,7 +41,7 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
     public static int TotalPrice=0;
     public PrefManager sharedperference;
     public List<Cart> cartItemList = new ArrayList<>();
-    public TextView tv,text_total_price;
+    public TextView tv,text_total_price,txt_msg,txt_total_item;
     public ImageView i;
 
 
@@ -52,9 +52,9 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(R.layout.activity_cart);
         sharedperference=new PrefManager(this);
         btnCheckout=(Button) findViewById(R.id.btn_checkout);
-
+        txt_total_item=(TextView) findViewById(R.id.txt_total_item);
         text_total_price= (TextView) findViewById(R.id.text_total_price);
-
+        txt_msg=(TextView) findViewById(R.id.txt_msg);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_cart);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_cart);
@@ -150,12 +150,14 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
             mDrawerLayout.closeDrawers();
             //MenuHandler.currentOrders(this);
             openActivity(CartActivity.class);
-        } else if (id == R.id.menu_pro_req) {
-            mDrawerLayout.closeDrawers();
-            openActivityProductRequest();
-            //MenuHandler.orderHistory(this);
-
-        } else if (id == R.id.menu_profile) {
+        }
+//        else if (id == R.id.menu_pro_req) {
+//            mDrawerLayout.closeDrawers();
+//            openActivityProductRequest();
+//            //MenuHandler.orderHistory(this);
+//
+//        }
+else if (id == R.id.menu_profile) {
             mDrawerLayout.closeDrawers();
             openActivityProfile();
 
@@ -165,15 +167,15 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
 
         }
 
-        else if (id == R.id.menu_shopping) {
-            mDrawerLayout.closeDrawers();
-            openActivity(ShoppingListActivity.class);
-
-            //MenuHandler.smsTracking(this);
-            //MenuHandler.callUs(this);
-            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
-
-        }
+//        else if (id == R.id.menu_shopping) {
+//            mDrawerLayout.closeDrawers();
+//            openActivity(ShoppingListActivity.class);
+//
+//            //MenuHandler.smsTracking(this);
+//            //MenuHandler.callUs(this);
+//            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+//
+//        }
 
         else if (id == R.id.menu_orders) {
             mDrawerLayout.closeDrawers();
@@ -212,7 +214,7 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         CartActivity.TotalPrice=0;
         cartItemList.clear();
         List<Cart> cartlst=Cart.getCart(this);
-
+        txt_total_item.setText(String.valueOf(cartlst.size()));
        // cartItemList=cartlst;
 
         for(Cart obj : cartlst){
@@ -230,6 +232,34 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         }
    UpdateTotal();
         mAdapterCart.notifyDataSetChanged();
+
+        setEmptyCartScreen(cartlst.size());
+    }
+
+
+
+    private void setEmptyCartScreen(int cartCount){
+
+        if(cartCount > 0){
+            recyclerViewCart.setVisibility(View.VISIBLE);
+            btnCheckout.setVisibility(View.VISIBLE);
+
+            txt_msg.setVisibility(View.GONE);
+
+
+        }else{
+
+            btnCheckout.setVisibility(View.GONE);
+
+            //text_add.setVisibility(View.GONE);
+
+
+            txt_msg.setVisibility(View.VISIBLE);
+            recyclerViewCart.setVisibility(View.GONE);
+            Log.d("data","empty");
+        }
+
+
     }
 
     @Override

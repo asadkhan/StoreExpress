@@ -316,7 +316,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         forwardTransition=false;
-        super.onBackPressed();
+        //super.onBackPressed();
+    openActivity(MainActivity.class);
     }
 
 

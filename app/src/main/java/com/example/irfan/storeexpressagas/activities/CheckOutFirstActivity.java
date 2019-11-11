@@ -55,14 +55,14 @@ public RadioButton rBtndelivery,rBtnPickUp;
     public TextView tv,txt_total;
     public ImageView i;
 
-
+    private Boolean DoProceed;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkoutfirst);
-
+         DoProceed=false;
         rBtndelivery = (RadioButton) findViewById(R.id.radioDelivery);
         rBtndelivery.setOnCheckedChangeListener(this);
         rBtnPickUp = (RadioButton) findViewById(R.id.radioPickUp);
@@ -170,6 +170,15 @@ public RadioButton rBtndelivery,rBtnPickUp;
         cartItemList.clear();
         List<Cart> cartlst=Cart.getCart(this);
 
+        if(cartlst.size()>0){
+
+            DoProceed=true;
+        }
+        else
+        {
+            DoProceed=false;
+
+        }
         int total=0;
         for(Cart obj : cartlst){
             Log.d("test","OBJ"+obj.ItemName);
@@ -207,12 +216,14 @@ total=total+obj.ItemPrice;
             mDrawerLayout.closeDrawers();
             //MenuHandler.currentOrders(this);
             openActivity(CartActivity.class);
-        } else if (id == R.id.menu_pro_req) {
-            mDrawerLayout.closeDrawers();
-            openActivityProductRequest();
-            //MenuHandler.orderHistory(this);
-
-        } else if (id == R.id.menu_profile) {
+        }
+//        else if (id == R.id.menu_pro_req) {
+//            mDrawerLayout.closeDrawers();
+//            openActivityProductRequest();
+//            //MenuHandler.orderHistory(this);
+//
+//        }
+        else if (id == R.id.menu_profile) {
             mDrawerLayout.closeDrawers();
             openActivityProfile();
 
@@ -222,15 +233,15 @@ total=total+obj.ItemPrice;
 
         }
 
-        else if (id == R.id.menu_shopping) {
-            mDrawerLayout.closeDrawers();
-            openActivity(ShoppingListActivity.class);
-
-            //MenuHandler.smsTracking(this);
-            //MenuHandler.callUs(this);
-            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
-
-        }
+//        else if (id == R.id.menu_shopping) {
+//            mDrawerLayout.closeDrawers();
+//            openActivity(ShoppingListActivity.class);
+//
+//            //MenuHandler.smsTracking(this);
+//            //MenuHandler.callUs(this);
+//            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+//
+//        }
 
         else if (id == R.id.menu_orders) {
             mDrawerLayout.closeDrawers();
@@ -264,6 +275,11 @@ total=total+obj.ItemPrice;
     }
 
 public void placeOrderPickup(){
+    if(!DoProceed){
+
+        return;
+    }
+
     Log.d("test","place oder call");
     showProgress();
     Log.d("test", Auth.getToken(this));
