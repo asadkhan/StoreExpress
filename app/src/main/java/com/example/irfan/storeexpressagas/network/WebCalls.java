@@ -11,6 +11,8 @@ import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
 import com.example.irfan.storeexpressagas.models.OrderResponse;
 import com.example.irfan.storeexpressagas.models.PickupOrderDeatilResponse;
+import com.example.irfan.storeexpressagas.models.ProductReqRequest;
+import com.example.irfan.storeexpressagas.models.ProductReqResponse;
 import com.example.irfan.storeexpressagas.models.ProfileResponse;
 import com.example.irfan.storeexpressagas.models.RegistrationRequest;
 
@@ -71,5 +73,11 @@ public interface WebCalls {
    // @Headers("Content-Type: application/json")
     @POST(EndPoints.REGISTRATION)
     Call<GResponse> registerUser(@Body RegistrationRequest regUser);
+
+    @POST(EndPoints.ADDPRODUCTREQUEST)
+    Call<ProductReqResponse> addProductRequest(@Body ProductReqRequest productReq);
+
+
+
 
 }

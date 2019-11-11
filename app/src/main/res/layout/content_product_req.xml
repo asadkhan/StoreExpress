@@ -36,22 +36,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="278dp"
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <EditText
-                    android:id="@+id/editText4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:background="@drawable/border_radius_invert"
-                    android:hint="Product Type"
-                    android:inputType="text"
-                    android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/et_prodct_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -60,28 +51,9 @@
                     android:inputType="text"
                     android:textSize="14sp" />
 
-                <EditText
-                    android:id="@+id/editText6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/border_radius_invert"
-                    android:hint="Size"
-                    android:inputType="text"
-                    android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/editText7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/border_radius_invert"
-                    android:hint="Manufecturer"
-                    android:inputType="text"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/et_product_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_radius_invert"
@@ -90,6 +62,14 @@
                     android:inputType="textMultiLine"
                     android:lines="4"
                     android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/img_pod"
+                    android:layout_width="228dp"
+                    android:layout_height="99dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    app:srcCompat="@android:drawable/ic_menu_report_image" />
             </LinearLayout>
 
             <LinearLayout
@@ -101,7 +81,19 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btn_take_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+
+                    android:text="Take Photo"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/btn_submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_radius_red"

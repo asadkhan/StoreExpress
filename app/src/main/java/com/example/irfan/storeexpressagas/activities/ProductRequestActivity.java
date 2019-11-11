@@ -1,27 +1,61 @@
 package com.example.irfan.storeexpressagas.activities;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.Auth;
+import com.example.irfan.storeexpressagas.extras.Constants;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.extras.ValidationUtility;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.CartRequest;
+import com.example.irfan.storeexpressagas.models.GResponse;
+import com.example.irfan.storeexpressagas.models.ItemVM;
+import com.example.irfan.storeexpressagas.models.ProductReqRequest;
+import com.example.irfan.storeexpressagas.models.ProductReqResponse;
+import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductRequestActivity extends BaseActivity implements  NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
     public TextView tv;
     public ImageView i;
+    public EditText et_prodct_name,et_product_desc;
+    private ImageView imageView;
+    Button photoButton,btn_submit;
+    private static final int CAMERA_REQUEST = 1888;
+    public static String imgBase64;
+    private AsyncTask mMyTask, updateTask;
+
+
+    public Bitmap bitmap = null;
+    public String file="",mediaPath;
+    private static final int MY_CAMERA_PERMISSION_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +73,23 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_product_req);
         navigationView.setNavigationItemSelectedListener(this);
 
+        et_prodct_name =(EditText) findViewById(R.id.et_prodct_name);
+        et_product_desc =(EditText) findViewById(R.id.et_product_desc);
 
+        imageView =(ImageView) findViewById(R.id.img_pod);
+        photoButton = (Button) findViewById(R.id.btn_take_pic);
+        btn_submit=(Button) findViewById(R.id.btn_submit);
+        photoButton.setOnClickListener(this);
+        btn_submit.setOnClickListener(this);
     }
 
+    private boolean isValidate() {
+        if (!ValidationUtility.edittextValidator(et_prodct_name,et_product_desc)) {
+            return false;
+        }
+
+        return true;
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -138,11 +186,77 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
                 openActivity(CartActivity.class);
                 break;
 
+            case R.id.btn_take_pic:
+                Log.d(Constants.TAG,"Camera Click");
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
 
+                break;
+
+            case R.id.btn_submit:
+                Log.d(Constants.TAG,"Submit");
+               if(isValidate()) {
+                   updateTask = new AsyncTaskLoad().execute(mediaPath);
+               }
+                break;
 
         }
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
+        {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            bitmap=photo;
+            imageView.setImageBitmap(photo);
+        }
+    }
+
+    public void addProductReqest(){
+
+        ProductReqRequest pr = new ProductReqRequest();
+        pr.setRequestedProduct(et_prodct_name.getText().toString());
+        pr.setProductDesc(et_product_desc.getText().toString());
+        pr.setImage(imgBase64);
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(pr);
+        Log.d("testme", Reslog);
+
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).addProductRequest(pr).enqueue(new GeneralCallBack<ProductReqResponse>(this) {
+            @Override
+            public void onSuccess(ProductReqResponse response) {
+
+                if(!response.getIserror()) {
+
+                    Gson gson = new Gson();
+                    String Reslog = gson.toJson(response);
+                    Log.d("test", Reslog);
+
+                    Toast.makeText(ProductRequestActivity.this,response.getMessage() ,Toast.LENGTH_LONG).show();
+                    openActivity(MainActivity.class);
+                }hideProgress();
+
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Toast.makeText(ProductRequestActivity.this,throwable.getMessage() ,Toast.LENGTH_LONG).show();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -158,4 +272,37 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
         tv.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
     }
+
+    public class AsyncTaskLoad  extends AsyncTask<String, String, String> {
+        private final static String TAG = "AsyncTaskLoadImage";
+
+        @Override
+        protected String doInBackground(String... params) {
+
+
+            String encodedImage = "";
+            if(bitmap != null) {
+                Bitmap bm = bitmap;//BitmapFactory.decodeFile(mediaPath);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] byteArrayImage = baos.toByteArray();
+                encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+                encodedImage = encodedImage.replace("\n", "");
+            }
+            else{
+
+                Log.d(Constants.TAG,"Pic Null");
+            }
+            return encodedImage;
+        }
+        @Override
+        protected void onPostExecute(String base64) {
+            imgBase64 = base64;
+            // Toast.makeText(getApplicationContext(), imgBase64, Toast.LENGTH_SHORT).show();
+            //setProfileOnServer();
+            Log.d("ss","ss");
+            addProductReqest();
+        }
+    }
+
 }
