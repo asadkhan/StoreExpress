@@ -187,8 +187,8 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
         holder.TxtName1.setText(Obj.ProductoneName);
         holder.TxtName2.setText(Obj.ProducttwoName);
 
-        holder.TxtPrice1.setText("Rs "+Obj.ProductonePrice.toString());
-        holder.TxtPrice2.setText("Rs "+Obj.ProducttwoPrice.toString());
+        holder.TxtPrice1.setText("Rs "+Obj.ProductonePrice);
+        holder.TxtPrice2.setText("Rs "+Obj.ProducttwoPrice);
       //  holder.TxtPriceLabel.setText("Rs. ");
         if(imgURL1 !=null && !imgURL1.isEmpty()  ){
 
