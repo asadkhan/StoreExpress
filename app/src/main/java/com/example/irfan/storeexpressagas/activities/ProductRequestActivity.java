@@ -214,6 +214,7 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
     }
 
     public void addProductReqest(){
+        showProgress();
 try {
     ProductReqRequest pr = new ProductReqRequest();
     pr.setRequestedProduct(et_prodct_name.getText().toString());
@@ -256,7 +257,7 @@ try {
 
 }
 catch (Exception e){
-
+    hideProgress();
     Log.d("testme",e.getMessage());
 }
     }
