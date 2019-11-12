@@ -28,10 +28,11 @@
 
                 <ImageView
                     android:id="@+id/Img_Product1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dip"
-                    android:background="@drawable/product_shoe" />
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/product_shoe" />
 
                 <TextView
                     android:id="@+id/txt_name1"
