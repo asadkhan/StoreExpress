@@ -69,6 +69,7 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         recyclerViewCart = (RecyclerView) findViewById(R.id.recycler_view_cart);
 
         mAdapterCart = new CartItemListAdapter(this.cartItemList);
+        mAdapterCart.setItemListAdapterContext(this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         // RecyclerView.ItemDecoration itemDecoration =
@@ -151,12 +152,12 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
             //MenuHandler.currentOrders(this);
             openActivity(CartActivity.class);
         }
-//        else if (id == R.id.menu_pro_req) {
-//            mDrawerLayout.closeDrawers();
-//            openActivityProductRequest();
-//            //MenuHandler.orderHistory(this);
-//
-//        }
+        else if (id == R.id.menu_pro_req) {
+            mDrawerLayout.closeDrawers();
+            openActivityProductRequest();
+            //MenuHandler.orderHistory(this);
+
+        }
 else if (id == R.id.menu_profile) {
             mDrawerLayout.closeDrawers();
             openActivityProfile();
@@ -279,7 +280,36 @@ else if (id == R.id.menu_profile) {
 
 
     public  void UpdateTotal(){
-        text_total_price.setText(text_total_price.getText()+String.valueOf(CartActivity.TotalPrice));
+        text_total_price.setText("Rs. "+String.valueOf(CartActivity.TotalPrice));
+
+    }
+
+
+    public void UpdateCartAfterRemove(){
+
+        CartActivity.TotalPrice=0;
+
+        List<Cart> cartlst=Cart.getCart(this);
+        txt_total_item.setText(String.valueOf(cartlst.size()));
+        // cartItemList=cartlst;
+        tv.setText(String.valueOf(cartlst.size()));
+        for(Cart obj : cartlst){
+            Log.d("test","OBJ"+obj.ItemName);
+            Cart t = new Cart();
+            t.ItemQty=obj.ItemQty;
+            t.ItemID=obj.ItemID;
+            t.ItemImg=obj.ItemImg;
+            t.ItemPrice=obj.ItemPrice;
+            t.ItemName=obj.ItemName;
+            CartActivity.TotalPrice=CartActivity.TotalPrice+t.ItemPrice;
+
+
+
+        }
+        UpdateTotal();
+
+        setEmptyCartScreen(cartlst.size());
+
 
     }
 }

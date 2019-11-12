@@ -201,7 +201,7 @@ total=total+obj.ItemPrice;
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        DrawerLayout   mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_cart);
+        DrawerLayout   mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_checkoutF);
         if (id == R.id.menu_about) {
             // Handle the camera action
             mDrawerLayout.closeDrawers();
@@ -217,12 +217,12 @@ total=total+obj.ItemPrice;
             //MenuHandler.currentOrders(this);
             openActivity(CartActivity.class);
         }
-//        else if (id == R.id.menu_pro_req) {
-//            mDrawerLayout.closeDrawers();
-//            openActivityProductRequest();
-//            //MenuHandler.orderHistory(this);
-//
-//        }
+        else if (id == R.id.menu_pro_req) {
+            mDrawerLayout.closeDrawers();
+            openActivityProductRequest();
+            //MenuHandler.orderHistory(this);
+
+        }
         else if (id == R.id.menu_profile) {
             mDrawerLayout.closeDrawers();
             openActivityProfile();

@@ -65,12 +65,13 @@ public class AboutActivity extends BaseActivity implements NavigationView.OnNavi
             //MenuHandler.currentOrders(this);
             openActivity(CartActivity.class);
         }
-//        else if (id == R.id.menu_pro_req) {
-//            mDrawerLayout.closeDrawers();
-//            openActivityProductRequest();
-//            //MenuHandler.orderHistory(this);
-//
-//        }
+        else if (id == R.id.menu_pro_req) {
+            mDrawerLayout.closeDrawers();
+            openActivityProductRequest();
+            //MenuHandler.orderHistory(this);
+
+        }
+
         else if (id == R.id.menu_profile) {
             mDrawerLayout.closeDrawers();
             openActivityProfile();

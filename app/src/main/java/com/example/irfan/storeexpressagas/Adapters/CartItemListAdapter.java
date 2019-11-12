@@ -23,10 +23,10 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
 
     private Context mContext;
 
-    public void CartItemListAdapter(Context context){
+    public void setItemListAdapterContext(Context context){
+
 
         this.mContext=context;
-
     }
     private List<Cart> itemList;
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -61,14 +61,28 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
 
             switch (view.getId()) {
                 case R.id.btn_cart_plus:
+                    int qty= Integer.valueOf(txtQtyBox.getText().toString());
+                    qty++;
+                    if(qty <1){
+                        qty=1;
 
+                    }
+
+                    txtQtyBox.setText(String.valueOf(qty));
 
                     break;
 
                 case R.id.btn_cartitem_minus:
                     Log.d("test","show msg call");
                     //  showMessageDailogNextScreen("test","testing message",Login.class);
+                     qty= Integer.valueOf(txtQtyBox.getText().toString());
+                    qty--;
+                    if(qty <1){
+                        qty=1;
 
+                    }
+
+                    txtQtyBox.setText(String.valueOf(qty));
                     break;
 
                 case R.id.txt_cartitem_remove:
@@ -83,9 +97,9 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
 
 
                     if (mContext instanceof CartActivity) {
-                   CartActivity.TotalPrice = (CartActivity.TotalPrice-removedItem.ItemPrice);
-
-                        ((CartActivity) mContext).UpdateTotal();
+                  // CartActivity.TotalPrice = (CartActivity.TotalPrice-removedItem.ItemPrice);
+                        Log.d("test","show msg call2");
+                        ((CartActivity) mContext).UpdateCartAfterRemove();
                     }
                     break;
 

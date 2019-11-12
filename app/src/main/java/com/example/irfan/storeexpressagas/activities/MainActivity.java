@@ -58,6 +58,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private  int skip=0,take=20;
     public   List<FproductTwoCol> producListTwoCol = new ArrayList<>();
     final private int  REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 200;
+    public NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         GetPermissions();
 
@@ -115,7 +116,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewFProduct.setAdapter(this.mAdapterFproduct);
 
-
+        HideShowLogout();
 
 
 
@@ -126,6 +127,21 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 
 
+    }
+
+    private void HideShowLogout()
+    {
+
+        Menu nav_Menu = navigationView.getMenu();
+
+        if(sharedperference.getToken()==null || sharedperference.getToken()=="") {
+
+            nav_Menu.findItem(R.id.menu_logout).setVisible(false);
+
+        }else{
+
+            nav_Menu.findItem(R.id.menu_logout).setVisible(true);
+        }
     }
 
     @Override

@@ -30,7 +30,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView img1,img2;
         public TextView TxtPrice1,TxtPrice2,TxtName1,TxtName2,TxtAddToCart,TxtAddToCartTwo,TxtPriceLabel;
-       public LinearLayout Ladd ,Ladd1 ;
+       public LinearLayout Ladd ,Ladd1,layproone,layprotwo ;
 
         private String mItem;
 
@@ -51,6 +51,12 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
             Ladd1 = (LinearLayout )view.findViewById(R.id.ladd);
             Ladd.setOnClickListener(this);
             Ladd1.setOnClickListener(this);
+
+            layproone = (LinearLayout )view.findViewById(R.id.layproone);
+            layprotwo = (LinearLayout )view.findViewById(R.id.layprotwo);
+            layproone.setOnClickListener(this);
+            layprotwo.setOnClickListener(this);
+
             img1.setOnClickListener(this);
             TxtName1.setOnClickListener(this);
             img2.setOnClickListener(this);
@@ -64,7 +70,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
         public void onClick(View view) {
             Log.d("test:", "click");
 
-            if(view.getId()==R.id.Img_Product1  ) {
+            if(view.getId()==R.id.Img_Product1 || view.getId()==R.id.layproone ) {
               FproductTwoCol   mobj = productsList.get(getPosition());
 
                 Product obj =new Product();
@@ -81,7 +87,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
                 Log.d("test:", "image view click");
             }
 
-            if(view.getId()==R.id.ImgProduct2  ) {
+            if(view.getId()==R.id.ImgProduct2 || view.getId()==R.id.layprotwo ) {
                 //   obj = trackableOrderList.get(getPosition());
                 FproductTwoCol   mobj = productsList.get(getPosition());
                 Product obj =new Product();
