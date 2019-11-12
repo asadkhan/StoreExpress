@@ -30,20 +30,19 @@
                     android:id="@+id/Img_Product1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
                     android:adjustViewBounds="true"
+                    android:paddingTop="5dp"
                     android:src="@drawable/product_shoe" />
 
                 <TextView
                     android:id="@+id/txt_name1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:gravity="center"
-                    android:lines="3"
-                    android:maxHeight="3dp"
-                    android:maxLines="3"
-                    android:minHeight="3dp"
-                    android:minLines="3"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="2"
                     android:padding="5dp"
                     android:text=" Lindt Lindor 60%\nDark Choclate - 200grm"
                     android:textColor="#555455"
@@ -79,7 +78,8 @@
                     android:id="@+id/divider356"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#F7F5F5" />
+                    android:background="#F7F5F5"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/ladd1"
@@ -88,7 +88,8 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp">
+                    android:paddingTop="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/imageView221"
@@ -128,21 +129,21 @@
 
                 <ImageView
                     android:id="@+id/ImgProduct2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dip"
-                    android:background="@drawable/product_shoe" />
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/product_shoe" />
 
                 <TextView
                     android:id="@+id/txt_name2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:gravity="center"
-                    android:lines="3"
-                    android:maxHeight="3dp"
-                    android:maxLines="3"
-                    android:minHeight="3dp"
-                    android:minLines="3"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="2"
                     android:padding="5dp"
                     android:text=" Lindt Lindor 60%\nDark Choclate - 200grm Lindt Lindor 60%\nDark"
                     android:textColor="#555455"
@@ -178,7 +179,8 @@
                     android:id="@+id/divider35"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#F7F5F5" />
+                    android:background="#F7F5F5"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/ladd"
@@ -187,7 +189,8 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingBottom="10dip"
-                    android:paddingTop="10dip">
+                    android:paddingTop="10dip"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/imageView20"

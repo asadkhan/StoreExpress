@@ -31,7 +31,7 @@
         android:padding="5dp"
         android:text="99"
         android:textColor="#ff0000"
-        android:textSize="7sp"
+        android:textSize="10sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
