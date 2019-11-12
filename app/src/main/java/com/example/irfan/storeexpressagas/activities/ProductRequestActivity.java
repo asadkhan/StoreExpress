@@ -181,7 +181,7 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
                 break;
 
             case R.id.actionbar_notifcation_textview:
-                Log.d("test","show msg call");
+
                 //  showMessageDailogNextScreen("test","testing message",Login.class);
                 openActivity(CartActivity.class);
                 break;
@@ -214,48 +214,51 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
     }
 
     public void addProductReqest(){
+try {
+    ProductReqRequest pr = new ProductReqRequest();
+    pr.setRequestedProduct(et_prodct_name.getText().toString());
+    pr.setProductDesc(et_product_desc.getText().toString());
+    pr.setImage(imgBase64);
+    Gson gson = new Gson();
+    String Reslog = gson.toJson(pr);
+    Log.d("testme Req", Reslog);
 
-        ProductReqRequest pr = new ProductReqRequest();
-        pr.setRequestedProduct(et_prodct_name.getText().toString());
-        pr.setProductDesc(et_product_desc.getText().toString());
-        pr.setImage(imgBase64);
-        Gson gson = new Gson();
-        String Reslog= gson.toJson(pr);
-        Log.d("testme", Reslog);
+    RestClient.getAuthAdapterToekn(Auth.getToken(this)).addProductRequest(pr).enqueue(new GeneralCallBack<ProductReqResponse>(this) {
+        @Override
+        public void onSuccess(ProductReqResponse response) {
 
-        RestClient.getAuthAdapterToekn(Auth.getToken(this)).addProductRequest(pr).enqueue(new GeneralCallBack<ProductReqResponse>(this) {
-            @Override
-            public void onSuccess(ProductReqResponse response) {
+            if (!response.getIserror()) {
 
-                if(!response.getIserror()) {
+                Gson gson = new Gson();
+                String Reslog = gson.toJson(response);
+                Log.d("testme", Reslog);
 
-                    Gson gson = new Gson();
-                    String Reslog = gson.toJson(response);
-                    Log.d("test", Reslog);
-
-                    Toast.makeText(ProductRequestActivity.this,response.getMessage() ,Toast.LENGTH_LONG).show();
-                    openActivity(MainActivity.class);
-                }hideProgress();
-
-
-
-
+                Toast.makeText(ProductRequestActivity.this, response.getMessage(), Toast.LENGTH_LONG).show();
+                openActivity(MainActivity.class);
             }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                //onFailure implementation would be in GeneralCallBack class
-                hideProgress();
-                Toast.makeText(ProductRequestActivity.this,throwable.getMessage() ,Toast.LENGTH_LONG).show();
-                Log.d("test","failed");
-
-            }
+            hideProgress();
 
 
+        }
 
-        });
+        @Override
+        public void onFailure(Throwable throwable) {
+            //onFailure implementation would be in GeneralCallBack class
+            Log.d("testme", throwable.getMessage());
+            hideProgress();
+            Toast.makeText(ProductRequestActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
 
 
+        }
+
+
+    });
+
+}
+catch (Exception e){
+
+    Log.d("testme",e.getMessage());
+}
     }
 
     @Override
@@ -300,7 +303,7 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
             imgBase64 = base64;
             // Toast.makeText(getApplicationContext(), imgBase64, Toast.LENGTH_SHORT).show();
             //setProfileOnServer();
-            Log.d("ss","ss");
+            Log.d("testme",imgBase64);
             addProductReqest();
         }
     }
