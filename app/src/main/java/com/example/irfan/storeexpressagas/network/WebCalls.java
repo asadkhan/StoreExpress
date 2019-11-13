@@ -13,6 +13,7 @@ import com.example.irfan.storeexpressagas.models.OrderResponse;
 import com.example.irfan.storeexpressagas.models.PickupOrderDeatilResponse;
 import com.example.irfan.storeexpressagas.models.ProductReqRequest;
 import com.example.irfan.storeexpressagas.models.ProductReqResponse;
+import com.example.irfan.storeexpressagas.models.ProfileDetailsResponse;
 import com.example.irfan.storeexpressagas.models.ProfileResponse;
 import com.example.irfan.storeexpressagas.models.RegistrationRequest;
 
@@ -57,6 +58,9 @@ public interface WebCalls {
     Call<OrderResponse> placeORder(@Body OrderModel order);
 
 
+
+    @GET(EndPoints.GETPROFILE)
+    Call<ProfileDetailsResponse> getProfile();
 
     @GET(EndPoints.FPRODUCT)
     Call<FproductResponse> getFeaturepProducts(@Query("skip") int skip, @Query("take") int take);

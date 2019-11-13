@@ -61,26 +61,8 @@ public class ProfileActivity extends BaseActivity implements NavigationView.OnNa
 
     public void test(){
         showProgress();
-        Log.d("test",Auth.getToken(this));
-        List<ItemVM> itemlst = new ArrayList<>();
 
-        ItemVM obj= new ItemVM();
-        obj.Id=1;
-        obj.Quantity=2;
-        itemlst.add(obj);
-        ItemVM obj2= new ItemVM();
-        obj2.Id=2;
-        obj2.Quantity=2;
-        itemlst.add(obj2);
-
-        CartRequest cart = new CartRequest();
-        cart.items=itemlst;
-
-        Gson gson = new Gson();
-        String Reslog= gson.toJson(cart);
-        Log.d("test", Reslog);
-
-        RestClient.getAuthAdapterToekn(Auth.getToken(this)).test(cart).enqueue(new GeneralCallBack<GResponse>(this) {
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).getProfile().enqueue(new GeneralCallBack<GResponse>(this) {
             @Override
             public void onSuccess(GResponse response) {
 
