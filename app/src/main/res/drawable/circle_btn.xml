@@ -3,9 +3,9 @@
 <item>
     <shape android:shape="oval">
         <!--<solid android:color="@color/light_grey"/>-->
-        <!--<gradient android:type="radial" android:gradientRadius="100%p" android:startColor="@color/black" android:endColor="@color/light_grey" />-->
+        <gradient android:type="radial" android:gradientRadius="100%p" android:centerX="0.2" android:centerY="0.2" android:startColor="@color/light_grey" android:endColor="@color/grey_bg" />
         <corners android:radius="0dp" />
-        <padding android:bottom="3dp" android:left="0dp" android:right="3dp" android:top="0dp"></padding>
+        <padding android:bottom="2dp" android:left="0dp" android:right="2dp" android:top="0dp"></padding>
     </shape>
 </item>
 

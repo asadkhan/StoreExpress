@@ -43,9 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="top"
-                android:maxHeight="3dp"
                 android:maxLines="3"
-                android:minHeight="3dp"
                 android:minLines="3"
                 android:text="American Garden\nItalian Dressing 473ml"
                 android:textColor="#555455"
@@ -107,6 +105,8 @@
                     android:id="@+id/txt_cartitem_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:minLines="3"
                     android:text="Rs. "
                     android:textColor="#555455"
                     android:textSize="14sp" />
@@ -115,6 +115,9 @@
                     android:id="@+id/txt_cartitem_price2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:lines="3"
+                    android:maxLines="3"
+                    android:minLines="3"
                     android:textColor="#555455"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -124,10 +127,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|center"
+                android:gravity="right|center_vertical"
                 android:text="Remove"
                 android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
