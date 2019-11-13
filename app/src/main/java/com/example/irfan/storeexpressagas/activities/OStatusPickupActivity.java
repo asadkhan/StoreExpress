@@ -80,6 +80,7 @@ public PickupOrderDeatilResponse reOrderObj;
         recyclerViewCheckoutItem.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCheckoutItem.setAdapter(this.mAdapterCheckoutitem);
+        HideShowLogout(navigationView);
         getOrderDetails();
 //getCart();
 
@@ -292,7 +293,8 @@ openActivity(CartActivity.class);
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+           // MenuHandler.logOut(this);
+        logOut();
         }
 
 

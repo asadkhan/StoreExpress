@@ -9,9 +9,11 @@ import android.databinding.ViewDataBinding;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -73,7 +75,20 @@ public class BaseActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, activity));
     }
+    public void HideShowLogout(NavigationView n)
+    {
 
+        Menu nav_Menu = n.getMenu();
+
+        if(sharedperference.getToken()==null || sharedperference.getToken()=="") {
+
+            nav_Menu.findItem(R.id.menu_logout).setVisible(false);
+
+        }else{
+
+            nav_Menu.findItem(R.id.menu_logout).setVisible(true);
+        }
+    }
 
     public void openActivityProductRequest() {
 

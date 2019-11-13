@@ -96,7 +96,7 @@ public RadioButton rBtndelivery,rBtnPickUp;
         recyclerViewCheckoutItem.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCheckoutItem.setAdapter(this.mAdapterCheckoutitem);
-
+        HideShowLogout(navigationView);
         // set to pickup only
         OrderRequest.OrderType=1;
         OrderRequest.PaymentMeathod=0;
@@ -266,7 +266,8 @@ total=total+obj.ItemPrice;
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+           // MenuHandler.logOut(this);
+        logOut();
         }
 
 //         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

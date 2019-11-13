@@ -39,7 +39,7 @@ public class AllCatActivity extends BaseActivity implements NavigationView.OnNav
     public CategoryListAllCatAdapter mAdapterCat;
     public TextView tv;
     public ImageView i;
-
+private NavigationView navigationView;
 
 
     public List<CategoryResponse.catValue> catList = new ArrayList<>();
@@ -58,7 +58,7 @@ public class AllCatActivity extends BaseActivity implements NavigationView.OnNav
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_allcat);
+         navigationView = (NavigationView) findViewById(R.id.nav_view_allcat);
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -76,7 +76,7 @@ public class AllCatActivity extends BaseActivity implements NavigationView.OnNav
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewAllCat.setAdapter(this.mAdapterCat);
 
-
+        HideShowLogout(navigationView);
 
 getCategories();
 
@@ -180,7 +180,8 @@ getCategories();
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+            //MenuHandler.logOut(this);
+        logOut();
         }
 
 

@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewFProduct.setAdapter(this.mAdapterFproduct);
 
-        HideShowLogout();
+        HideShowLogout(navigationView);
 
 
 
@@ -129,20 +129,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     }
 
-    private void HideShowLogout()
-    {
 
-        Menu nav_Menu = navigationView.getMenu();
-
-        if(sharedperference.getToken()==null || sharedperference.getToken()=="") {
-
-            nav_Menu.findItem(R.id.menu_logout).setVisible(false);
-
-        }else{
-
-            nav_Menu.findItem(R.id.menu_logout).setVisible(true);
-        }
-    }
 
     @Override
     public void onClick(View v) {
@@ -293,7 +280,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 //onFailure implementation would be in GeneralCallBack class
                 hideProgress();
                 Log.d("test","failed");
-
+                getCategories();
             }
 
 

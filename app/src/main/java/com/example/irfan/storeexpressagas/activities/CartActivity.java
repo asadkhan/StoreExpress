@@ -82,7 +82,10 @@ public class CartActivity extends BaseActivity implements NavigationView.OnNavig
         recyclerViewCart.setAdapter(this.mAdapterCart);
         getCart();
         btnCheckout.setOnClickListener(this);
+        HideShowLogout(navigationView);
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -201,7 +204,8 @@ else if (id == R.id.menu_profile) {
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+          //  MenuHandler.logOut(this);
+       logOut();
         }
 
 
@@ -288,13 +292,13 @@ else if (id == R.id.menu_profile) {
     public void UpdateCartAfterRemove(){
 
         CartActivity.TotalPrice=0;
-
+        Log.d("test","Updateremove"+CartActivity.TotalPrice);
         List<Cart> cartlst=Cart.getCart(this);
         txt_total_item.setText(String.valueOf(cartlst.size()));
         // cartItemList=cartlst;
         tv.setText(String.valueOf(cartlst.size()));
         for(Cart obj : cartlst){
-            Log.d("test","OBJ"+obj.ItemName);
+
             Cart t = new Cart();
             t.ItemQty=obj.ItemQty;
             t.ItemID=obj.ItemID;
@@ -306,6 +310,8 @@ else if (id == R.id.menu_profile) {
 
 
         }
+
+        Log.d("test","UpdateremoveEnd"+CartActivity.TotalPrice);
         UpdateTotal();
 
         setEmptyCartScreen(cartlst.size());

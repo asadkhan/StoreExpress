@@ -34,7 +34,7 @@ import java.util.List;
 
 public class ProductsListActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
         View.OnClickListener {
-    public TextView tv;
+    public TextView tv,txt_catname;
     public ImageView i;
 
 
@@ -86,11 +86,11 @@ public class ProductsListActivity extends BaseActivity implements NavigationView
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewFProduct.setAdapter(this.mAdapterFproduct);
 
+        txt_catname=(TextView) findViewById(R.id.txt_catname);
 
+        txt_catname.setText(catName);
 
-
-
-
+        HideShowLogout(navigationView);
         // test();
 
         getProductsByCat();
@@ -326,7 +326,8 @@ public class ProductsListActivity extends BaseActivity implements NavigationView
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+          //  MenuHandler.logOut(this);
+        logOut();
         }
 
 

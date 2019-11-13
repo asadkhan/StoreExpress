@@ -210,7 +210,10 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
 
         // formatting the date appropriately.
 
+        if(Obj.ProducttwoPrice==null){
 
+            holder.layprotwo.setVisibility(View.GONE);
+        }
     }
 
     @Override

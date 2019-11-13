@@ -68,7 +68,7 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_product_details);
         navigationView.setNavigationItemSelectedListener(this);
-
+        HideShowLogout(navigationView);
         setQty();
 
 
@@ -182,7 +182,8 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+          //  MenuHandler.logOut(this);
+        logOut();
         }
 
 

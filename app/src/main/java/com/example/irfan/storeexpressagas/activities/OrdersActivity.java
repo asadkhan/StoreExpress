@@ -95,7 +95,7 @@ public class OrdersActivity extends BaseActivity implements NavigationView.OnNav
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCompOrders.setAdapter(this.mAdapterCompOrders);
 
-
+        HideShowLogout(navigationView);
         getOrders();
 
     }
@@ -171,7 +171,8 @@ public class OrdersActivity extends BaseActivity implements NavigationView.OnNav
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+           // MenuHandler.logOut(this);
+        logOut();
         }
 
         return  true;

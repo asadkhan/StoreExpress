@@ -81,6 +81,7 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
         btn_submit=(Button) findViewById(R.id.btn_submit);
         photoButton.setOnClickListener(this);
         btn_submit.setOnClickListener(this);
+        HideShowLogout(navigationView);
     }
 
     private boolean isValidate() {
@@ -161,7 +162,8 @@ public class ProductRequestActivity extends BaseActivity implements  NavigationV
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+            //MenuHandler.logOut(this);
+        logOut();
         }
 
 

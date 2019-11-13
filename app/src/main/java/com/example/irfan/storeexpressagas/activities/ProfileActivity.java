@@ -89,6 +89,7 @@ public class ProfileActivity extends BaseActivity implements NavigationView.OnNa
         recyclerViewAdress.setAdapter(this.mAdapter);
         txt_add_newaddress.setOnClickListener(this);
         btn_save.setOnClickListener(this);
+        HideShowLogout(navigationView);
         getProfile();
     }
 
@@ -245,7 +246,8 @@ public class ProfileActivity extends BaseActivity implements NavigationView.OnNa
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+           // MenuHandler.logOut(this);
+        logOut();
         }
 
 //         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

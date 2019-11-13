@@ -59,6 +59,7 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
         public void onClick(View view) {
             // Log.d("APITEST:", "onClick " + getPosition() + " " + mItem);
             Cart cartitem = itemList.get(getPosition());
+            Cart cart = new Cart();
             int total;
             switch (view.getId()) {
 
@@ -72,6 +73,7 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
                      total=qty*cartitem.ItemPrice;
                     txtQtyBox.setText(String.valueOf(qty));
                     txtItemPrice.setText("Rs. "+String.valueOf(total));
+                    cart.addToCartFromCart(cartitem.ItemID,cartitem.ItemName,cartitem.ItemPrice,qty,view.getContext(),cartitem.ItemImg);
 
                     if (mContext instanceof CartActivity) {
                         // CartActivity.TotalPrice = (CartActivity.TotalPrice-removedItem.ItemPrice);
@@ -93,6 +95,9 @@ public class CartItemListAdapter extends RecyclerView.Adapter<CartItemListAdapte
                     total=qty*cartitem.ItemPrice;
                     txtQtyBox.setText(String.valueOf(qty));
                     txtItemPrice.setText("Rs. "+String.valueOf(total));
+
+
+                    cart.addToCartFromCart(cartitem.ItemID,cartitem.ItemName,cartitem.ItemPrice,qty,view.getContext(),cartitem.ItemImg);
 
                     if (mContext instanceof CartActivity) {
                         // CartActivity.TotalPrice = (CartActivity.TotalPrice-removedItem.ItemPrice);

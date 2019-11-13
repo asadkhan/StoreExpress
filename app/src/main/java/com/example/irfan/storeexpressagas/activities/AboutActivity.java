@@ -23,6 +23,8 @@ import com.example.irfan.storeexpressagas.models.Cart;
 public class AboutActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
     public TextView tv;
     public ImageView i;
+    private         NavigationView navigationView ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +39,10 @@ public class AboutActivity extends BaseActivity implements NavigationView.OnNavi
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_about);
+         navigationView = (NavigationView) findViewById(R.id.nav_view_about);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        HideShowLogout(navigationView);
     }
 
 
@@ -115,7 +117,8 @@ public class AboutActivity extends BaseActivity implements NavigationView.OnNavi
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+            //MenuHandler.logOut(this);
+            logOut();
         }
 
 

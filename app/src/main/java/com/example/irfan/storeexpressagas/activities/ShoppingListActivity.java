@@ -40,7 +40,7 @@ public class ShoppingListActivity extends BaseActivity implements NavigationView
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_shopping);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        HideShowLogout(navigationView);
     }
 
 
@@ -114,7 +114,8 @@ public class ShoppingListActivity extends BaseActivity implements NavigationView
 
 
         else if (id == R.id.menu_logout) {
-            MenuHandler.logOut(this);
+           // MenuHandler.logOut(this);
+        logOut();
         }
 
 

@@ -37,9 +37,9 @@ public class Cart {
 
         }
 
-        Log.d("test","newitem"+newItem);
-        if(newItem){
 
+        if(newItem){
+            Log.d("test","newitem"+newItem);
             Cart cartItem = new Cart();
             cartItem.ItemID=itemID;
             cartItem.ItemName=itemName;
@@ -49,8 +49,49 @@ public class Cart {
             databaseHelper.addToCart(cartItem);
         }
         else{
-
+            Log.d("test","updateitem"+newItem);
             int qty=item.ItemQty +itemQty;
+            int price=(qty*itemPrice);
+            databaseHelper.setItemQty(item.ItemID,qty,price);
+
+
+
+        }
+
+    }
+
+
+    public static void addToCartFromCart(int itemID, String itemName, int itemPrice, int itemQty, Context context,String ITemimg){
+
+        DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
+
+        Cart item=databaseHelper.getCartItem(itemID);
+
+
+        boolean newItem=true;
+        if(item ==null){
+
+            newItem=false;
+        }
+        if(item.ItemID != 0){
+            newItem=false;
+
+        }
+
+
+        if(newItem){
+            Log.d("test","newitem"+newItem);
+            Cart cartItem = new Cart();
+            cartItem.ItemID=itemID;
+            cartItem.ItemName=itemName;
+            cartItem.ItemQty=itemQty;
+            cartItem.ItemPrice=(itemPrice*itemQty);
+            cartItem.ItemImg=ITemimg;
+            databaseHelper.addToCart(cartItem);
+        }
+        else{
+            Log.d("test","updateitem"+newItem);
+            int qty=item.ItemQty;
             int price=(qty*itemPrice);
             databaseHelper.setItemQty(item.ItemID,qty,price);
 
