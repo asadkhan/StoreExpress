@@ -44,7 +44,7 @@ import java.util.List;
 public class ProfileActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
         View.OnClickListener{
     private static final int ADD_ADDRESS_ACTIVITY_REQUEST_CODE = 0;
-    public TextView tv,txt_add_newaddress;
+    public TextView tv,txt_add_newaddress,txt_profile_lbl;
     public ImageView i;
     public RecyclerView recyclerViewAdress;
     private Button btn_save;
@@ -75,7 +75,8 @@ public class ProfileActivity extends BaseActivity implements NavigationView.OnNa
         btn_save=(Button)findViewById(R.id.btn_save);
         txt_add_newaddress=(TextView) findViewById(R.id.txt_add_newaddress);
         recyclerViewAdress = (RecyclerView) findViewById(R.id.recycler_view_adresses);
-
+        txt_profile_lbl=(TextView)findViewById(R.id.txt_profile_lbl);
+        txt_profile_lbl.requestFocus();
         mAdapter = new AddressListProfileAdapter(this.adddressLst,this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 

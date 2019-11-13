@@ -26,11 +26,13 @@
                 android:paddingTop="15dip">
 
                 <TextView
-                    android:id="@+id/textView60"
+                    android:id="@+id/txt_profile_lbl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dip"
                     android:text="PROFILE"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:textColor="@color/darkGrey"
                     android:textSize="18sp" />
             </LinearLayout>
