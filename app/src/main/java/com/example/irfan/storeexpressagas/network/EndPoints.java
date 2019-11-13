@@ -15,5 +15,7 @@ public class EndPoints {
     static final String CUSTOMERSORDERS=API_PREFIX+"order/GetCustomerOrders";
     static final String ADDPRODUCTREQUEST=API_PREFIX+"item/addProductRequest";
     static final String GETPROFILE=API_PREFIX+"accounts/GetProfile";
+    static final String REMOVEADDRESS=API_PREFIX+"useraddress/removeUserAddress";
+    static final String ADDADDRESS=API_PREFIX+"useraddress/adduseraddress";
 
 }

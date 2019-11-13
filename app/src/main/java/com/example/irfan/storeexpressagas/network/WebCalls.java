@@ -1,4 +1,5 @@
 package com.example.irfan.storeexpressagas.network;
+import com.example.irfan.storeexpressagas.models.AddAddressRequest;
 import com.example.irfan.storeexpressagas.models.AddressResponse;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
@@ -80,6 +81,13 @@ public interface WebCalls {
 
     @POST(EndPoints.ADDPRODUCTREQUEST)
     Call<ProductReqResponse> addProductRequest(@Body ProductReqRequest productReq);
+
+    @POST(EndPoints.REMOVEADDRESS)
+    Call<ProductReqResponse> removeAddress(@Body AddressResponse.Value addressReq);
+
+    @POST(EndPoints.ADDADDRESS)
+    Call<ProductReqResponse> addAddress(@Body AddAddressRequest addressReq);
+
 
 
 

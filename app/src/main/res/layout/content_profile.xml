@@ -56,6 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:editable="false"
                     android:background="@drawable/border_radius_invert"
                     android:ems="10"
                     android:hint="Email Address"
@@ -111,40 +112,14 @@
                 android:layout_margin="15dip"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_adresses"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dip"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <TextView
-                        android:id="@+id/textView98"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
-                        android:gravity="top|left"
-                        android:text="@string/checkout_add"
-                        android:textColor="@color/darkGrey"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
-
-                    <TextView
-                        android:id="@+id/textView111"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
-                        android:gravity="right"
-                        android:text="Edit"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
+                    android:layout_height="wrap_content" />
 
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/txt_add_newaddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -227,7 +202,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btn_save"
                     android:layout_width="300dip"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
