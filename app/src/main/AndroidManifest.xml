@@ -44,7 +44,10 @@
         <activity android:name=".activities.PaymentMethodActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.OrderStatusDeliveryActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.ProductsListActivity" android:screenOrientation="portrait"  android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity android:name=".activities.AddAddressDailog"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
+            android:theme="@style/NoTitleDialog"></activity>
     </application>
 
 </manifest>

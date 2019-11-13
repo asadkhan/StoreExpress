@@ -10,15 +10,15 @@ public class ProfileDetailsResponse {
     @SerializedName("code")
     @Expose
     private Integer code;
+    @SerializedName("date")
+    @Expose
+    private String date;
     @SerializedName("iserror")
     @Expose
     private Boolean iserror;
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("date")
-    @Expose
-    private String date;
     @SerializedName("value")
     @Expose
     private Value value;
@@ -29,6 +29,14 @@ public class ProfileDetailsResponse {
 
     public void setCode(Integer code) {
         this.code = code;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Boolean getIserror() {
@@ -47,14 +55,6 @@ public class ProfileDetailsResponse {
         this.message = message;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public Value getValue() {
         return value;
     }
@@ -62,45 +62,38 @@ public class ProfileDetailsResponse {
     public void setValue(Value value) {
         this.value = value;
     }
+
+
     public class Value {
 
-        @SerializedName("id")
-        @Expose
-        private String id;
-        @SerializedName("email")
-        @Expose
-        private String email;
-        @SerializedName("username")
-        @Expose
-        private Object username;
-        @SerializedName("fullName")
-        @Expose
-        private String fullName;
-        @SerializedName("phoneNumber")
-        @Expose
-        private String phoneNumber;
-        @SerializedName("roleName")
-        @Expose
-        private Object roleName;
-        @SerializedName("password")
-        @Expose
-        private Object password;
         @SerializedName("addedOn")
         @Expose
         private String addedOn;
+        @SerializedName("email")
+        @Expose
+        private String email;
+        @SerializedName("fullName")
+        @Expose
+        private String fullName;
+        @SerializedName("id")
+        @Expose
+        private String id;
         @SerializedName("level")
         @Expose
         private Integer level;
+        @SerializedName("phoneNumber")
+        @Expose
+        private String phoneNumber;
         @SerializedName("userAddress")
         @Expose
-        private List<Object> userAddress = null;
+        private List<UserAddress> userAddress = null;
 
-        public String getId() {
-            return id;
+        public String getAddedOn() {
+            return addedOn;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setAddedOn(String addedOn) {
+            this.addedOn = addedOn;
         }
 
         public String getEmail() {
@@ -111,14 +104,6 @@ public class ProfileDetailsResponse {
             this.email = email;
         }
 
-        public Object getUsername() {
-            return username;
-        }
-
-        public void setUsername(Object username) {
-            this.username = username;
-        }
-
         public String getFullName() {
             return fullName;
         }
@@ -127,36 +112,12 @@ public class ProfileDetailsResponse {
             this.fullName = fullName;
         }
 
-        public String getPhoneNumber() {
-            return phoneNumber;
+        public String getId() {
+            return id;
         }
 
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-
-        public Object getRoleName() {
-            return roleName;
-        }
-
-        public void setRoleName(Object roleName) {
-            this.roleName = roleName;
-        }
-
-        public Object getPassword() {
-            return password;
-        }
-
-        public void setPassword(Object password) {
-            this.password = password;
-        }
-
-        public String getAddedOn() {
-            return addedOn;
-        }
-
-        public void setAddedOn(String addedOn) {
-            this.addedOn = addedOn;
+        public void setId(String id) {
+            this.id = id;
         }
 
         public Integer getLevel() {
@@ -167,12 +128,83 @@ public class ProfileDetailsResponse {
             this.level = level;
         }
 
-        public List<Object> getUserAddress() {
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
+        public List<UserAddress> getUserAddress() {
             return userAddress;
         }
 
-        public void setUserAddress(List<Object> userAddress) {
+        public void setUserAddress(List<UserAddress> userAddress) {
             this.userAddress = userAddress;
+        }
+
+    }
+
+
+
+
+    public class UserAddress {
+
+        @SerializedName("id")
+        @Expose
+        private Double id;
+        @SerializedName("address")
+        @Expose
+        private String address;
+        @SerializedName("addressType")
+        @Expose
+        private String addressType;
+        @SerializedName("addedOn")
+        @Expose
+        private String addedOn;
+        @SerializedName("isActive")
+        @Expose
+        private Boolean isActive;
+
+        public Double getId() {
+            return id;
+        }
+
+        public void setId(Double id) {
+            this.id = id;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getAddressType() {
+            return addressType;
+        }
+
+        public void setAddressType(String addressType) {
+            this.addressType = addressType;
+        }
+
+        public String getAddedOn() {
+            return addedOn;
+        }
+
+        public void setAddedOn(String addedOn) {
+            this.addedOn = addedOn;
+        }
+
+        public Boolean getIsActive() {
+            return isActive;
+        }
+
+        public void setIsActive(Boolean isActive) {
+            this.isActive = isActive;
         }
 
     }
