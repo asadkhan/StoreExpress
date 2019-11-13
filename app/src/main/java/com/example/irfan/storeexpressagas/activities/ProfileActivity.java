@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.ItemVM;
+import com.example.irfan.storeexpressagas.models.ProfileDetailsResponse;
 import com.example.irfan.storeexpressagas.models.ProfileResponse;
 import com.example.irfan.storeexpressagas.network.RestClient;
 import com.google.gson.Gson;
@@ -37,6 +39,8 @@ public class ProfileActivity extends BaseActivity implements NavigationView.OnNa
 
     public TextView tv;
     public ImageView i;
+
+    public EditText et_name,et_email,et_phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,24 +57,31 @@ public class ProfileActivity extends BaseActivity implements NavigationView.OnNa
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
         navigationView.setNavigationItemSelectedListener(this);
-
-        test();
+        et_name =(EditText) findViewById(R.id.et_name);
+        et_email =(EditText) findViewById(R.id.et_email);
+        et_phone =(EditText) findViewById(R.id.et_phone);
+        getProfile();
     }
 
 
 
-    public void test(){
+    public void getProfile(){
         showProgress();
 
-        RestClient.getAuthAdapterToekn(Auth.getToken(this)).getProfile().enqueue(new GeneralCallBack<GResponse>(this) {
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).getProfile().enqueue(new GeneralCallBack<ProfileDetailsResponse>(this) {
             @Override
-            public void onSuccess(GResponse response) {
+            public void onSuccess(ProfileDetailsResponse response) {
 
                 Gson gson = new Gson();
                 String Reslog= gson.toJson(response);
                 Log.d("test", Reslog);
                 hideProgress();
+                if(!response.getIserror()){
 
+                    et_name.setText( response.getValue().getFullName());
+                    et_email.setText(response.getValue().getEmail());
+                    et_phone.setText(response.getValue().getPhoneNumber());
+                }
 
 
             }
