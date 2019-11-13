@@ -76,8 +76,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="false"
-                    android:maxHeight="200dp"
-                    android:minHeight="150dp"
+                    android:maxHeight="500dp"
+                    android:minHeight="50dp"
                     android:src="@android:drawable/ic_menu_camera" />
             </LinearLayout>
 
@@ -96,7 +96,7 @@
                     android:layout_marginBottom="10dp"
 
                     android:background="@drawable/border_radius_red"
-                    android:text="Take Photo"
+                    android:text="ATTACH PHOTO"
                     android:textColor="@android:color/white" />
 
                 <Button
@@ -104,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_radius_red"
-                    android:text="REQUEST"
+                    android:text="REQUEST A PRODUCT"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp" />
             </LinearLayout>
