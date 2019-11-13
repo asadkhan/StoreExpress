@@ -2,7 +2,7 @@
     <string name="app_name">Agha\'s</string>
     <string name="strike_line">Don\'t have an account?</string>
     <string name="pass">Password</string>
-    <string name="checkout_add">HOME\n141, 3rd Street, Off Khayaban-e-Rahat,\nPhase VI, DHA, Karachi</string>
+    <string name="checkout_add">141, 3rd Street, Off Khayaban-e-Rahat,\nPhase VI, DHA, Karachi</string>
     <string name="action_settings">Settings</string>
     <string name="pro_price_before">100000</string>
     <string name="pro_price_after"><strike>100000</strike></string>
