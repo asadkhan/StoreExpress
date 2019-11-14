@@ -91,7 +91,7 @@ public class Cart {
         }
         else{
             Log.d("test","updateitem"+newItem);
-            int qty=item.ItemQty;
+            int qty=itemQty;
             int price=(qty*itemPrice);
             databaseHelper.setItemQty(item.ItemID,qty,price);
 

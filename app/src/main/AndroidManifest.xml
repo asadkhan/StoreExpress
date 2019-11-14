@@ -5,6 +5,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
 
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,6 +24,11 @@
         android:roundIcon="@mipmap/launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCqITNqgnieoz27O3JQcRUblt6zC6nmfzg" />
+
         <activity
             android:name=".activities.SplashScreen"
             android:screenOrientation="portrait"
