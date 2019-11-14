@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -59,12 +60,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public   List<FproductTwoCol> producListTwoCol = new ArrayList<>();
     final private int  REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 200;
     public NavigationView navigationView;
-
+public LinearLayout layno_internet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_shop_by_cate);
+        layno_internet =(LinearLayout) findViewById(R.id.layno_internet);
         //parentBinding = binding;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // toolbar.inflateMenu(R.menu.navigation_menu);
@@ -122,12 +124,33 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 
         // test();
+if(haveNetworkConnection()){
+showNointernet(false);
+    getCategories();
+}
+    else{
+    showNointernet(true);
 
-        getCategories();
+}
+
 
 
 
     }
+
+    public void showNointernet(boolean show) {
+        if (show) {
+            layno_internet.setVisibility(View.VISIBLE);
+            recyclerViewFProduct.setVisibility(View.GONE);
+        }
+        else{
+            layno_internet.setVisibility(View.GONE);
+            recyclerViewFProduct.setVisibility(View.VISIBLE);
+
+
+        }
+    }
+
 
 
 

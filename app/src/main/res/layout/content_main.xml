@@ -61,12 +61,23 @@
         android:fadingEdgeLength="5dp"
         android:scrollbars="vertical" />
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/layno_internet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical|center"
         android:orientation="vertical"
         android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/no_internet_icon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:src="@android:drawable/stat_notify_error"
+            android:tint="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/no_internet"
@@ -75,22 +86,13 @@
             android:layout_below="@+id/no_internet_icon"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="No Internet Connectivity"
+            android:text="No Internet Connection!"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/no_internet_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:src="@android:drawable/stat_notify_error"
-            android:tint="@color/colorPrimary" />
 
-    </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
