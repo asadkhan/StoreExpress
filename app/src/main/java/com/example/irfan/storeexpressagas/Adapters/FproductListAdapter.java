@@ -212,7 +212,7 @@ public class FproductListAdapter  extends RecyclerView.Adapter<FproductListAdapt
 
         if(Obj.ProducttwoPrice==null){
 
-            holder.layprotwo.setVisibility(View.GONE);
+         //   holder.layprotwo.setVisibility(View.GONE);
         }
     }
 
