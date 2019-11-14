@@ -71,7 +71,7 @@ public class CheckOutCartItemAdapter extends RecyclerView.Adapter<CheckOutCartIt
         Cart cartitem = itemList.get(position);
 
 
-        String name=cartitem.ItemName+ "     X "+ String.valueOf(cartitem.ItemQty);
+        String name=String.valueOf(position+1)+". " +cartitem.ItemName+ "     X "+ String.valueOf(cartitem.ItemQty);
         holder.txtItemName.setText(name);
 
         holder.txtItemPrice.setText("Rs "+String.valueOf(cartitem.ItemPrice));
