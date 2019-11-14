@@ -74,72 +74,74 @@ public class Login  extends BaseActivity implements View.OnClickListener {
         return true;
     }
 public void signIN(){
-
+try {
     showProgress();
-       Log.d("test", "intest");
-       RestClient.getAuthAdapter().loginUser(Txt_email.getText().toString(), Txt_password.getText().toString(), "password").enqueue(new GeneralCallBack<LoginResponse>(this) {
-           @Override
-           public void onSuccess(LoginResponse response) {
+    Log.d("test", "intest");
+    RestClient.getAuthAdapter().loginUser(Txt_email.getText().toString(), Txt_password.getText().toString(), "password").enqueue(new GeneralCallBack<LoginResponse>(this) {
+        @Override
+        public void onSuccess(LoginResponse response) {
 
-               hideProgress();
+            hideProgress();
 
-               if (response.getAccessToken() != null && !response.getAccessToken().equals("")) {
+            if (response.getAccessToken() != null && !response.getAccessToken().equals("")) {
 
-                   sharedperference.saveToken(response.getAccessToken().toString());
-                        String loginDetails=sharedperference.getLogin();
-                   switch (loginDetails) {
-                       case "":
+                sharedperference.saveToken(response.getAccessToken().toString());
+                String loginDetails = sharedperference.getLogin();
+                switch (loginDetails) {
+                    case "":
 
-                           openActivity(MainActivity.class);
-                           break;
-                       case "checkout":
-                           sharedperference.saveLogin("");
-                           openActivity(CheckOutFirstActivity.class);
-                           break;
+                        openActivity(MainActivity.class);
+                        break;
+                    case "checkout":
+                        sharedperference.saveLogin("");
+                        openActivity(CheckOutFirstActivity.class);
+                        break;
 
-                       case "productrequest":
-                           sharedperference.saveLogin("");
-                           openActivity(ProductRequestActivity.class);
-                           break;
-                       case "profile":
-                           sharedperference.saveLogin("");
-                           openActivity(ProfileActivity.class);
-                           break;
-
-
-                   }
+                    case "productrequest":
+                        sharedperference.saveLogin("");
+                        openActivity(ProductRequestActivity.class);
+                        break;
+                    case "profile":
+                        sharedperference.saveLogin("");
+                        openActivity(ProfileActivity.class);
+                        break;
 
 
-
-               } else {
-
-                   Toast.makeText(getApplicationContext(), "incorrect",
-                           Toast.LENGTH_LONG).show();
+                }
 
 
-               }
+            } else {
 
-           }
-
-           @Override
-           public void onFailure(Throwable throwable) {
-               //onFailure implementation would be in GeneralCallBack class
-
-               Toast.makeText(getApplicationContext(), "Failed",
-                       Toast.LENGTH_LONG).show();
-
-               hideProgress();
-               Log.d("test", "failed");
-
-           }
+                Toast.makeText(getApplicationContext(), "incorrect",
+                        Toast.LENGTH_LONG).show();
 
 
+            }
+
+        }
+
+        @Override
+        public void onFailure(Throwable throwable) {
+            //onFailure implementation would be in GeneralCallBack class
+
+            Toast.makeText(getApplicationContext(), "Incorrect Login Or Password!",
+                    Toast.LENGTH_LONG).show();
+
+            hideProgress();
+            Log.d("test", "failed");
+
+        }
 
 
+    });
+}
+catch (Exception e){
 
+    hideProgress();
+    Toast.makeText(getApplicationContext(), "Incorrect Login Or Password! ",
+            Toast.LENGTH_LONG).show();
 
-       });
-
+}
    }
 
 

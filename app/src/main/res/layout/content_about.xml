@@ -81,14 +81,17 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView2"
+
+                <fragment
+                    android:id="@+id/map"
+                    class="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/market_front" />
+                    android:layout_height="match_parent" />
+
+
             </LinearLayout>
 
             <LinearLayout

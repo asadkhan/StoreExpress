@@ -1,6 +1,9 @@
 package com.example.irfan.storeexpressagas.activities;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,12 +22,24 @@ import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class AboutActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+public class AboutActivity extends BaseActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
     public TextView tv;
     public ImageView i;
     private         NavigationView navigationView ;
+    private GoogleMap mMap;
+    static final LatLng Aghas = new LatLng(24.8283061, 67.0355426);
+    public  LatLng custLocation;
+    public Marker MeMarker = null;
 
+    float zoomLevel = (float) 16.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +58,95 @@ public class AboutActivity extends BaseActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
 
         HideShowLogout(navigationView);
+        setupMAP();
+    }
+
+
+    public void setupMAP(){
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+
+
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+
+        //custLocation = getLocationFromAddress(this, OrderDetails.CustomerAddress);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+
+        mMap.setMyLocationEnabled(true);
+        custLocation=Aghas;
+        if(custLocation != null) {
+
+            //  mMap.animateCamera( CameraUpdateFactory.zoomTo( 17.0f ) );
+
+/*
+        MarkerOptions markerOptions = new MarkerOptions();
+
+        // Setting the position for the marker
+        markerOptions.position(custLocation);
+
+        // Setting the title for the marker.
+        // This will be displayed on taping the marker
+        markerOptions.title("you");
+
+        // Clears the previously touched position
+
+
+        mMap.addMarker(markerOptions).showInfoWindow();
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(custLocation, zoomLevel));
+        }
+        else{
+        custLocation=HAMBURG;
+        MarkerOptions markerOptions = new MarkerOptions();
+
+        // Setting the position for the marker
+        markerOptions.position(HAMBURG);
+
+        // Setting the title for the marker.
+        // This will be displayed on taping the marker
+        markerOptions.title("title");
+
+        mMap.addMarker(markerOptions).showInfoWindow();
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(HAMBURG, zoomLevel));
+*/
+
+
+            this.MeMarker = mMap.addMarker(new MarkerOptions()
+                    .position(custLocation)
+
+                    .title("Agha's Supermarket")
+
+                    .snippet("Agha's Supermarket")
+
+            );
+            this.MeMarker.showInfoWindow();
+            //mMap.addMarker(MeMarker.).showInfoWindow();
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(custLocation,zoomLevel));
+
+        }
+
+
+
+
     }
 
 
