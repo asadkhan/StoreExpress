@@ -118,6 +118,8 @@ EditText Txt_name,Txt_phone,Txt_email,Txt_password;
         Gson g = new Gson();
         String userJson= g.toJson(userObj);
         Log.d("test", userJson);
+
+
         RestClient.getAuthAdapter().registerUser(userObj).enqueue(new GeneralCallBack<GResponse>(this) {
             @Override
             public void onSuccess(GResponse response) {
