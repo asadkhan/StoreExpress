@@ -2,6 +2,7 @@ package com.example.irfan.storeexpressagas.activities;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
@@ -29,6 +30,7 @@ import com.example.irfan.storeexpressagas.Adapters.CategoryListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.FproductListAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
+import com.example.irfan.storeexpressagas.backgroundservices.NotificationsService;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.databinding.*;
 import com.example.irfan.storeexpressagas.extras.AdapterCallback;
@@ -121,6 +123,13 @@ public LinearLayout layno_internet;
         HideShowLogout(navigationView);
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //  this.startForegroundService(new Intent(this, LocationService.class));
+         //   this.startForegroundService(new Intent(this, NotificationsService.class));
+            startService(new Intent(this, NotificationsService.class));
+        } else {
+            startService(new Intent(this, NotificationsService.class));
+        }
 
 
         // test();

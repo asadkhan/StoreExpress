@@ -17,5 +17,6 @@ public class EndPoints {
     static final String GETPROFILE=API_PREFIX+"accounts/GetProfile";
     static final String REMOVEADDRESS=API_PREFIX+"useraddress/removeUserAddress";
     static final String ADDADDRESS=API_PREFIX+"useraddress/adduseraddress";
+    static final String GETNOTIFICATION=API_PREFIX+"notification/GetNotification";
 
 }

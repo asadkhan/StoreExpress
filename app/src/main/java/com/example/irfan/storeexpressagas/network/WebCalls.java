@@ -8,6 +8,7 @@ import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.GeneralResponse;
 import com.example.irfan.storeexpressagas.models.LoginResponse;
+import com.example.irfan.storeexpressagas.models.NotificationResponse;
 import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
 import com.example.irfan.storeexpressagas.models.OrderResponse;
@@ -46,6 +47,13 @@ public interface WebCalls {
 
     @GET(EndPoints.ADRESSES)
     Call<AddressResponse> getAddresses();
+
+
+    @GET(EndPoints.GETNOTIFICATION)
+    Call<NotificationResponse> getNotifications();
+
+
+
 
 
     @GET(EndPoints.CATEGORIES)

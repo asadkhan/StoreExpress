@@ -116,10 +116,8 @@ public RadioButton rBtndelivery,rBtnPickUp;
 
         }
         else{
-           // lbl_pickup_warning.setVisibility(View.GONE);
-            lbl_pickup_msg.setText(obj.MSG);
+            lbl_pickup_warning.setVisibility(View.GONE);
 
-            lbl_pickup_warning.setVisibility(View.VISIBLE);
         }
 
 

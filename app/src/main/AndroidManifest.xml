@@ -59,6 +59,23 @@
             android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:theme="@style/NoTitleDialog"></activity>
+
+
+        <service
+            android:name=".backgroundservices.NotificationsService"
+            android:enabled="true"
+
+            android:launchMode="singleTop" />
+
+        <receiver
+            android:name=".backgroundservices.SensorRestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped">
+            <intent-filter>
+                <action android:name="ac.in.ActivityRecognition.RestartSensor" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
