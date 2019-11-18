@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/lbl_pickup_warning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_orange_light"
@@ -16,6 +17,7 @@
         android:paddingTop="15dip">
 
         <TextView
+            android:id="@+id/lbl_pickup_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dip"

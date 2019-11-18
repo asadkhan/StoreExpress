@@ -33,6 +33,7 @@ import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.ItemVM;
+import com.example.irfan.storeexpressagas.models.OpeningTiming;
 import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
 import com.example.irfan.storeexpressagas.models.OrderResponse;
@@ -48,6 +49,9 @@ public class CheckOutFirstActivity extends BaseActivity implements NavigationVie
     public CheckOutCartItemAdapter mAdapterCheckoutitem;
 
     public Button btnNext;
+
+    public RelativeLayout lbl_pickup_warning;
+    public TextView lbl_pickup_msg;
 
 public RadioButton rBtndelivery,rBtnPickUp;
 
@@ -67,7 +71,9 @@ public RadioButton rBtndelivery,rBtnPickUp;
         rBtndelivery.setOnCheckedChangeListener(this);
         rBtnPickUp = (RadioButton) findViewById(R.id.radioPickUp);
 
+        lbl_pickup_msg=(TextView) findViewById(R.id.lbl_pickup_msg);
 
+        lbl_pickup_warning=(RelativeLayout) findViewById(R.id.lbl_pickup_warning);
         txt_total =(TextView) findViewById(R.id.txt_total);
         rBtnPickUp.setOnCheckedChangeListener(this);
         btnNext=(Button) findViewById(R.id.btn_next);
@@ -102,6 +108,20 @@ public RadioButton rBtndelivery,rBtnPickUp;
         OrderRequest.PaymentMeathod=0;
         OrderRequest.PaymentStatus=2;
         //
+        OpeningTiming obj=GetShopOpeningTime();
+        if(obj.showMSG){
+            lbl_pickup_msg.setText(obj.MSG);
+
+            lbl_pickup_warning.setVisibility(View.VISIBLE);
+
+        }
+        else{
+           // lbl_pickup_warning.setVisibility(View.GONE);
+            lbl_pickup_msg.setText(obj.MSG);
+
+            lbl_pickup_warning.setVisibility(View.VISIBLE);
+        }
+
 
         getCart();
 

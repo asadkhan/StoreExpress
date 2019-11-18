@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.extras.Orders;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.OpeningTiming;
 import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
 import com.example.irfan.storeexpressagas.models.OrderResponse;
@@ -45,11 +47,17 @@ public PickupOrderDeatilResponse reOrderObj;
     public ImageView i;
     public static int orderid;
     public Button  btnOders,btn_reOrder;
+    public LinearLayout lbl_pickup_warning;
+    public TextView lbl_pickup_msg;
     public static int OrderID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_status_pickup);
+
+        lbl_pickup_msg=(TextView) findViewById(R.id.lbl_pickup_msg);
+
+        lbl_pickup_warning=(LinearLayout) findViewById(R.id.lbl_pickup_warning);
 
         txt_orderID =(TextView) findViewById(R.id.txt_orderID) ;
         txt_totalprice =(TextView) findViewById(R.id.txt_totalprice) ;
@@ -75,7 +83,17 @@ public PickupOrderDeatilResponse reOrderObj;
         // RecyclerView.ItemDecoration itemDecoration =
         //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
         //recyclerViewCart.addItemDecoration(itemDecoration);
+        OpeningTiming obj=GetShopOpeningTime();
+        if(obj.showMSG){
+            lbl_pickup_msg.setText(obj.MSG);
 
+            lbl_pickup_warning.setVisibility(View.VISIBLE);
+
+        }
+        else{
+            lbl_pickup_warning.setVisibility(View.GONE);
+
+        }
         recyclerViewCheckoutItem.setHasFixedSize(true);
         recyclerViewCheckoutItem.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());

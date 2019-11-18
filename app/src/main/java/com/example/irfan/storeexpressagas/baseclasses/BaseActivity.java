@@ -35,12 +35,14 @@ import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.ItemVM;
+import com.example.irfan.storeexpressagas.models.OpeningTiming;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
 import com.example.irfan.storeexpressagas.network.RestClient;
 import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -383,6 +385,36 @@ public class BaseActivity extends AppCompatActivity {
         System.exit(0);
     }
 
+
+    public OpeningTiming GetShopOpeningTime(){
+
+        OpeningTiming timeObj = new OpeningTiming();
+        timeObj.showMSG=false;
+        Calendar calendar = Calendar.getInstance();
+        int hour24hrs = calendar.get(Calendar.HOUR_OF_DAY);
+        int hour12hrs = calendar.get(Calendar.HOUR);
+        int minutes = calendar.get(Calendar.MINUTE);
+        int seconds = calendar.get(Calendar.SECOND);
+if ((hour24hrs >=20) &&( minutes >=15) && (hour24hrs <21)){
+timeObj.showMSG=true;
+timeObj.MSG=getString(R.string.msg_pick_at_nine);
+}
+
+if ((hour24hrs >=21) &&( minutes >=15)){
+    timeObj.showMSG=true;
+    timeObj.MSG=getString(R.string.msg_pick_at_tommorow);
+
+}
+
+        if ((hour24hrs >=0) &&( hour24hrs <=6)){
+
+            timeObj.showMSG=true;
+            timeObj.MSG=getString(R.string.msg_pick_at_tommorow);
+
+        }
+
+return  timeObj;
+    }
     public void logOut(){
 
         sharedperference.removeALL();

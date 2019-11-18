@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/pickup_warning"
+        android:id="@+id/lbl_pickup_warning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,6 +18,7 @@
         android:paddingTop="15dip">
 
         <TextView
+            android:id="@+id/lbl_pickup_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dip"
