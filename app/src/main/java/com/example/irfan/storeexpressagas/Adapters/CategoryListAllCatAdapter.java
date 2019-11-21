@@ -26,7 +26,7 @@ public class CategoryListAllCatAdapter  extends RecyclerView.Adapter<CategoryLis
 
     private List<CategoryResponse.catValue> categories;
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public Button btnallcat;
+        public TextView btnallcat;
 
         private String mItem;
 
@@ -34,7 +34,7 @@ public class CategoryListAllCatAdapter  extends RecyclerView.Adapter<CategoryLis
             super(view);
            // view.setOnClickListener(this);
 
-            btnallcat = (Button) view.findViewById(R.id.btn_allcat);
+            btnallcat = (TextView) view.findViewById(R.id.btn_allcat);
             btnallcat.setOnClickListener(this);
         }
 

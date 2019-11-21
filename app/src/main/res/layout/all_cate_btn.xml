@@ -5,7 +5,6 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_allcat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="-5dip"
@@ -17,5 +16,44 @@
         android:gravity="left|center_vertical"
         android:paddingLeft="20dip"
         android:paddingRight="20dip"
-        android:text="Featured" />
+        android:text="Featured"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shadow"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.1"
+            android:src="@mipmap/featured" />
+
+        <TextView
+            android:id="@+id/btn_allcat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="TextView"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:src="@mipmap/next" />
+
+    </LinearLayout>
+
 </LinearLayout>
