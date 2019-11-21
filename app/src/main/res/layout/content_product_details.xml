@@ -93,6 +93,16 @@
                 android:text="ADD TO CART"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
+
+
+            <Button
+                android:id="@+id/btn_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_radius_red"
+                android:text="test"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
         </LinearLayout>
 
     </RelativeLayout>

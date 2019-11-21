@@ -1,7 +1,14 @@
 package com.example.irfan.storeexpressagas.activities;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -29,9 +36,14 @@ import java.util.List;
 public class ProductActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
     ImageView img;
     TextView name,price,description,txt_qty_box,txt_instock;
-    Button btnPlus,btnMinus,btn_add_to_cart;
+    Button btnPlus,btnMinus,btn_add_to_cart,btn_test;
     public TextView tv;
     public ImageView i;
+
+    private static final int NOTIFICATION_ID = 200;
+    private static final String PUSH_NOTIFICATION = "pushNotification";
+    private static final String CHANNEL_ID = "myChannel";
+    private static final String CHANNEL_NAME = "myChannelName";
 
     public static Product obj;
 
@@ -48,7 +60,7 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
         btnPlus = (Button) findViewById(R.id.btn_plus);
         btnMinus = (Button) findViewById(R.id.btn_minus);
         btn_add_to_cart=(Button) findViewById(R.id.btn_add_to_cart);
-
+        btn_test=(Button) findViewById(R.id.btn_test);
         btnPlus.setOnClickListener(this);
         btnMinus.setOnClickListener(this);
         btn_add_to_cart.setOnClickListener(this);
@@ -104,6 +116,15 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
                 //  showMessageDailogNextScreen("test","testing message",Login.class);
                 openActivity(CartActivity.class);
                 break;
+
+
+            case R.id.btn_test:
+                Log.d("test","show msg call");
+                //  showMessageDailogNextScreen("test","testing message",Login.class);
+               // openActivity(CartActivity.class);
+                testnotify();
+                break;
+
 
 
         }
@@ -254,6 +275,36 @@ openActivityWithFinish(MainActivity.class);
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    public  void testnotify(){
+        Notification notification;
+        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+                this, CHANNEL_ID);
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+        final int icon = R.mipmap.notification;
+        inboxStyle.addLine("test msg");
+        notification = mBuilder.setSmallIcon(icon).setTicker("title").setWhen(0)
+                .setAutoCancel(true)
+                .setContentTitle("title")
+
+                .setStyle(inboxStyle)
+                .setSmallIcon(R.mipmap.notification)
+                .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), icon))
+                .setContentText("test mesg")
+                .build();
+
+
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        notificationManager.notify(NOTIFICATION_ID, notification);
+    }
 
 
 }
