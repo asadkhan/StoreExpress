@@ -197,7 +197,7 @@ public class NotificationsService extends Service {
         Notification notification = new Notification.Builder(getApplicationContext())
                 .setContentTitle(title)
                 .setContentText(contentText)
-                .setSmallIcon(R.drawable.ic_notification)
+                .setSmallIcon(R.mipmap.notification)
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(contentIntent)
                 .build();
