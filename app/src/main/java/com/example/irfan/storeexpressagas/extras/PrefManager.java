@@ -9,6 +9,7 @@ public class PrefManager {
     private static final String TOKEN = "TOKEN";
     private static final String USERID = "USERID";
     private static final String LOGINDETAILS = "LOGINDETAILS";
+    private static final String FCMTOKEN = "FCMTOKEN";
 
     private final android.content.SharedPreferences mPrefs;
 
@@ -93,5 +94,21 @@ public class PrefManager {
         return userid;
     }
 
+
+    public boolean saveFCMToken(String fcmtoken) {
+        android.content.SharedPreferences.Editor prefsEditor = mPrefs.edit();
+
+        prefsEditor.putString(FCMTOKEN, fcmtoken);
+        return prefsEditor.commit();
+
+    }
+
+
+    public String getFCMToken() {
+
+        String FCMToken = mPrefs.getString(FCMTOKEN, "");
+
+        return FCMToken;
+    }
 
 }

@@ -126,9 +126,9 @@ public LinearLayout layno_internet;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             //  this.startForegroundService(new Intent(this, LocationService.class));
          //   this.startForegroundService(new Intent(this, NotificationsService.class));
-            startService(new Intent(this, NotificationsService.class));
+          //  startForegroundService(new Intent(this, NotificationsService.class));
         } else {
-            startService(new Intent(this, NotificationsService.class));
+            //startService(new Intent(this, NotificationsService.class));
         }
 
 

@@ -25,18 +25,24 @@ import com.example.irfan.storeexpressagas.activities.CartActivity;
 import com.example.irfan.storeexpressagas.activities.CheckOutFirstActivity;
 import com.example.irfan.storeexpressagas.activities.Login;
 import com.example.irfan.storeexpressagas.activities.MainActivity;
+import com.example.irfan.storeexpressagas.activities.OStatusPickupActivity;
 import com.example.irfan.storeexpressagas.activities.OrdersActivity;
 import com.example.irfan.storeexpressagas.activities.ProductRequestActivity;
 import com.example.irfan.storeexpressagas.activities.ProfileActivity;
 import com.example.irfan.storeexpressagas.extras.Auth;
+import com.example.irfan.storeexpressagas.extras.Constants;
 import com.example.irfan.storeexpressagas.extras.PrefManager;
 import com.example.irfan.storeexpressagas.extras.ProgressLoader;
 import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CartRequest;
+import com.example.irfan.storeexpressagas.models.DeviceInfoRequest;
+import com.example.irfan.storeexpressagas.models.DeviceInfoResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.ItemVM;
 import com.example.irfan.storeexpressagas.models.OpeningTiming;
+import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
+import com.example.irfan.storeexpressagas.models.OrderResponse;
 import com.example.irfan.storeexpressagas.network.RestClient;
 import com.google.gson.Gson;
 
@@ -421,4 +427,8 @@ return  timeObj;
         Cart.ClearCart(this);
         openActivity(MainActivity.class);
     }
+
+
+
+
 }

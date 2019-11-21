@@ -11,6 +11,9 @@
     <string name="msg_registration_successfull"><strike>Registration successfull kindly check you inbox for account activation </strike></string>
     <string name="msg_registration_failed"><strike>Registration Failed! </strike></string>
 
+    <string name="msg_device_info_successfull"><strike>Device Info Updated successfully </strike></string>
+    <string name="msg_device_info_failed"><strike>Device Info Update Failed! </strike></string>
+
     <string name="msg_pick_at_nine"><strike>Last Pickup time for your order is 9:30PM</strike></string>
     <string name="msg_pick_at_tommorow"><strike>Order will be ready by tomorrow </strike></string>
     <string name="Open"><strike>Open </strike></string>

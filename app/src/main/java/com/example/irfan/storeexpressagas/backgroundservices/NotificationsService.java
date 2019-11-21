@@ -22,6 +22,7 @@ import com.example.irfan.storeexpressagas.extras.Constants;
 import com.example.irfan.storeexpressagas.models.CustomerOrderResponse;
 import com.example.irfan.storeexpressagas.models.NotificationResponse;
 import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class NotificationsService extends Service {
     public static String str_receiver = "servicetutorial.service.receiver";
 
 
-    private final static int INTERVAL = 30000; //1 minutes
+    private final static int INTERVAL = 40000; //1 minutes
     Handler mHandler = new Handler();
 
     Runnable mHandlerTask = new Runnable()
@@ -42,8 +43,8 @@ public class NotificationsService extends Service {
         @Override
         public void run() {
            // Toast.makeText(NotificationsService.this, "running", Toast.LENGTH_SHORT).show();
-
-            if(Auth.getToken(NotificationsService.this)==null || Auth.getToken(NotificationsService.this)==null){
+            Log.d("testme","Token "+Auth.getToken(NotificationsService.this));
+            if(Auth.getToken(NotificationsService.this)==null || Auth.getToken(NotificationsService.this)==""){
 
 
 
@@ -52,12 +53,16 @@ public class NotificationsService extends Service {
             else{
 
 
-                Log.d("test","intest");
+                Log.d("testme","in callig");
                 RestClient.getAuthAdapterToekn(Auth.getToken(NotificationsService.this)).getNotifications().enqueue(new GeneralCallBackService<NotificationResponse>(NotificationsService.this) {
                     @Override
                     public void onSuccess(NotificationResponse response) {
 
 
+                        //Log.d("testme","Token "+Auth.getToken(NotificationsService.this));
+                        Gson gson = new Gson();
+                        String Reslog= gson.toJson(response);
+                        Log.d("testme", Reslog);
 
                         if (!response.getIserror()) {
 
@@ -67,7 +72,8 @@ public class NotificationsService extends Service {
                                 List<NotificationResponse.Value> list = response.getValue();
                                 for (NotificationResponse.Value obj : list) {
 
-
+                                    showForegroundNotification(obj.getMessege(),obj.getTitle());
+                                    break;
                                 }
 
 
@@ -183,6 +189,8 @@ public class NotificationsService extends Service {
     private void showForegroundNotification(String contentText,String title) {
         // Create intent that will bring our app to the front, as if it was tapped in the app
         // launcher
+
+        Log.d("testme", "call noy");
         Intent showTaskIntent = new Intent(getApplicationContext(), NotificationsService.class);
         showTaskIntent.setAction(Intent.ACTION_MAIN);
         showTaskIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -197,7 +205,7 @@ public class NotificationsService extends Service {
         Notification notification = new Notification.Builder(getApplicationContext())
                 .setContentTitle(title)
                 .setContentText(contentText)
-                .setSmallIcon(R.drawable.ic_notification)
+                .setSmallIcon(R.mipmap.notification)
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(contentIntent)
                 .build();
