@@ -4,6 +4,8 @@ import com.example.irfan.storeexpressagas.models.AddressResponse;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.CustomerOrderResponse;
+import com.example.irfan.storeexpressagas.models.DeviceInfoRequest;
+import com.example.irfan.storeexpressagas.models.DeviceInfoResponse;
 import com.example.irfan.storeexpressagas.models.FproductResponse;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.GeneralResponse;
@@ -97,6 +99,8 @@ public interface WebCalls {
     Call<ProductReqResponse> addAddress(@Body AddAddressRequest addressReq);
 
 
+    @POST(EndPoints.UPDATEDEVICEINFO)
+    Call<DeviceInfoResponse> updateDeviceInfo(@Body DeviceInfoRequest deviceInfo);
 
 
 

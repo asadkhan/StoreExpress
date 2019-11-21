@@ -11,10 +11,16 @@ import android.widget.Toast;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.Auth;
+import com.example.irfan.storeexpressagas.extras.Constants;
 import com.example.irfan.storeexpressagas.extras.ValidationUtility;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.DeviceInfoRequest;
+import com.example.irfan.storeexpressagas.models.DeviceInfoResponse;
 import com.example.irfan.storeexpressagas.models.LoginResponse;
 import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.gson.Gson;
 
 public class Login  extends BaseActivity implements View.OnClickListener {
 
@@ -81,37 +87,16 @@ try {
         @Override
         public void onSuccess(LoginResponse response) {
 
-            hideProgress();
+
 
             if (response.getAccessToken() != null && !response.getAccessToken().equals("")) {
 
                 sharedperference.saveToken(response.getAccessToken().toString());
-                String loginDetails = sharedperference.getLogin();
-                switch (loginDetails) {
-                    case "":
 
-                        openActivity(MainActivity.class);
-                        break;
-                    case "checkout":
-                        sharedperference.saveLogin("");
-                        openActivity(CheckOutFirstActivity.class);
-                        break;
-
-                    case "productrequest":
-                        sharedperference.saveLogin("");
-                        openActivity(ProductRequestActivity.class);
-                        break;
-                    case "profile":
-                        sharedperference.saveLogin("");
-                        openActivity(ProfileActivity.class);
-                        break;
-
-
-                }
-
+                addUpdateDeviceInfoToServer(FirebaseInstanceId.getInstance().getToken());
 
             } else {
-
+                hideProgress();
                 Toast.makeText(getApplicationContext(), "incorrect",
                         Toast.LENGTH_LONG).show();
 
@@ -144,6 +129,91 @@ catch (Exception e){
 }
    }
 
+
+
+
+
+    public void addUpdateDeviceInfoToServer(String FCMtoken){
+        //showProgress();
+        DeviceInfoRequest obj = new DeviceInfoRequest();
+        obj.setAppType(Constants.APP_TYPE);
+        obj.setFCMToken(FCMtoken);
+
+
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(obj);
+        Log.d("testme", Reslog);
+
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).updateDeviceInfo(obj).enqueue(new GeneralCallBack<DeviceInfoResponse>(this) {
+            @Override
+            public void onSuccess(DeviceInfoResponse response) {
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("testme", Reslog);
+
+                if(!response.getIserror()){
+                    String msg=getApplicationContext().getString(R.string.msg_device_info_successfull);
+                    Toast.makeText(getApplicationContext(),msg ,
+                            Toast.LENGTH_LONG).show();
+                }
+                else{
+
+                    String msg=getApplicationContext().getString(R.string.msg_device_info_failed);
+                    Toast.makeText(getApplicationContext(),msg ,
+                            Toast.LENGTH_LONG).show();
+
+                }
+
+                hideProgress();
+                doPostLoginAction();
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                String msg=getApplicationContext().getString(R.string.msg_device_info_failed);
+                Toast.makeText(getApplicationContext(),msg ,
+                        Toast.LENGTH_LONG).show();
+                doPostLoginAction();
+            }
+
+
+
+        });
+
+
+
+    }
+
+   public void doPostLoginAction(){
+
+       String loginDetails = sharedperference.getLogin();
+       switch (loginDetails) {
+           case "":
+
+               openActivity(MainActivity.class);
+               break;
+           case "checkout":
+               sharedperference.saveLogin("");
+               openActivity(CheckOutFirstActivity.class);
+               break;
+
+           case "productrequest":
+               sharedperference.saveLogin("");
+               openActivity(ProductRequestActivity.class);
+               break;
+           case "profile":
+               sharedperference.saveLogin("");
+               openActivity(ProfileActivity.class);
+               break;
+
+
+       }
+
+   }
 
 
 }

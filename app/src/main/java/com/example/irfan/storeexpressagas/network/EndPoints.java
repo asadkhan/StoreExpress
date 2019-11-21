@@ -18,5 +18,6 @@ public class EndPoints {
     static final String REMOVEADDRESS=API_PREFIX+"useraddress/removeUserAddress";
     static final String ADDADDRESS=API_PREFIX+"useraddress/adduseraddress";
     static final String GETNOTIFICATION=API_PREFIX+"notification/GetNotification";
+    static final String UPDATEDEVICEINFO=API_PREFIX+"notification/addUpdatefcmtoken";
 
 }
