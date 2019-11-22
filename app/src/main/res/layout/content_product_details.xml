@@ -101,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_radius_red"
                 android:text="test"
+                android:visibility="gone"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
         </LinearLayout>
