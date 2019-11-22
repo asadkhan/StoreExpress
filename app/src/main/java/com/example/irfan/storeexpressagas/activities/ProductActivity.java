@@ -61,6 +61,7 @@ public class ProductActivity extends BaseActivity implements NavigationView.OnNa
         btnMinus = (Button) findViewById(R.id.btn_minus);
         btn_add_to_cart=(Button) findViewById(R.id.btn_add_to_cart);
         btn_test=(Button) findViewById(R.id.btn_test);
+        btn_test.setOnClickListener(this);
         btnPlus.setOnClickListener(this);
         btnMinus.setOnClickListener(this);
         btn_add_to_cart.setOnClickListener(this);
