@@ -27,6 +27,7 @@ public class CategoryListAllCatAdapter  extends RecyclerView.Adapter<CategoryLis
     private List<CategoryResponse.catValue> categories;
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView btnallcat;
+        public ImageView img_cat_pic;
 
         private String mItem;
 
@@ -35,7 +36,9 @@ public class CategoryListAllCatAdapter  extends RecyclerView.Adapter<CategoryLis
            // view.setOnClickListener(this);
 
             btnallcat = (TextView) view.findViewById(R.id.btn_allcat);
+            img_cat_pic=(ImageView)view.findViewById(R.id.img_cat_pic);
             btnallcat.setOnClickListener(this);
+            img_cat_pic.setOnClickListener(this);
         }
 
 
@@ -80,7 +83,7 @@ public class CategoryListAllCatAdapter  extends RecyclerView.Adapter<CategoryLis
         String imgURL=catObj.getImage();
         holder.btnallcat.setText(catObj.getName());
 
-        //Picasso.with(holder.catImg.getContext()).load(imgURL).resize(60, 60).centerCrop().into(holder.catImg);
+        Picasso.with(holder.img_cat_pic.getContext()).load(imgURL).resize(60, 60).centerCrop().into(holder.img_cat_pic);
 
         // formatting the date appropriately.
 

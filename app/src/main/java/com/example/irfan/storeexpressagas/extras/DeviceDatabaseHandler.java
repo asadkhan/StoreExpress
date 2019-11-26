@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.ShoppingList;
+import com.example.irfan.storeexpressagas.models.ShoppingListItem;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -21,6 +23,11 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
 
     // Audio and dataUsage table name
     private static final String TABLE_NAME = "Cart";
+
+    private static final String TABLE_NAME_SHOPPINGLIST = "ShopingList";
+    private static final String TABLE_NAME_LISTITEM = "ListItem";
+
+    private static final String TABLE_NAME_LISTITEM_HISTOREY = "ListItemHSt";
     ;
     //columns Name for Call tables
     private static final String CART_ID = "Id";
@@ -29,6 +36,24 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
     private static final String CART_ITEM_QTY = "item_qty";
     private static final String CART_ITEM_PRICE = "item_price";
     private static final String CART_ITEM_IMG = "item_img";
+
+
+    private static final String SPL_ID = "Id";
+    private static final String SPL_NAME = "ListName";
+    private static final String SPL_DATE = "ListDate";
+
+
+    private static final String SPLI_ID = "Id";
+    private static final String SPLI_SPLID = "ListId";
+    private static final String SPLI_ITEM = "ListItem";
+
+    private static final String SPLIH_ID = "Id";
+    private static final String SPLIH_ITEM = "ListItemHst";
+
+
+
+
+
     private static DeviceDatabaseHandler sInstance;
 
     public static synchronized DeviceDatabaseHandler getInstance(Context context) {
@@ -59,6 +84,21 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
                 + CART_ITEM_NAME + " TEXT," + CART_ITEM_QTY + " INTEGER," + CART_ITEM_PRICE + " INTEGER,"+CART_ITEM_IMG  + " TEXT "+ ")";
         db.execSQL(CART_TABLE);
 
+        String SPL_TABLE = "CREATE TABLE " + TABLE_NAME_SHOPPINGLIST + "("
+                + SPL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPL_NAME + " TEXT,"
+                + SPL_DATE + " TEXT "+")";
+        db.execSQL(SPL_TABLE);
+
+
+        String SPLI_TABLE = "CREATE TABLE " + TABLE_NAME_LISTITEM + "("
+                + SPLI_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPLI_SPLID + " INTEGER,"
+                + SPLI_ITEM + " TEXT "+")";
+        db.execSQL(SPLI_TABLE);
+
+
+        String SPLIHST_TABLE = "CREATE TABLE " + TABLE_NAME_LISTITEM_HISTOREY + "("
+                + SPLIH_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPLIH_ITEM + " TEXT"+")";
+        db.execSQL(SPLIHST_TABLE);
 
     }
 
@@ -67,6 +107,9 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_SHOPPINGLIST);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_LISTITEM);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_LISTITEM_HISTOREY);
         // Create tables again
         onCreate(db);
     }
@@ -190,5 +233,193 @@ return cartItem;
         cursor.close();
         return count;
     }
+
+
+   ;
+
+    public void addShoppingList(ShoppingList data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SPL_ID, data.Id);
+        values.put(SPL_NAME, data.Name);
+        values.put(SPL_DATE, data.Date);
+
+        // Inserting Row
+        db.insert(TABLE_NAME_SHOPPINGLIST, null, values);
+        db.close(); // Closing database connection
+    }
+
+
+    public void addShoppingListItem(ShoppingListItem data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SPLI_ID, data.itemId);
+        values.put(SPLI_SPLID, data.ShoppingListId);
+        values.put(SPLI_ITEM, data.itemName);
+
+        // Inserting Row
+        db.insert(TABLE_NAME_LISTITEM, null, values);
+        db.close(); // Closing database connection
+    }
+
+
+
+    public void addShoppingListItemHst(ShoppingListItem data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SPLIH_ID, data.itemId);
+        values.put(SPLIH_ITEM, data.itemName);
+
+
+        // Inserting Row
+        db.insert(TABLE_NAME_LISTITEM_HISTOREY, null, values);
+        db.close(); // Closing database connection
+    }
+
+
+
+    public List<ShoppingList> getShoppingList(int limit) {
+        if (limit == 0) limit = 5;
+        List<ShoppingList> shoppingList = new ArrayList<ShoppingList>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_SHOPPINGLIST ;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                ShoppingList obj = new ShoppingList();
+                obj.Id = cursor.getInt(0);
+                obj.Name = cursor.getString(1);
+                obj.Date = cursor.getString(2);
+
+                // Adding contact to list
+                shoppingList.add(obj);
+            } while (cursor.moveToNext());
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (db != null) {
+            db.close();
+        }
+        // return contact list
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(shoppingList);
+        Log.d("test", Reslog);
+        return shoppingList;
+    }
+
+
+
+
+    public List<ShoppingListItem> getShoppingListItem(int limit,int listId) {
+        if (limit == 0) limit = 5;
+        List<ShoppingListItem> shoppingListItem = new ArrayList<ShoppingListItem>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_LISTITEM +" where " + SPLI_SPLID + "=" + listId +"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                ShoppingListItem obj = new ShoppingListItem();
+                obj.itemId = cursor.getInt(0);
+                obj.ShoppingListId = cursor.getInt(1);
+                obj.itemName = cursor.getString(2);
+
+                // Adding contact to list
+                shoppingListItem.add(obj);
+            } while (cursor.moveToNext());
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (db != null) {
+            db.close();
+        }
+        // return contact list
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(shoppingListItem);
+        Log.d("test", Reslog);
+        return shoppingListItem;
+    }
+
+
+
+    public List<ShoppingListItem> getShoppingListItemHst(int limit,String key) {
+        if (limit == 0) limit = 5;
+        List<ShoppingListItem> shoppingListItem = new ArrayList<ShoppingListItem>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_LISTITEM_HISTOREY +" where " + SPLIH_ITEM + " LIKE " + "'%'" +key + "'%'" +"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                ShoppingListItem obj = new ShoppingListItem();
+                obj.itemId = cursor.getInt(0);
+                obj.itemName = cursor.getString(1);
+
+
+                // Adding contact to list
+                shoppingListItem.add(obj);
+            } while (cursor.moveToNext());
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (db != null) {
+            db.close();
+        }
+        // return contact list
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(shoppingListItem);
+        Log.d("test", Reslog);
+        return shoppingListItem;
+    }
+
+
+    public void updateShoppingList(int ListID,String name  ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues data=new ContentValues();
+        data.put(SPL_NAME,name);
+
+        db.update(TABLE_NAME_SHOPPINGLIST, data, SPL_ID + "=" + ListID, null);
+        db.close(); // Closing database connection
+
+
+    }
+
+
+    public void removeShoppingList(int ListId ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME_LISTITEM, SPLI_SPLID + " = ?",
+                new String[]{String.valueOf(ListId)});
+
+
+        db.delete(TABLE_NAME_SHOPPINGLIST, SPL_ID + " = ?",
+                new String[]{String.valueOf(ListId)});
+
+        db.close();
+
+    }
+
+    public void removeShoppingListItem(int ItemId ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME_LISTITEM, SPLI_SPLID + " = ?",
+                new String[]{String.valueOf(ItemId)});
+
+
+
+        db.close();
+
+    }
+
+
 
 }

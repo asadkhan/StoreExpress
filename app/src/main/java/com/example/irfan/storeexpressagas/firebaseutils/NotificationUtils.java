@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Html;
+import android.util.Log;
 
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.activities.MainActivity;
@@ -108,7 +109,7 @@ public class NotificationUtils {
                         .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), icon))
                         .setContentText(message)
                         .build();
-
+                Log.d("test", "in small");
             } else {
                 //If Bitmap is created from URL, show big icon
                 NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
@@ -124,6 +125,7 @@ public class NotificationUtils {
                         .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), icon))
                         .setContentText(message)
                         .build();
+                Log.d("test", "in big");
             }
 
             NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);

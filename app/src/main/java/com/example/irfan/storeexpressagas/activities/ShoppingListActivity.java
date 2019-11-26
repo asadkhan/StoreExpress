@@ -5,23 +5,44 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
+import com.example.irfan.storeexpressagas.Adapters.ShoppingListAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
+import com.example.irfan.storeexpressagas.extras.PrefManager;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.PickupOrderDeatilResponse;
+import com.example.irfan.storeexpressagas.models.ShoppingList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShoppingListActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
     public TextView tv;
     public ImageView i;
+public EditText et_name;
+public ImageButton btn_add;
+
+    public RecyclerView recyclerViewShoppigList;
+
+    public ShoppingListAdapter mAdapter;
+
+    public List<ShoppingList> ItemList = new ArrayList<>();
 
 
     @Override
@@ -41,6 +62,44 @@ public class ShoppingListActivity extends BaseActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
 
         HideShowLogout(navigationView);
+
+        recyclerViewShoppigList = (RecyclerView) findViewById(R.id.recycler_view_cart);
+
+        mAdapter = new ShoppingListAdapter(this.ItemList);
+        mAdapter.setItemListAdapterContext(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        // RecyclerView.ItemDecoration itemDecoration =
+        //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        //recyclerViewCart.addItemDecoration(itemDecoration);
+
+        recyclerViewShoppigList.setHasFixedSize(true);
+        recyclerViewShoppigList.setLayoutManager(mLayoutManager);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewShoppigList.setAdapter(this.mAdapter);
+
+
+        et_name=(EditText) findViewById(R.id.et_name);
+        btn_add=(ImageButton) findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(this);
+
+        LoadList();
+    }
+
+
+    public void LoadList(){
+        this.ItemList.clear();
+        List<ShoppingList> lst = ShoppingList.getShoppingList(this);
+
+        for(ShoppingList obj : lst){
+
+            this.ItemList.add(obj);
+
+
+        }
+        mAdapter.notifyDataSetChanged();
+
+
     }
 
 

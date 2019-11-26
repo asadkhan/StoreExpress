@@ -5,6 +5,11 @@
             android:title="My Store" />
         <item android:id="@+id/menu_profile" android:icon="@mipmap/profile"
             android:title="Profile" />
+        <item android:id="@+id/menu_shopping" android:icon="@mipmap/profile"
+            android:title="Shopping List" />
+
+
+
         <item android:id="@+id/menu_all_cat" android:icon="@mipmap/all_cate"
             android:title="Categories" />
         <!--<item android:id="@+id/menu_shopping" android:icon="@mipmap/shop_list"-->
