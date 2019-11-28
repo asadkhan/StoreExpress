@@ -7,11 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.activities.CartActivity;
+import com.example.irfan.storeexpressagas.activities.ProductActivity;
+import com.example.irfan.storeexpressagas.activities.ShoppigListItemActivity;
+import com.example.irfan.storeexpressagas.activities.ShoppingListActivity;
+import com.example.irfan.storeexpressagas.extras.ActivityManager;
 import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.ShoppingList;
 import com.squareup.picasso.Picasso;
@@ -33,7 +38,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txt_name;
-        public Button btn_delete,btn_edit;
+        public ImageButton btn_delete,btn_edit;
 
 
         public ListViewHolder(View view) {
@@ -43,11 +48,11 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
             txt_name = (TextView) view.findViewById(R.id.txt_name);
 
-            btn_delete = (Button) view.findViewById(R.id.btn_delete);
-            btn_edit = (Button) view.findViewById(R.id.btn_edit);
+            btn_delete = (ImageButton) view.findViewById(R.id.btn_delete);
+            btn_edit = (ImageButton) view.findViewById(R.id.btn_edit);
             btn_delete.setOnClickListener(this);
             btn_edit.setOnClickListener(this);
-
+            txt_name.setOnClickListener(this);
         }
 
 
@@ -59,14 +64,25 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
             switch (view.getId()) {
 
-                case R.id.txt_name:
-                    break;
-
-                case R.id.btn_edit:
-                    break;
-
                 case R.id.btn_delete:
+
+                    if (mContext instanceof ShoppingListActivity) {
+                        // CartActivity.TotalPrice = (CartActivity.TotalPrice-removedItem.ItemPrice);
+                        Log.d("test","show msg call2");
+                        ((ShoppingListActivity) mContext).remove(obj.Id);
+                    }
+
                     break;
+
+                case R.id.txt_name:
+                    Log.d("testme","show listitem");
+                    ShoppigListItemActivity.ListName=obj.Name;
+                    ShoppigListItemActivity.ListId=obj.Id;
+                    ActivityManager.startActivity(view.getContext(),ShoppigListItemActivity.class);
+
+                    break;
+
+
 
 
 

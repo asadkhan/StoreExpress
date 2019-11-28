@@ -113,6 +113,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleDialog" />
 
+        <activity
+            android:name=".activities.ShoppigListItemActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
         <service
             android:name=".backgroundservices.NotificationsService"
             android:enabled="true"

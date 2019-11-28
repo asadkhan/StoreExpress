@@ -12,110 +12,111 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.ShoppingListAdapter;
+import com.example.irfan.storeexpressagas.Adapters.ShoppingListItemAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
-import com.example.irfan.storeexpressagas.extras.MenuHandler;
-import com.example.irfan.storeexpressagas.extras.PrefManager;
 import com.example.irfan.storeexpressagas.extras.ValidationUtility;
 import com.example.irfan.storeexpressagas.models.Cart;
-import com.example.irfan.storeexpressagas.models.PickupOrderDeatilResponse;
 import com.example.irfan.storeexpressagas.models.ShoppingList;
+import com.example.irfan.storeexpressagas.models.ShoppingListItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingListActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
+public class ShoppigListItemActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
     public TextView tv;
     public ImageView i;
-public EditText et_name;
-public ImageButton btn_add;
 
-    public RecyclerView recyclerViewShoppigList;
+    public static int ListId=0;
+    public static String ListName="";
+   public EditText et_list_item_name;
 
-    public ShoppingListAdapter mAdapter;
+   public ImageButton  btn_list_item_add;
+public TextView txt_list_name;
 
-    public List<ShoppingList> ItemList = new ArrayList<>();
+    public RecyclerView recyclerViewShoppigListItem;
+
+    public ShoppingListItemAdapter mAdapter;
+
+    public List<ShoppingListItem> ItemList = new ArrayList<>();
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shopping_list);
+        setContentView(R.layout.activity_shopping_list_items);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_shopping);
+
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_spli);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_shopping);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_spli);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_shopping);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_spli);
         navigationView.setNavigationItemSelectedListener(this);
 
-        HideShowLogout(navigationView);
 
-        recyclerViewShoppigList = (RecyclerView) findViewById(R.id.recycler_view_ShoppingList);
+        recyclerViewShoppigListItem = (RecyclerView) findViewById(R.id.recycler_view_ShoppingList_item);
 
-        mAdapter = new ShoppingListAdapter(this.ItemList);
-        mAdapter.setItemListAdapterContext(this);
+        mAdapter = new ShoppingListItemAdapter(this.ItemList);
+        mAdapter.setShoppingListItemAdapterContext(this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         // RecyclerView.ItemDecoration itemDecoration =
         //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
         //recyclerViewCart.addItemDecoration(itemDecoration);
 
-        recyclerViewShoppigList.setHasFixedSize(true);
-        recyclerViewShoppigList.setLayoutManager(mLayoutManager);
+        recyclerViewShoppigListItem.setHasFixedSize(true);
+        recyclerViewShoppigListItem.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewShoppigList.setAdapter(this.mAdapter);
+        recyclerViewShoppigListItem.setAdapter(this.mAdapter);
+
+        txt_list_name=(TextView) findViewById(R.id.txt_list_name) ;
+        et_list_item_name=(EditText) findViewById(R.id.et_list_item_name) ;
+        btn_list_item_add=(ImageButton) findViewById(R.id.btn_list_item_add) ;
+        txt_list_name.setText(ListName);
+        btn_list_item_add.setOnClickListener(this);
+        HideShowLogout(navigationView);
 
 
-        et_name=(EditText) findViewById(R.id.et_name);
-        btn_add=(ImageButton) findViewById(R.id.btn_add);
-        btn_add.setOnClickListener(this);
 
         LoadList();
     }
-
 
     public void add(){
         Log.d("testme","Inadd call");
-if(isValidate()){
+        if(isValidate()){
 
- long id  = ShoppingList.addList(et_name.getText().toString(),getDateTime(),this);
-    Log.d("testme","Inadd after vali");
+            ShoppingList.addListItem(this.ListId,et_list_item_name.getText().toString(),this);
 
-
-ShoppigListItemActivity.ListId= (int)id;
-    ShoppigListItemActivity.ListName=et_name.getText().toString();
-    et_name.setText("");
-    LoadList();
-}
+            ShoppingList.addListItemHst(et_list_item_name.getText().toString(),this);
+            Log.d("testme","Inadd after vali");
+            et_list_item_name.setText("");
+            LoadList();
 
 
+        }
 
-    }
-
-    public void remove(int listID){
-        ShoppingList.removeShoppingList(listID,this);
-        LoadList();
 
     }
 
 
 
     private boolean isValidate() {
-        if (!ValidationUtility.edittextValidator(et_name)) {
+        if (!ValidationUtility.edittextValidator(et_list_item_name)) {
             return false;
         }
 
@@ -123,11 +124,19 @@ ShoppigListItemActivity.ListId= (int)id;
         return true;
     }
 
+
+    public void remove(int itemID){
+        ShoppingList.removeShoppingListItem(itemID,this);
+        LoadList();
+
+    }
+
+
     public void LoadList(){
         this.ItemList.clear();
-        List<ShoppingList> lst = ShoppingList.getShoppingList(this);
+        List<ShoppingListItem> lst = ShoppingList.getShoppingListItem(this.ListId,this);
 
-        for(ShoppingList obj : lst){
+        for(ShoppingListItem obj : lst){
 
             this.ItemList.add(obj);
 
@@ -139,12 +148,15 @@ ShoppigListItemActivity.ListId= (int)id;
     }
 
 
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        DrawerLayout   mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_shopping);
+        DrawerLayout   mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_spli);
         if (id == R.id.menu_about) {
             // Handle the camera action
             mDrawerLayout.closeDrawers();
@@ -209,8 +221,8 @@ ShoppigListItemActivity.ListId= (int)id;
 
 
         else if (id == R.id.menu_logout) {
-           // MenuHandler.logOut(this);
-        logOut();
+            // MenuHandler.logOut(this);
+            logOut();
         }
 
 
@@ -220,6 +232,7 @@ ShoppigListItemActivity.ListId= (int)id;
         return true;
     }
 
+
     @Override
     public void onClick(View v) {
 
@@ -228,18 +241,10 @@ ShoppigListItemActivity.ListId= (int)id;
             case R.id.actionbar_notifcation_img:
                 openActivity(CartActivity.class);
                 break;
-
-            case R.id.actionbar_notifcation_textview:
-                Log.d("test","show msg call");
-                //  showMessageDailogNextScreen("test","testing message",Login.class);
-                openActivity(CartActivity.class);
+            case R.id.btn_list_item_add:
+               add();
                 break;
 
-            case R.id.btn_add:
-                Log.d("testme","add call");
-                //  showMessageDailogNextScreen("test","testing message",Login.class);
-                add();
-                break;
 
 
 
@@ -261,5 +266,6 @@ ShoppigListItemActivity.ListId= (int)id;
         tv.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
     }
+
 
 }

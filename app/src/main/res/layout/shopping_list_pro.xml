@@ -19,7 +19,7 @@
             android:weightSum="10">
 
             <TextView
-                android:id="@+id/textView4_9"
+                android:id="@+id/txt_sp_item_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
@@ -28,7 +28,7 @@
                 android:textSize="18sp" />
 
             <ImageButton
-                android:id="@+id/image_Button"
+                android:id="@+id/btn_sp_item_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"

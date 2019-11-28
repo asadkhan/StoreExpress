@@ -15,7 +15,7 @@ public String Date;
 
 
 
-    public static void addList( String Name, String Date,Context context){
+    public static long addList( String Name, String Date,Context context){
 
         DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
 
@@ -27,7 +27,7 @@ public String Date;
         lst.Date=Date;
 
 
-            databaseHelper.addShoppingList(lst);
+          return   databaseHelper.addShoppingList(lst);
 
 
     }
@@ -45,6 +45,23 @@ public String Date;
 
 
         databaseHelper.addShoppingListItem(obj);
+
+
+    }
+
+    public static void addListItemHst( String Name,Context context){
+
+        DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
+
+
+
+
+        ShoppingListItem obj = new ShoppingListItem();
+
+        obj.itemName=Name;
+
+
+        databaseHelper.addShoppingListItemHst(obj);
 
 
     }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeviceDatabaseHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Database Name
     private static final String DATABASE_NAME = "DeviceDb";
@@ -46,6 +46,7 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
     private static final String SPLI_ID = "Id";
     private static final String SPLI_SPLID = "ListId";
     private static final String SPLI_ITEM = "ListItem";
+    private static final String SPLI_ITEM_MARK = "Mark";
 
     private static final String SPLIH_ID = "Id";
     private static final String SPLIH_ITEM = "ListItemHst";
@@ -82,24 +83,25 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
         String CART_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CART_ITEM_ID + " INTEGER,"
                 + CART_ITEM_NAME + " TEXT," + CART_ITEM_QTY + " INTEGER," + CART_ITEM_PRICE + " INTEGER,"+CART_ITEM_IMG  + " TEXT "+ ")";
-        db.execSQL(CART_TABLE);
+
 
         String SPL_TABLE = "CREATE TABLE " + TABLE_NAME_SHOPPINGLIST + "("
                 + SPL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPL_NAME + " TEXT,"
                 + SPL_DATE + " TEXT "+")";
-        db.execSQL(SPL_TABLE);
 
 
         String SPLI_TABLE = "CREATE TABLE " + TABLE_NAME_LISTITEM + "("
                 + SPLI_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPLI_SPLID + " INTEGER,"
-                + SPLI_ITEM + " TEXT "+")";
-        db.execSQL(SPLI_TABLE);
+                + SPLI_ITEM + " TEXT,"+SPLI_ITEM_MARK+"INTEGER)";
+
 
 
         String SPLIHST_TABLE = "CREATE TABLE " + TABLE_NAME_LISTITEM_HISTOREY + "("
                 + SPLIH_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPLIH_ITEM + " TEXT"+")";
+        db.execSQL(CART_TABLE);
         db.execSQL(SPLIHST_TABLE);
-
+        db.execSQL(SPL_TABLE);
+        db.execSQL(SPLI_TABLE);
     }
 
     // Upgrading database
@@ -237,17 +239,18 @@ return cartItem;
 
    ;
 
-    public void addShoppingList(ShoppingList data) {
+    public long addShoppingList(ShoppingList data) {
         SQLiteDatabase db = this.getWritableDatabase();
-
+long id=0;
         ContentValues values = new ContentValues();
-        values.put(SPL_ID, data.Id);
+       // values.put(SPL_ID, data.Id);
         values.put(SPL_NAME, data.Name);
         values.put(SPL_DATE, data.Date);
 
         // Inserting Row
-        db.insert(TABLE_NAME_SHOPPINGLIST, null, values);
+      id=  db.insert(TABLE_NAME_SHOPPINGLIST, null, values);
         db.close(); // Closing database connection
+        return  id;
     }
 
 
@@ -255,7 +258,7 @@ return cartItem;
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(SPLI_ID, data.itemId);
+        //values.put(SPLI_ID, data.itemId);
         values.put(SPLI_SPLID, data.ShoppingListId);
         values.put(SPLI_ITEM, data.itemName);
 
@@ -270,7 +273,7 @@ return cartItem;
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(SPLIH_ID, data.itemId);
+        //values.put(SPLIH_ID, data.itemId);
         values.put(SPLIH_ITEM, data.itemName);
 
 
@@ -309,7 +312,7 @@ return cartItem;
         // return contact list
         Gson gson = new Gson();
         String Reslog= gson.toJson(shoppingList);
-        Log.d("test", Reslog);
+        Log.d("testme", Reslog);
         return shoppingList;
     }
 

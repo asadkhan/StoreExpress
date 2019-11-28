@@ -47,8 +47,11 @@ import com.example.irfan.storeexpressagas.network.RestClient;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -130,6 +133,12 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+
+    public String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
 
     public void openActivityProfile() {
 
