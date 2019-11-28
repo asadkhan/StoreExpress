@@ -188,15 +188,15 @@ public class AboutActivity extends BaseActivity implements OnMapReadyCallback, N
 
         }
 
-//        else if (id == R.id.menu_shopping) {
-//            mDrawerLayout.closeDrawers();
-//            openActivity(ShoppingListActivity.class);
-//
-//            //MenuHandler.smsTracking(this);
-//            //MenuHandler.callUs(this);
-//            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
-//
-//        }
+        else if (id == R.id.menu_shopping) {
+            mDrawerLayout.closeDrawers();
+            openActivity(ShoppingListActivity.class);
+
+            //MenuHandler.smsTracking(this);
+            //MenuHandler.callUs(this);
+            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+
+        }
 
         else if (id == R.id.menu_orders) {
             mDrawerLayout.closeDrawers();

@@ -1,7 +1,10 @@
 package com.example.irfan.storeexpressagas.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -89,7 +92,7 @@ public ImageButton btn_add;
 
 
     public void add(){
-        Log.d("testme","Inadd call");
+
 if(isValidate()){
 
  long id  = ShoppingList.addList(et_name.getText().toString(),getDateTime(),this);
@@ -100,6 +103,32 @@ ShoppigListItemActivity.ListId= (int)id;
     ShoppigListItemActivity.ListName=et_name.getText().toString();
     et_name.setText("");
     LoadList();
+
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setTitle(R.string.app_name);
+    builder.setMessage("Do you want to add item in this shopping list ?");
+    //builder.setIcon(R.drawable.ic_launcher_background);
+    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+            dialog.dismiss();
+
+openActivity(ShoppigListItemActivity.class);
+
+
+            // stop chronometer here
+
+        }
+    });
+    builder.setNegativeButton("Not now", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+            dialog.dismiss();
+        }
+    });
+    AlertDialog alert = builder.create();
+    alert.show();
+    alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.black));
+    alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.black));
+
 }
 
 
@@ -176,15 +205,15 @@ ShoppigListItemActivity.ListId= (int)id;
 
         }
 
-//        else if (id == R.id.menu_shopping) {
-//            mDrawerLayout.closeDrawers();
-//            openActivity(ShoppingListActivity.class);
-//
-//            //MenuHandler.smsTracking(this);
-//            //MenuHandler.callUs(this);
-//            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
-//
-//        }
+        else if (id == R.id.menu_shopping) {
+            mDrawerLayout.closeDrawers();
+            openActivity(ShoppingListActivity.class);
+
+            //MenuHandler.smsTracking(this);
+            //MenuHandler.callUs(this);
+            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+
+        }
 
         else if (id == R.id.menu_orders) {
             mDrawerLayout.closeDrawers();
@@ -246,7 +275,10 @@ ShoppigListItemActivity.ListId= (int)id;
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        openActivity(ShoppingList.class);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbarmenu, menu);

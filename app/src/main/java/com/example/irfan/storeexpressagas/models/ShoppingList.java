@@ -42,7 +42,7 @@ public String Date;
         ShoppingListItem obj = new ShoppingListItem();
         obj.ShoppingListId=ListID;
         obj.itemName=Name;
-
+        obj.mark=0;
 
         databaseHelper.addShoppingListItem(obj);
 
@@ -78,6 +78,13 @@ public String Date;
         databaseHelper.removeShoppingListItem(ItemID);
     }
 
+    public static void setItemMark(int ItemID,int mark,Context context){
+        DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
+        databaseHelper.setItemMark(ItemID,mark);
+    }
+
+
+
     public static void updateShoppingList(int ID,String Name,Context context) {
         DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
         databaseHelper.updateShoppingList(ID,Name);
@@ -92,6 +99,12 @@ public String Date;
     public static List<ShoppingListItem> getShoppingListItem(int ListID,Context context){
         DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
         return  databaseHelper.getShoppingListItem(100,ListID);
+    }
+
+
+    public static List<ShoppingListItem> getAutoComplete(String key,Context context){
+        DeviceDatabaseHandler databaseHelper = DeviceDatabaseHandler.getInstance(context);
+        return  databaseHelper.getShoppingListItemHst(100,key);
     }
 
 

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeviceDatabaseHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "DeviceDb";
@@ -92,12 +92,13 @@ public class DeviceDatabaseHandler extends SQLiteOpenHelper {
 
         String SPLI_TABLE = "CREATE TABLE " + TABLE_NAME_LISTITEM + "("
                 + SPLI_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPLI_SPLID + " INTEGER,"
-                + SPLI_ITEM + " TEXT,"+SPLI_ITEM_MARK+"INTEGER)";
+                + SPLI_ITEM + " TEXT,"+SPLI_ITEM_MARK+" INTEGER)";
 
 
 
         String SPLIHST_TABLE = "CREATE TABLE " + TABLE_NAME_LISTITEM_HISTOREY + "("
                 + SPLIH_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + SPLIH_ITEM + " TEXT"+")";
+
         db.execSQL(CART_TABLE);
         db.execSQL(SPLIHST_TABLE);
         db.execSQL(SPL_TABLE);
@@ -261,6 +262,7 @@ long id=0;
         //values.put(SPLI_ID, data.itemId);
         values.put(SPLI_SPLID, data.ShoppingListId);
         values.put(SPLI_ITEM, data.itemName);
+        values.put(SPLI_ITEM_MARK, data.mark);
 
         // Inserting Row
         db.insert(TABLE_NAME_LISTITEM, null, values);
@@ -333,6 +335,7 @@ long id=0;
                 obj.itemId = cursor.getInt(0);
                 obj.ShoppingListId = cursor.getInt(1);
                 obj.itemName = cursor.getString(2);
+                obj.mark = cursor.getInt(3);
 
                 // Adding contact to list
                 shoppingListItem.add(obj);
@@ -357,7 +360,7 @@ long id=0;
         if (limit == 0) limit = 5;
         List<ShoppingListItem> shoppingListItem = new ArrayList<ShoppingListItem>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME_LISTITEM_HISTOREY +" where " + SPLIH_ITEM + " LIKE " + "'%'" +key + "'%'" +"";
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME_LISTITEM_HISTOREY +" where " + SPLIH_ITEM + " LIKE " + "'%" +key + "%'" +"";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
@@ -381,7 +384,7 @@ long id=0;
         // return contact list
         Gson gson = new Gson();
         String Reslog= gson.toJson(shoppingListItem);
-        Log.d("test", Reslog);
+        Log.d("testme", Reslog);
         return shoppingListItem;
     }
 
@@ -414,7 +417,7 @@ long id=0;
 
     public void removeShoppingListItem(int ItemId ) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME_LISTITEM, SPLI_SPLID + " = ?",
+        db.delete(TABLE_NAME_LISTITEM, SPLI_ID + " = ?",
                 new String[]{String.valueOf(ItemId)});
 
 
@@ -423,6 +426,18 @@ long id=0;
 
     }
 
+
+    public void setItemMark(int ItemID,int mark  ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues data=new ContentValues();
+        data.put(SPLI_ITEM_MARK,mark);
+
+        db.update(TABLE_NAME_LISTITEM, data, SPLI_ID + "=" + ItemID, null);
+        db.close(); // Closing database connection
+
+
+    }
 
 
 }

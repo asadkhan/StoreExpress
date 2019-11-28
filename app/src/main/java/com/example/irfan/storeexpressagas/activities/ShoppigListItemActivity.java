@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,6 +23,8 @@ import com.example.irfan.storeexpressagas.Adapters.ShoppingListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.ShoppingListItemAdapter;
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
+import com.example.irfan.storeexpressagas.extras.CustomAutoCompleteTextChangedListener;
+import com.example.irfan.storeexpressagas.extras.CustomAutoCompleteView;
 import com.example.irfan.storeexpressagas.extras.ValidationUtility;
 import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.ShoppingList;
@@ -36,7 +39,7 @@ public class ShoppigListItemActivity extends BaseActivity implements NavigationV
 
     public static int ListId=0;
     public static String ListName="";
-   public EditText et_list_item_name;
+   public CustomAutoCompleteView et_list_item_name;
 
    public ImageButton  btn_list_item_add;
 public TextView txt_list_name;
@@ -44,11 +47,12 @@ public TextView txt_list_name;
     public RecyclerView recyclerViewShoppigListItem;
 
     public ShoppingListItemAdapter mAdapter;
+   public ArrayAdapter<String> myAdapterAutoC;
 
     public List<ShoppingListItem> ItemList = new ArrayList<>();
 
 
-
+    public String[] item = new String[] {"Please search..."};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,14 +89,15 @@ public TextView txt_list_name;
         recyclerViewShoppigListItem.setAdapter(this.mAdapter);
 
         txt_list_name=(TextView) findViewById(R.id.txt_list_name) ;
-        et_list_item_name=(EditText) findViewById(R.id.et_list_item_name) ;
+        et_list_item_name=(CustomAutoCompleteView) findViewById(R.id.et_list_item_name) ;
         btn_list_item_add=(ImageButton) findViewById(R.id.btn_list_item_add) ;
         txt_list_name.setText(ListName);
         btn_list_item_add.setOnClickListener(this);
         HideShowLogout(navigationView);
 
-
-
+        et_list_item_name.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this));
+        myAdapterAutoC = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, item);
+        et_list_item_name.setAdapter(myAdapterAutoC);
         LoadList();
     }
 
@@ -113,6 +118,24 @@ public TextView txt_list_name;
 
     }
 
+
+    public String[] getItemsFromDb(String searchTerm){
+
+        // add items on the array dynamically
+        List<ShoppingListItem> products = ShoppingList.getAutoComplete(searchTerm,this);
+        int rowCount = products.size();
+
+        String[] item = new String[rowCount];
+        int x = 0;
+
+        for (ShoppingListItem record : products) {
+
+            item[x] = record.itemName;
+            x++;
+        }
+
+        return item;
+    }
 
 
     private boolean isValidate() {
@@ -188,15 +211,15 @@ public TextView txt_list_name;
 
         }
 
-//        else if (id == R.id.menu_shopping) {
-//            mDrawerLayout.closeDrawers();
-//            openActivity(ShoppingListActivity.class);
-//
-//            //MenuHandler.smsTracking(this);
-//            //MenuHandler.callUs(this);
-//            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
-//
-//        }
+        else if (id == R.id.menu_shopping) {
+            mDrawerLayout.closeDrawers();
+            openActivity(ShoppingListActivity.class);
+
+            //MenuHandler.smsTracking(this);
+            //MenuHandler.callUs(this);
+            //ActivityManager.showPopup(BookingActivity.this, Constant.CALL_NOW_DESCRIPTION, Constant.CALL_NOW_HEADING, Constant.CANCEL_BUTTON, Constant.CALL_NOW_BUTTON, Constant.CALL_BUTTON, Constant.PopupType.INFORMATION.ordinal());
+
+        }
 
         else if (id == R.id.menu_orders) {
             mDrawerLayout.closeDrawers();
@@ -267,5 +290,11 @@ public TextView txt_list_name;
         return super.onCreateOptionsMenu(menu);
     }
 
-
+    @Override
+    public void onBackPressed()
+    {
+       openActivity(ShoppingListActivity.class);
+        // code here to show dialog
+     //   super.onBackPressed();  // optional depending on your needs
+    }
 }

@@ -6,5 +6,6 @@ public  class ShoppingListItem{
     public int itemId;
     public String itemName;
     public int ShoppingListId;
+    public  int mark;
 
 }
