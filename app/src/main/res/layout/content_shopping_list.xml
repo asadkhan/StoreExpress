@@ -11,16 +11,16 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#f7f5f5"
                 android:orientation="vertical"
                 android:paddingBottom="15dip"
@@ -83,17 +83,10 @@
             </LinearLayout>
 
 
-
-
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_ShoppingList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-
-
-
 
 
         </LinearLayout>
