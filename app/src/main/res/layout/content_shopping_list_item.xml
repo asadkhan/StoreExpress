@@ -51,12 +51,13 @@
                     android:paddingStart="10dp"
                     android:weightSum="1">
 
-                    <EditText
+
+                    <com.example.irfan.storeexpressagas.extras.CustomAutoCompleteView
                         android:id="@+id/et_list_item_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:background="@null"
+                        android:completionThreshold="1"
                         android:cursorVisible="true"
                         android:hint="Enter Item(s) Name"
                         android:inputType="text"
@@ -64,7 +65,12 @@
                         android:paddingTop="5dp"
                         android:textColor="@android:color/darker_gray"
                         android:textCursorDrawable="@null"
-                        android:textSize="14sp" />
+                        android:textSize="14sp" >
+                    </com.example.irfan.storeexpressagas.extras.CustomAutoCompleteView>
+
+
+
+
 
                     <ImageButton
                         android:id="@+id/btn_list_item_add"
