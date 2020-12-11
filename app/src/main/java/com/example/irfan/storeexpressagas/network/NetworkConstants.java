@@ -3,7 +3,7 @@ package com.example.irfan.storeexpressagas.network;
 public class NetworkConstants {
 
 
-   public static String BASE_URL="http://apis.aghas.com.pk/";
+   public static String BASE_URL="http://testapi.aghas.com.pk/";
    // public static String BASE_URL="http://aghasapi.insidedemo.com/";
    //public static String BASE_URL="http://192.168.100.9";
  ///public static String BASE_URL="http://192.168.1.102";

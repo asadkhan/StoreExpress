@@ -114,6 +114,7 @@ try {
 
             hideProgress();
             Log.d("test", "failed");
+            Log.d("test", throwable.getMessage());
 
         }
 
